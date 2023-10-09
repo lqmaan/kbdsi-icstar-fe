@@ -1,0 +1,239 @@
+<body>
+  <h1>USER</h1>
+  <!-- search and button add -->
+  <div class="max-w-full my-6 relative">
+    <div class="-left-5">
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md mb-2 py-[6px] pl-2 pr-12 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
+        placeholder="Search for name..."
+        type="text"
+        name="search"
+      />
+    </div>
+
+    <div class="absolute top-0 right-0">
+      <!-- <button
+        mat-raised-button
+        (click)="openNewPage()"
+        data-modal-target="authentication-modal"
+        data-modal-toggle="authentication-modal"
+        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+      >
+        Add User
+      </button> -->
+      <button
+        routerLink="/user-create"
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2 rounded"
+      >
+        Add User
+      </button>
+    </div>
+    <div class="absolute top-0 right-20">
+      <button
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded"
+      >
+        Print
+      </button>
+    </div>
+  </div>
+
+  <!-- table of user - use dummy data -->
+  <div class="overflow-auto rounded-lg shadow">
+    <table class="w-full">
+      <thead class="bg-gray-50 border-b-2 border-gray-200">
+        <tr>
+          <th class="w-20">Email</th>
+          <th class="w-20">Name</th>
+          <th class="w-24">Phone Number</th>
+          <th class="w-24">Role</th>
+          <th class="w-32">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100">
+        <tr class="bg-white">
+          <td>ckctm12@gmail.com</td>
+          <td>Robert Fox</td>
+          <td>082112404351</td>
+          <td>Manager</td>
+          <td>
+            <button
+              routerLink="/user-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+
+        <tr class="bg-gray-50">
+          <td>manhhachkt08@gmail.com</td>
+          <td>Jacob Jones</td>
+          <td>082104958246</td>
+          <td>Employee</td>
+          <td>
+            <button
+              routerLink="/user-update"
+              class="bg-blue-500 hover:bg-blue-60"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+
+        <tr class="bg-white">
+          <td>thuhang.nute@gmail.com</td>
+          <td>Jane Cooper</td>
+          <td>082194585124</td>
+          <td>Employee</td>
+          <td>
+            <button
+              routerLink="/user-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+
+        <tr class="bg-gray-50">
+          <td class="p-3 text-sm text-gray-700">tienlapspktnd@gmail.com</td>
+          <td>Wade Warren</td>
+          <td>082178439087</td>
+          <td>Manager</td>
+          <td>
+            <button
+              routerLink="/user-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+
+        <tr class="bg-white">
+          <td>binhan628@gmail.com</td>
+          <td>Guy Hawkins</td>
+          <td>082139485313</td>
+          <td>Employee</td>
+          <td>
+            <button
+              routerLink="/user-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pages number -->
+  <div>
+    <nav aria-label="Page navigation example" class="">
+      <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span class="sr-only">Previous</span>
+            <svg
+              class="w-2.5 h-2.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 1 1 5l4 4"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >1</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            aria-current="page"
+            class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+            >2</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >3</a
+          >
+        </li>
+
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span class="sr-only">Next</span>
+            <svg
+              class="w-2.5 h-2.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</body>

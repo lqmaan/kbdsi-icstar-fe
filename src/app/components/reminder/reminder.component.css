@@ -1,0 +1,23 @@
+body{
+    @apply px-8 py-2 bg-gray-100 w-screen h-screen
+  }
+
+th, td{
+    @apply text-center py-2 border-gray-200
+}
+
+th{
+    @apply p-3 font-bold tracking-wide text-base 
+}
+
+span{
+    @apply p-1.5 text-xs font-medium uppercase tracking-wider rounded-lg bg-opacity-50
+}
+
+td{
+    @apply p-2 text-sm text-gray-700 whitespace-nowrap
+}
+
+td > button {
+    @apply mx-0.5 px-2 py-1 my-1 rounded-md text-white transition-all font-bold
+}

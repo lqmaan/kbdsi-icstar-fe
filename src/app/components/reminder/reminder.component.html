@@ -1,0 +1,130 @@
+<body>
+  <h1>REMINDER</h1>
+
+  <!-- search and button add -->
+  <div class="max-w-full my-6 relative">
+    <div class="-left-5">
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md mb-2 py-[6px] pl-2 pr-12 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
+        placeholder="Search for Description..."
+        type="text"
+        name="search"
+      />
+    </div>
+
+    <div class="absolute top-0 right-0">
+      <button
+        routerLink="/reminder-create"
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2 rounded-md"
+      >
+        Add Reminder
+      </button>
+    </div>
+    <div class="absolute top-0 right-20 px-8">
+      <button
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded"
+      >
+        Print
+      </button>
+    </div>
+  </div>
+
+  <!-- table of user - use dummy data -->
+
+  <div class="overflow-auto rounded-lg shadow">
+    <table class="w-full">
+      <thead class="bg-gray-50 border-b-2 border-gray-200">
+        <tr>
+          <th class="w-20">Description</th>
+          <th class="w-24">Created</th>
+          <th class="w-24">Due Date</th>
+          <th class="w-20">Amount</th>
+          <th class="w-24">Email</th>
+          <th class="w-32">Status</th>
+          <th class="w-24">Repeated</th>
+          <th class="w-20">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100">
+        <tr class="bg-white">
+          <td>Administrative Costs</td>
+          <td>09/04/23</td>
+          <td>09/17/23</td>
+          <td>12.000.000</td>
+          <td>ckctm12@gmail.com</td>
+          <td>
+            <span class="text-yellow-800 bg-yellow-200"> On Going</span>
+          </td>
+          <td class="font-bold">Yes</td>
+          <td>
+            <button
+              routerLink="/reminder-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+
+        <tr class="bg-gray-50">
+          <td>Employee Salaries and Wages</td>
+          <td>10/28/23</td>
+          <td>03/29/24</td>
+          <td>560.200.000</td>
+          <td>manhhachkt08@gmail.com</td>
+          <td>
+            <span class="text-green-800 bg-green-200">Done</span>
+          </td>
+          <td class="font-bold">Yes</td>
+          <td>
+            <button
+              routerLink="/reminder-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+
+        <tr class="bg-white">
+          <td>Employee Salaries and Wages</td>
+          <td>10/28/23</td>
+          <td>12/28/23</td>
+          <td>560.200.000</td>
+          <td>manhhachkt08@gmail.com</td>
+          <td>
+            <span class="text-red-800 bg-red-200">Cancel</span>
+          </td>
+          <td class="font-bold">No</td>
+          <td>
+            <button
+              routerLink="/reminder-update"
+              class="bg-blue-500 hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="confirmBox()"
+              class="bg-rose-500 hover:bg-rose-600"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>

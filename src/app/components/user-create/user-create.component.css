@@ -1,0 +1,12 @@
+main{
+    @apply flex items-center justify-center bg-gray-100
+}
+
+form{
+    @apply bg-white w-[500px] p-6 my-14 rounded shadow-md
+}
+
+label{
+    @apply text-gray-700 font-semibold
+}
+

@@ -1,0 +1,57 @@
+<main>
+    <form>
+
+        <h2 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">Update Transaction</h2>
+        <label class="text-gray-700 font-semibold">Created</label>
+        <div class="">
+                <label class="block flex-1">
+                    <input type="date" class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4 form-input mt-1 block " required>
+                </label>
+        <!-- </div>
+        <label class="text-gray-700 font-semibold">Name</label>
+        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4" type="name" required/>
+        <div class="text-base"> -->
+            <label class="text-gray-700 font-semibold"> Category</label>
+        <div class="">
+            <!-- <div class="mt-6 flex"> -->
+                <label class="block w-full">
+                    <select class="py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4 form-select mt-1 block w-full">
+                        <option disabled selected value class="text-gray-500">-- Choose Category --</option>
+                        <option>Category1</option>
+                        <option>Category2</option>
+                        <option>Category3</option>
+                        <option>Category4</option>
+                        <option>Category5</option>
+                    </select>
+                </label>
+            <!-- </div> -->
+        </div>
+        <label class="text-gray-700 mt-2 font-semibold">Type</label>
+        <div class="mt-1 mb-3 pb-1 ml-2 max-w-full relative text-gray-600">
+            
+            <!-- <legend>Choose your delivery preference</legend> -->
+            <div class=" -left-0">
+                <input type="radio" id="type_1" value="income" name="type">
+                <label for="type_1"> Income</label>
+            </div>
+            <div class="absolute  top-0  right-[270px]">
+                <input type="radio" id="type_2" value="expence" name="type">
+                <label for="type_2"> Expence</label>
+            </div>
+        </div>
+        <label class="text-gray-700 mt-5 font-semibold">Amount</label>
+        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none  mb-4" type="amount" placeholder="Rp." required/>
+        <label class="text-gray-700 font-semibold">Description</label>
+        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4" type="description" required/>
+        </div>
+        
+        <div class="flex justify-end mt-8">
+            <button  class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded">
+                Save
+              </button>
+          </div>
+
+    </form>
+  </main>
+
+ 
