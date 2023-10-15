@@ -32,14 +32,14 @@ export class UserComponent implements OnInit {
     this.pageUser.name = "";
     this.pageUser.pageNum = 0;
     this.pageUser.pageSize = 5;
-    this.userService.findAll(this.pageUser).subscribe(data => {
+    this.userService.paginationUser(this.pageUser).subscribe(data => {
       this.users = data.content;
     })
   }
 
   nextPage(){
     this.pageUser.pageNum += 1;
-    this.userService.findAll(this.pageUser).subscribe(data => {
+    this.userService.paginationUser(this.pageUser).subscribe(data => {
       this.users = data.content;
   })
 }
@@ -47,7 +47,7 @@ export class UserComponent implements OnInit {
   previousPage(){
     if(this.pageUser.pageNum != 0){
           this.pageUser.pageNum -= 1
-          this.userService.findAll(this.pageUser).subscribe(data => {
+          this.userService.paginationUser(this.pageUser).subscribe(data => {
             this.users = data.content;}
           )
       }
@@ -58,7 +58,7 @@ export class UserComponent implements OnInit {
 
   handleSearch(input: string): void{
     this.pageUser.name = input;
-    this.userService.findAll(this.pageUser).subscribe(data => {
+    this.userService.paginationUser(this.pageUser).subscribe(data => {
       console.log(data)
       this.users = data.content;
     })
@@ -81,7 +81,7 @@ export class UserComponent implements OnInit {
         this.delete.id = user.userId;
         this.delete.updatedBy = localStorage.getItem("email") || "null";
         this.userService.deleteUser(this.delete).subscribe(result => {
-          this.userService.findAll(this.pageUser).subscribe(data => {
+          this.userService.paginationUser(this.pageUser).subscribe(data => {
             this.users = data.content;
           })
           if(result == "User has been deleted"){
@@ -91,14 +91,22 @@ export class UserComponent implements OnInit {
               'success'
             ) 
           }
-        })
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
+        }
+        , error => {
+            Swal.fire({
+              title: 'Delete User Failed',
+              icon:'error'
+            })
+            console.log(error);
+          })
       }
+      //  else if (result.dismiss === Swal.DismissReason.cancel) {
+      //   Swal.fire(
+      //     'Cancelled',
+      //     'Your imaginary file is safe :)',
+      //     'error'
+      //   )
+      // }
     })
   }
 // openPopup(): void {

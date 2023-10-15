@@ -1,5 +1,5 @@
 body{
-    @apply px-8 py-2 bg-gray-100 w-screen mb-20
+    @apply px-8 py-2 bg-white w-full rounded-lg
   }
 
 th, td{
@@ -22,6 +22,3 @@ td > button {
     @apply mx-0.5 px-2 py-1 my-1 rounded-md text-white transition-all font-bold
 }
 
- /* form{
-     @apply bg-white w-[500px] p-6 my-14 rounded shadow-md
- } */

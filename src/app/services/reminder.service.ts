@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Reminder} from '../models/reminder';
 import {PageReminder} from '../models/page-reminder';
+import {Delete} from '../models/delete';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -26,5 +27,21 @@ export class ReminderService {
     .set('pageSize',data.pageSize)
 
     return this.http.get<PageReminder>(`${this.reminderUrl}/description`, {params:reminderParam})
+  }
+
+  public editReminder(reminder: Reminder):Observable<Reminder>{
+    return this.http.put<Reminder>(`${this.reminderUrl}/${reminder.reminderId}`, reminder)
+  }
+
+  public createReminder(reminder: Reminder):Observable<any>{
+    return this.http.post<Reminder>(`${this.reminderUrl}`, reminder)
+  }
+
+  public deleteReminder(data: Delete):Observable<any>{
+    return this.http.put<Delete>(`${this.reminderUrl}/delete/${data.id}`, data);
+  }
+
+  public downloadExcel(){
+    window.location.href = `${this.reminderUrl}/export-to-excel`;
   }
 }

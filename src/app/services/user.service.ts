@@ -15,7 +15,11 @@ export class UserService {
     this.pageUser = new PageUser();
   }
 
-  public findAll(data: PageUser):Observable<any>{
+  public findAll(){
+    return this.http.get<any>(`${this.usersUrl}`)
+  }
+
+  public paginationUser(data: PageUser):Observable<any>{
     console.log(data)
 
     let userParam = new HttpParams()
@@ -37,5 +41,9 @@ export class UserService {
 
   public deleteUser(data: Delete){
     return this.http.put(`${this.usersUrl}/delete/${data.id}`,data, {responseType: "text"})
+  }
+
+  public downloadExcel(){
+    window.location.href = `${this.usersUrl}/export-to-excel`;
   }
 }

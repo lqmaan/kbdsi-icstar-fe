@@ -5,7 +5,7 @@ main{
  form{
      @apply bg-white w-[500px] p-6 my-14 rounded shadow-md
  }
-.input {
+/* .input {
     width: 100%;
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
@@ -30,5 +30,4 @@ main{
     box-shadow: 0 0 0 3px rgba(135, 212, 245, 0.5);
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
     font-size: 0.875rem;
-
-}
+} */

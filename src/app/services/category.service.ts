@@ -15,6 +15,11 @@ export class CategoryService {
   }
 
   public findAll():Observable<any>{
-    return this.http.get<any>(`${this.categoryUrl}`)
+    return this.http.get<any>(`${this.categoryUrl}`);
+  }
+
+  public createCategory(category: Category):Observable<any>{
+    return this.http.post<Category>(`${this.categoryUrl}`, category);
+    
   }
 }

@@ -1,8 +1,8 @@
 export class Reminder {
     reminderId: number;
     description: string;
-    scheduleDate: Date;
-    paymentDate: Date;
+    scheduleDate: string;
+    paymentDate: string;
     createdAt: Date;
     createdBy: string;
     updatedBy: string;

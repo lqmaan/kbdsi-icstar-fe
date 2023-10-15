@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';  
@@ -46,13 +47,21 @@ export class UserUpdateComponent implements OnInit {
       this.user.password = this.form.controls['password'].value;
       this.user.updatedBy = localStorage.getItem('email') || 'null'
     
-      console.log(this.user)
     this.userService.editUser(this.user)
         .subscribe((result) => 
         {
-          console.log(result)
-        // this.gotoUserList();
-      });
+          Swal.fire({
+            title: 'Edit User Success',
+          }).then((result) => {
+              this.gotoUserList();
+            })
+          }, error => {
+            Swal.fire({
+              title: 'Edit User Failed',
+              icon:'error'
+            })
+            console.log(error);
+          })
  }
 
  gotoUserList(){

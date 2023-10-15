@@ -58,28 +58,18 @@ onItemChange(data: any){
     this.budget.category = this.form.controls['category'].value;
     this.budget.year = this.form.controls['year'].value;
     this.budgetService.createBudget(this.budget).subscribe((result) => {
-      console.log(result);
       Swal.fire({
         title: 'Create Budget Success',
       }).then((result) => {
           this.gotoBudgetList();
         })
+      }, error => {
+        Swal.fire({
+          title: 'Create Budget Failed',
+          icon:'error'
+        })
+        console.log(error);
       })
-    
-    
-    //   {
-    // console.log(this.login)
-    // this.loginService.login(this.login)
-    //   .subscribe((result) => 
-    //   {
-    //     console.log(result)
-    //   localStorage.setItem('id', result.id);
-    //   localStorage.setItem('email', result.email);
-    //   localStorage.setItem('name', result.name);
-    //   localStorage.setItem('phone', result.phone);
-    //   localStorage.setItem('roles', result.roles);
-    //   this.gotoTransactionList();
-    // });
   }
 
   gotoBudgetList(){

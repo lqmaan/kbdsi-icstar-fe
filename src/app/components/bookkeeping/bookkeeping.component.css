@@ -1,5 +1,5 @@
 body{
-    @apply px-8 py-2 bg-gray-100 w-screen scroll-mb-32
+    @apply px-8 py-2 bg-white w-full rounded-lg 
 }
 
 th, td{
@@ -7,7 +7,7 @@ th, td{
 }
 
 th{
-    @apply p-3 font-bold tracking-wide text-base 
+    @apply p-3 font-bold tracking-wide text-base m-10
 }
 
 td > span{

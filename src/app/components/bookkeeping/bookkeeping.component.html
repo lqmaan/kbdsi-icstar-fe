@@ -2,20 +2,22 @@
   <h1>BOOKKEEPING</h1>
 
   <!-- Cards -->
-  <section class="grid grid-cols-6 gap-3 h-3/4">
+  <section class="grid grid-cols-6 gap-3 h-3/4 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
     <!-- column 1 -->
-    <div class="col-span-2 bg-white rounded-md shadow-lg flex-auto p-4 relative">
+    <div class="col-span-2 bg-white rounded-md shadow-lg flex-auto p-4 relative ">
       <!-- content -->
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap ">
         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-          <h5 class="text-blueGray-400 uppercase font-bold text-base">
+          <h5 class="text-blueGray-400 uppercase font-bold lg:text-lg xl:text-xl">
             Total Balance
           </h5>
-          <span class="font-bold text-xl">{{totalYear[0] - totalYear[1] | currency:"IDR":"symbol"}} </span>
+          <span class="font-semibold lg:text-md xl:text-lg">{{totalYear[0] - totalYear[1] | currency:"IDR":"symbol"}} </span>
           <!-- in line -->
           <div class="w-full h-0.5 bg-gray-300 drop-shadow-md my-5"></div>
-          <span class="text-xl">Total Profit {{totalYear[0] | currency:"IDR":"symbol"}} ({{currDate.getFullYear()}})</span><br />
-          <span class="text-xl">Total Outcome {{totalYear[1] | currency:"IDR":"symbol"}}  ({{currDate.getFullYear()}})</span>
+          <span class="lg:text-md xl:text-lg">Total Profit {{totalYear[0] | currency:"IDR":"symbol"}}
+            ({{currDate.getFullYear()}})</span><br />
+          <span class="lg:text-md xl:text-lg">Total Outcome {{totalYear[1] | currency:"IDR":"symbol"}}
+            ({{currDate.getFullYear()}})</span>
         </div>
         <div class="relative w-auto pl-4 flex-initial">
           <div
@@ -37,10 +39,10 @@
         <!-- content -->
         <div class="flex flex-wrap">
           <div class="relative w-full h-full pr-4 max-w-full max-h-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-base">
+            <h5 class="text-blueGray-400 uppercase font-bold lg:text-md xl:text-lg">
               Total Income
             </h5>
-            <span class="font-bold text-xl">{{totalMonth[0] | currency:"IDR":"symbol"}} </span>
+            <span class="font-semibold lg:text-md xl:text-lg">{{totalMonth[0] | currency:"IDR":"symbol"}} </span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -51,8 +53,7 @@
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
           <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span> -->
-          <span
-            class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
+          <span class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
         </p>
       </div>
 
@@ -60,10 +61,10 @@
         <!-- content -->
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-base">
+            <h5 class="text-blueGray-400 uppercase font-bold lg:text-md xl:text-lg">
               Total Outcome
             </h5>
-            <span class="font-bold text-xl">{{totalMonth[1] | currency:"IDR":"symbol"}} </span>
+            <span class="font-semibold lg:text-md xl:text-lg">{{totalMonth[1] | currency:"IDR":"symbol"}} </span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -74,8 +75,7 @@
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
           <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span> -->
-          <span
-            class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
+          <span class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
         </p>
       </div>
     </div>
@@ -90,7 +90,7 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Income
             </h5>
-            <span class="font-bold text-xl">{{income[0].amount | currency:"IDR":"symbol"}}</span>
+            <span class="font-semibold text-sm">{{income[0].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -101,7 +101,7 @@
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
           <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span -->
-            <!-- class="whitespace-nowrap">This month</span> -->
+          <!-- class="whitespace-nowrap">This month</span> -->
         </p>
       </div>
       <!-- content 3_2-->
@@ -217,8 +217,7 @@
             </div>
           </li>
         </ul>
-        <button
-          (click)="downloadExcel()"
+        <button (click)="downloadExcel()"
           class="flex items-center p-3 text-sm w-full font-medium text-blue-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-300 hover:bg-gray-100 dark:bg-gray-100 dark:hover:bg-gray-600 dark:text-blue-500 hover:underline">
           <svg class="w-4 h-4 mr-2.5 text-white-800 dark:text-white" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -233,42 +232,30 @@
     <div class="absolute top-0 right-29 mx-[300px]">
       <label class="">
         <a class="font-semibold">From: </a>
-        <input type="date"
-        [ngModel]="fromDate"
-        (ngModelChange)="changeFrom($event)"
-          max=`${maxDate}`
+        <input type="date" [ngModel]="fromDate" (ngModelChange)="changeFrom($event)" max=`${maxDate}`
           class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>
     </div>
     <div class="absolute top-0 right-28 mx-[150px]">
       <label class="">
         <a class="font-semibold">To: </a>
-        <input  type="date"
-        min=`${minDate}`
-        [ngModel]="toDate"
-        (ngModelChange)="changeTo($event)"
+        <input type="date" min=`${minDate}` [ngModel]="toDate" (ngModelChange)="changeTo($event)"
           class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>
     </div>
     <div class="absolute top-0 right-20 mx-4">
       <label class="">
-        <select 
-        [(ngModel)]="pageBookkeeping.category"
-        (ngModelChange)="changeCategory($event)"
-        class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
-          <option
-          *ngFor="let item of category"
-          [value]="item.categoryName"
-          [attr.selected]="pageBookkeeping.category == item.categoryName? true : null">{{item.categoryName}}</option>
+        <select [(ngModel)]="pageBookkeeping.category" (ngModelChange)="changeCategory($event)"
+          class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
+          <option *ngFor="let item of category" [value]="item.categoryName"
+            [attr.selected]="pageBookkeeping.category == item.categoryName? true : null">{{item.categoryName}}</option>
         </select>
       </label>
     </div>
     <div class="absolute top-0 right-0">
       <label class="">
-        <select 
-        [(ngModel)]="pageBookkeeping.year"
-        (ngModelChange)="changeYear($event)"
-        class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
+        <select [(ngModel)]="pageBookkeeping.year" (ngModelChange)="changeYear($event)"
+          class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
           <option disabled selected value>Year</option>
           <option>2023</option>
           <option>2024</option>
@@ -292,8 +279,7 @@
       </thead>
 
       <tbody class="divide-y divide-gray-100">
-        <tr *ngFor="let transaction of transactions, let i = index"
-        [ngClass]=" i%2 == 0 ? 'bg-white' : 'bg-gray-50'">
+        <tr *ngFor="let transaction of transactions, let i = index" [ngClass]=" i%2 == 0 ? 'bg-white' : 'bg-gray-50'">
           <td>{{transaction.createdAt | date: 'dd/MM/yyyy HH:mm '}}</td>
           <td>{{transaction.category}}</td>
           <td>
@@ -306,8 +292,8 @@
       </tbody>
     </table>
   </div>
-  
-   <!-- Pages number -->
+
+  <!-- Pages number -->
   <!-- <div>
     <nav aria-label="Page navigation example" class="">
       <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
@@ -369,4 +355,4 @@
       </ul>
     </nav>
   </div> -->
- </body>
+</body>

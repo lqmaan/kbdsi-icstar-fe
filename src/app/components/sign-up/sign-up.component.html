@@ -1,5 +1,5 @@
 <main>
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSignUp()">
     <div>
       <!-- <div class="bg-red-500 px-3 py-2 ronded text-gray-100 mb-3">
           <p>wrong email entered</p>
@@ -14,19 +14,29 @@
       <input
         placeholder="Enter email address"
         type="email"
-        required
+        [required]="true"
+        formControlName="email"
       />
       <label class="text-gray-700">Name</label>
       <input
-        placeholder="Enter email address"
+        placeholder="Enter full name"
         type="name"
-        required
+        [required]="true"
+        formControlName="name"
       />
+      <span class="text-danger"
+      *ngIf="formControl['name'].hasError('required') && formControl['name'].touched">
+      Name is required
+      </span>
+
+
+      <br/>
       <label class="text-gray-700">Phone</label>
       <input
         placeholder="Ex: 8xxxxxxx"
         type="phone"
-        required
+        [required]="true"
+        formControlName="phone"
       />
        <div class="relative">
       <label class="text-gray-700">Password</label>
@@ -34,8 +44,9 @@
         placeholder="Password must be at least 6 characters"
          [(ngModel)]="password"
         name="password" 
+        [required]="true"
         [type]="showPassword ? 'text': 'password'"
-        required formControlName="password"
+        formControlName="password"
       />
       <div
         (click)="toggleShowPassword()"
@@ -53,7 +64,6 @@
           Cancel
         </button>
         <button
-          routerLink="/login"
           class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 mx-1 rounded-md"
         >
           Sign-up

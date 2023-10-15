@@ -23,28 +23,38 @@ export class SignUpComponent {
     }
 
   form: FormGroup = new FormGroup({  
-    email : new FormControl(''),  
-    name: new FormControl(''),
-    phone : new FormControl(''),
-    password : new FormControl(''),
+    email : new FormControl('', [Validators.required]),  
+    name: new FormControl('', [ Validators.required]),
+    phone : new FormControl('', [ Validators.required]),
+    password : new FormControl('', [ Validators.required]),
 });  
 
+get formControl() {
+  return this.form.controls;
+}
 
-  onSubmit(){
-    this.user.createdBy =  this.form.controls['email'].value;;
-    this.user.name = this.form.controls['name'].value;
-    this.user.email = this.form.controls['email'].value;
-    this.user.phone = this.form.controls['phone'].value;
-    this.user.roles = "superadmin";
-    this.user.password = this.form.controls['password'].value;
-    this.userService.createUser(this.user).subscribe((result) => {
-      console.log(result);
-      Swal.fire({
-        title: 'Register Success',
-      }).then((result) => {
-          this.gotoLogin();
-        })
-      })
+  onSignUp(){
+console.log(this.formControl)
+
+    // this.user.createdBy =  this.form.controls['email'].value;;
+    // this.user.name = this.form.controls['name'].value;
+    // this.user.email = this.form.controls['email'].value;
+    // this.user.phone = this.form.controls['phone'].value;
+    // this.user.roles = "superadmin";
+    // this.user.password = this.form.controls['password'].value;
+    // this.userService.createUser(this.user).subscribe((result) => {
+    //   console.log(result);
+    //   Swal.fire({
+    //     title: 'Register Success',
+    //   }).then((result) => {
+    //       this.gotoLogin();
+    //     })
+    //   }, error => {
+    //     Swal.fire({
+    //       title: 'Register Failed',
+    //       text: error
+    //     })
+    //   })
     
     
   }

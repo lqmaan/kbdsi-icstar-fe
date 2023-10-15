@@ -54,12 +54,17 @@ onItemChange(data: any){
     this.transaction.category = this.form.controls['category'].value;
     console.log(this.transaction)
     this.transactionService.createTransaction(this.transaction).subscribe((result) => {
-      console.log(result);
       Swal.fire({
         title: 'Create Transaction Success',
       }).then((result) => {
           this.gotoTransactionList();
         })
+      }, error => {
+        Swal.fire({
+          title: 'Create Transaction Failed',
+          icon:'error'
+        })
+        console.log(error);
       })
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';  
@@ -55,16 +56,23 @@ export class TransactionUpdateComponent implements OnInit{
       this.transaction.name = this.form.controls['description'].value;
       this.transaction.description = this.form.controls['description'].value;
       this.transaction.amount =  this.form.controls['amount'].value;
-      // this.transaction.type =  this.form.controls['type'].value;
       this.transaction.category = this.form.controls['category'].value;
       this.transaction.updatedBy = localStorage.getItem('email') || 'null'
     
     this.transactionService.editTransaction(this.transaction)
-        .subscribe((result) => 
-        {
-          console.log(result)
-        // this.gotoTransactionList();
-      });
+        .subscribe((result) => {
+        Swal.fire({
+          title: 'Edit Transaction Success',
+        }).then((result) => {
+            this.gotoTransactionList();
+          })
+        }, error => {
+          Swal.fire({
+            title: 'Edit Transaction Failed',
+            icon:'error'
+          })
+          console.log(error);
+        })
  }
 
  gotoTransactionList(){

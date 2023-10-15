@@ -15,8 +15,11 @@ import { TransactionComponent } from './components/transaction/transaction.compo
 import { BookkeepingComponent } from './components/bookkeeping/bookkeeping.component';
 import { EbudgetingComponent } from './components/ebudgeting/ebudgeting.component';
 import { EbudgetingCreateComponent } from './components/ebudgeting-create/ebudgeting-create.component';
+import { EbudgetingUpdateComponent } from './components/ebudgeting-update/ebudgeting-update.component';
 import { TransactionUpdateComponent } from './components/transaction-update/transaction-update.component';
 import { ReminderUpdateComponent } from './components/reminder-update/reminder-update.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+
 
 const routes: Routes = [ 
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -33,8 +36,10 @@ const routes: Routes = [
   {path: 'transaction-create', component: TransactionCreateComponent},
   {path: 'transaction-update', component: TransactionUpdateComponent},
   {path: 'bookkeeping', component: BookkeepingComponent},
-  {path: 'ebudgetting', component: EbudgetingComponent},
-  {path: 'ebudgetting-create', component: EbudgetingCreateComponent},
+  {path: 'ebudgeting', component: EbudgetingComponent},
+  {path: 'ebudgeting-create', component: EbudgetingCreateComponent},
+  {path: 'ebudgeting-update', component: EbudgetingUpdateComponent},
+  {path: 'category-add', component: CategoryAddComponent},
 
 
 

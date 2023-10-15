@@ -1,31 +1,4 @@
-<p>dashboard works!</p>
-<!-- <div class="fixed inset-0 flex items-center justify-center z-50">
-    <div class="bg-white p-4 rounded shadow-lg">
-     Konten Popup CRUD -->
-<!-- <button class="bg-blue-500 text-white px-4 py-2 rounded">Simpan</button>
-      <button class="bg-red-500 text-white px-4 py-2 rounded">Batal</button>
-    </div>
-  </div> -->
-
-<!-- <button (click)="showSweetAlert()">Tampilkan SweetAlert</button> -->
-
-<!-- <label class="">
-    <select class="bg-slate-800  text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select ">
-        <option disabled selected value>Print</option>
-        <option (click)="handleButtonClick(1)">All Date</option>
-        <option (click)="handleButtonClick(2)">2023</option>
-        <option (click)="handleButtonClick(3)">2024</option>
-          <button routerLink="/" class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2 rounded ">Download</button>
-    </select>
-</label>
-
-<div class="dropdown">
-  <button class="dropdown-toggle">Pilihan</button>
-  <div class="dropdown-menu">
-    <button class="dropdown-item" (click)="handleButtonClick(1)">Tombol 1</button>
-    <button class="dropdown-item" (click)="handleButtonClick(2)">Tombol 2</button>
-    <button class="dropdown-item" (click)="handleButtonClick(3)">Tombol 3</button>
-  </div>
-</div> -->
-
-<!-- component -->
+<!-- <app-header></app-header> -->
+<app-sidebar (onToggleSideNav)="onToggleSideNav($event)"> </app-sidebar>
+<app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth">
+</app-body>

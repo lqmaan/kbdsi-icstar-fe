@@ -8,7 +8,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {NgIconsModule} from '@ng-icons/core';
-import { heroEyeSlash, heroEye } from '@ng-icons/heroicons/outline';
+import { CommonModule } from '@angular/common';
+
+
+import { heroEyeSlash, heroEye, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroChartBar, heroBanknotes, } from '@ng-icons/heroicons/outline';
+
 
 
 //List Icon path (Hero Icon)
@@ -42,11 +46,19 @@ import { EbudgetingCreateComponent } from './components/ebudgeting-create/ebudge
 import { TransactionUpdateComponent } from './components/transaction-update/transaction-update.component';
 import { ReminderUpdateComponent } from './components/reminder-update/reminder-update.component';
 import { ComponentsComponent } from './components/components.component';
+import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
+import { HeaderComponent } from './components/dashboard/header/header.component';
+import { BodyComponent } from './body/body.component'; 
+import { EbudgetingUpdateComponent } from './components/ebudgeting-update/ebudgeting-update.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
 // import {HeroIcons} from'.icon/hero-icons.component';
 
 
 import { registerLocaleData } from '@angular/common';
-import localeId from '@angular/common/locales/id'; 
+import localeId from '@angular/common/locales/id';
+
+
+
 registerLocaleData(localeId, 'id'); 
 
 
@@ -69,6 +81,12 @@ registerLocaleData(localeId, 'id');
     TransactionUpdateComponent,
     ReminderUpdateComponent,
     ComponentsComponent,
+    SidebarComponent,
+    HeaderComponent,
+    BodyComponent,
+    EbudgetingUpdateComponent,
+    CategoryAddComponent,
+
     
     
 
@@ -86,7 +104,8 @@ registerLocaleData(localeId, 'id');
     MatFormFieldModule,
     MatDialogModule,
     HttpClientModule,
-    NgIconsModule.withIcons({heroEye, heroEyeSlash}),
+    CommonModule,
+    NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar}),
     SweetAlert2Module.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService],

@@ -46,7 +46,13 @@ export class UserCreateComponent {
       }).then((result) => {
           this.gotoUserList();
         })
-      })
+      }, error => {
+          Swal.fire({
+            title: 'Create User Failed',
+            icon:'error'
+          })
+          console.log(error);
+        })
     }
     else{
       Swal.fire({
@@ -69,16 +75,9 @@ export class UserCreateComponent {
   alertWithSuccees(){
     Swal.fire ( "Oops, something went wrong!" );
 }
-//  openPopup() {
-//     Flowbite.showPopup({
-//       content: '<app-popup></app-popup>', // Komponen Angular untuk pop-up
-//       width: '500px', // Lebar pop-up
-//       height: '300px' // Tinggi pop-up
-//     });
-//   }
+
 
     //show-hide password
-    password: string = '';
     showPassword: boolean = false;
 
     toggleShowPassword() {

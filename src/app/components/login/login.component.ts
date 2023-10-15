@@ -20,9 +20,6 @@ export class LoginComponent {
       this.login = new Login();
     }
 
-    ngOnInit(): void{
-      
-    }
 
     form: FormGroup = new FormGroup({  
       email : new FormControl('' ),  

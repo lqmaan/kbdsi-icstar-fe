@@ -82,11 +82,18 @@ export class EbudgetingComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Deleted!',
-          'Your imaginary file has been deleted.',
-          'success'
-        )
+        // Swal.fire({
+        //   title: 'Edit Transaction Success',
+        // }).then((result) => {
+        //     this.gotoTransactionList();
+        //   })
+        // }, error => {
+        //   Swal.fire({
+        //     title: 'Edit Transaction Failed',
+        //     icon:'error'
+        //   })
+        //   console.log(error);
+        // }
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',

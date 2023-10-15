@@ -48,4 +48,8 @@ export class BudgetService {
     return this.http.get<number[]>(`${this.budgetUrl}/total/${year}`);
   }
 
+  public downloadExcel(year: string){
+    window.location.href = `${this.budgetUrl}/export-to-excel/${year}`;
+  }
+
 }

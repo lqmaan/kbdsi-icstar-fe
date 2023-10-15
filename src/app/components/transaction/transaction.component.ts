@@ -106,15 +106,13 @@ export class TransactionComponent implements OnInit {
               'success'
             ) 
           }
-        }
-        )
-       
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
+        }, error => {
+          Swal.fire({
+            title: 'Edit Transaction Failed',
+            icon:'error'
+          })
+          console.log(error);
+        })
       }
     })
   }

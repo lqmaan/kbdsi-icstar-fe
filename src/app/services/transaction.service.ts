@@ -89,4 +89,8 @@ export class TransactionService {
     return this.http.get<number[]>(`${this.transactionsUrl}/total/year/${year}`);
   }
 
+  public downloadExcel(){
+    window.location.href = `${this.transactionsUrl}/export-to-excel`;
+  }
+
 }
