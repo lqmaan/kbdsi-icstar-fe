@@ -1,27 +1,31 @@
 <main>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
         <h2 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">Create New Transaction</h2>
-        <label class="text-gray-700 font-semibold">Created</label>
+        <!-- <label class="text-gray-700 font-semibold">Created</label> -->
         <div class="">
-                <label class="block flex-1">
+                <!-- <label class="block flex-1">
                     <input type="date" class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4 form-input mt-1 block " required>
-                </label>
+                </label> -->
         <!-- </div>
         <label class="text-gray-700 font-semibold">Name</label>
         <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4" type="name" required/>
         <div class="text-base"> -->
-            <label class="text-gray-700 font-semibold"> Category</label>
+            
         <div class="">
+            <label class="text-gray-700 font-semibold"> Category</label>
             <!-- <div class="mt-6 flex"> -->
                 <label class="block w-full">
-                    <select class="py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4 form-select mt-1 block w-full">
-                        <option disabled selected value class="text-gray-500">-- Choose Category --</option>
-                        <option>Category1</option>
-                        <option>Category2</option>
-                        <option>Category3</option>
-                        <option>Category4</option>
-                        <option>Category5</option>
+                    <select
+                    placeholder="Choose Category"
+                    formControlName="category"
+                    [required]="true"
+                    class="py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4 form-select mt-1 block w-full">
+                        <option disabled selected value="Others" class="text-gray-500">--Choose Category--</option>>
+                        <option 
+                        *ngFor="let item of category"
+                        [ngValue]="item.categoryName"
+                        >{{item.categoryName}}</option>                 
                     </select>
                 </label>
             <!-- </div> -->
@@ -31,18 +35,19 @@
             
             <!-- <legend>Choose your delivery preference</legend> -->
             <div class=" -left-0">
-                <input type="radio" id="type_1" value="income" name="type">
+                <input type="radio" id="type_1" value="income" name="type" formControlName="type"
+                (change)="onItemChange($event)">
                 <label for="type_1"> Income</label>
             </div>
             <div class="absolute  top-0  right-[270px]">
-                <input type="radio" id="type_2" value="expence" name="type">
-                <label for="type_2"> Expence</label>
+                <input type="radio" id="type_2" value="outcome" name="type" (change)="onItemChange($event)">
+                <label for="type_2"> Outcome</label>
             </div>
         </div>
         <label class="text-gray-700 mt-5 font-semibold">Amount</label>
-        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none  mb-4" type="amount" placeholder="Rp." required/>
+        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none  mb-4" type="number" placeholder="Rp." required formControlName="amount" />
         <label class="text-gray-700 font-semibold">Description</label>
-        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4" type="description" required/>
+        <input class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4" type="description" required formControlName="description" />
         </div>
         
         <div class="flex justify-end mt-8">

@@ -1,42 +1,29 @@
 <main>
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onEdit()">
     <h1 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">
       Update Account
     </h1>
 
     <label>Username</label>
-    <input
-      class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4"
-      type="email"
-      required
-    />
+    <input  type="email" required
+      formControlName="email" [(ngModel)]="preemail" />
     <label>Name</label>
-    <input
-      class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4"
-      type="name"
-      required
-    />
+    <input type="text" required formControlName="name" [(ngModel)]="prename" />
     <label>Phone</label>
-    <input
-      class="w-full py-2 bg-gray-100 text-gray-600 px-1 outline-none mb-4"
-      type="phone"
-      required
-    />
-    <label>Password</label>
-    <input
-      min="2"
-      max="5"
-      class="in-range:border-green-500 w-full py-2 bg-gray-100 text-gray-600 px-1 mb-2"
-      type="password"
-      required
-    />
+    <input type="phone" required formControlName="phone" [(ngModel)]="prephone" />
+    <div class="relative">
+      <label>Password</label>
+      <input name="password" [type]="showPassword ? 'text': 'password'" required
+        formControlName="password" />
+      <div (click)="toggleShowPassword()" class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8">
+        <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
+      </div>
+
+    </div>
     <!-- <p class="text-gray-600 -mt-1 text-sm">Password must be at least 6 characters</p> -->
 
     <div class="flex justify-end mt-8">
-      <button
-        routerLink="/user"
-        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded"
-      >
+      <button type="submit" class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded">
         Save
       </button>
     </div>

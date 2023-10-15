@@ -1,10 +1,29 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
+import {NgIconsModule} from '@ng-icons/core';
+import { heroEyeSlash, heroEye } from '@ng-icons/heroicons/outline';
+
+
+//List Icon path (Hero Icon)
+//node_modules/@ng-icons/heroicons/outline/index.d.ts
+
+
+//Services
+import {LoginService} from './services/login.service';
+import {UserService} from './services/user.service';
+import {TransactionService} from './services/transaction.service';
+import {ReminderService} from './services/reminder.service';
+import {BudgetService} from './services/budget.service';
+import {CategoryService} from './services/category.service';
+
+//Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -23,6 +42,12 @@ import { EbudgetingCreateComponent } from './components/ebudgeting-create/ebudge
 import { TransactionUpdateComponent } from './components/transaction-update/transaction-update.component';
 import { ReminderUpdateComponent } from './components/reminder-update/reminder-update.component';
 import { ComponentsComponent } from './components/components.component';
+// import {HeroIcons} from'.icon/hero-icons.component';
+
+
+import { registerLocaleData } from '@angular/common';
+import localeId from '@angular/common/locales/id'; 
+registerLocaleData(localeId, 'id'); 
 
 
 @NgModule({
@@ -44,6 +69,8 @@ import { ComponentsComponent } from './components/components.component';
     TransactionUpdateComponent,
     ReminderUpdateComponent,
     ComponentsComponent,
+    
+    
 
 
 
@@ -53,12 +80,16 @@ import { ComponentsComponent } from './components/components.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     // MatButtonModule,
     MatFormFieldModule,
     MatDialogModule,
+    HttpClientModule,
+    NgIconsModule.withIcons({heroEye, heroEyeSlash}),
     SweetAlert2Module.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

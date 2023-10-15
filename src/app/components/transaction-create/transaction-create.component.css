@@ -5,3 +5,14 @@ main{
  form{
      @apply bg-white w-[500px] p-6 my-14 rounded shadow-md
  }
+
+ input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

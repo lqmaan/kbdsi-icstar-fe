@@ -8,6 +8,8 @@
         placeholder="Search for name..."
         type="text"
         name="search"
+        [ngModel]="pageUser.name"
+        (ngModelChange)="handleSearch($event)"
       />
     </div>
 
@@ -31,6 +33,7 @@
     </div>
     <div class="absolute top-0 right-20">
       <button
+        (click)="downloadExcel()"
         class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded"
       >
         Print
@@ -52,20 +55,20 @@
       </thead>
 
       <tbody class="divide-y divide-gray-100">
-        <tr class="bg-white">
-          <td>ckctm12@gmail.com</td>
-          <td>Robert Fox</td>
-          <td>082112404351</td>
-          <td>Manager</td>
+        <tr [ngClass]=" i%2 == 0 ? 'bg-white' : 'bg-gray-50'" *ngFor="let user of users, let i = index">
+          <td>{{user.email}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.roles}}</td>
           <td>
             <button
-              routerLink="/user-update"
+              (click)="gotoEditUser(user)"
               class="bg-blue-500 hover:bg-blue-600"
             >
               Edit
             </button>
             <button
-              (click)="confirmBox()"
+              (click)="confirmBox(user)"
               class="bg-rose-500 hover:bg-rose-600"
             >
               Del
@@ -73,89 +76,7 @@
           </td>
         </tr>
 
-        <tr class="bg-gray-50">
-          <td>manhhachkt08@gmail.com</td>
-          <td>Jacob Jones</td>
-          <td>082104958246</td>
-          <td>Employee</td>
-          <td>
-            <button
-              routerLink="/user-update"
-              class="bg-blue-500 hover:bg-blue-60"
-            >
-              Edit
-            </button>
-            <button
-              (click)="confirmBox()"
-              class="bg-rose-500 hover:bg-rose-600"
-            >
-              Del
-            </button>
-          </td>
-        </tr>
-
-        <tr class="bg-white">
-          <td>thuhang.nute@gmail.com</td>
-          <td>Jane Cooper</td>
-          <td>082194585124</td>
-          <td>Employee</td>
-          <td>
-            <button
-              routerLink="/user-update"
-              class="bg-blue-500 hover:bg-blue-600"
-            >
-              Edit
-            </button>
-            <button
-              (click)="confirmBox()"
-              class="bg-rose-500 hover:bg-rose-600"
-            >
-              Del
-            </button>
-          </td>
-        </tr>
-
-        <tr class="bg-gray-50">
-          <td class="p-3 text-sm text-gray-700">tienlapspktnd@gmail.com</td>
-          <td>Wade Warren</td>
-          <td>082178439087</td>
-          <td>Manager</td>
-          <td>
-            <button
-              routerLink="/user-update"
-              class="bg-blue-500 hover:bg-blue-600"
-            >
-              Edit
-            </button>
-            <button
-              (click)="confirmBox()"
-              class="bg-rose-500 hover:bg-rose-600"
-            >
-              Del
-            </button>
-          </td>
-        </tr>
-
-        <tr class="bg-white">
-          <td>binhan628@gmail.com</td>
-          <td>Guy Hawkins</td>
-          <td>082139485313</td>
-          <td>Employee</td>
-          <td>
-            <button
-              routerLink="/user-update"
-              class="bg-blue-500 hover:bg-blue-600"
-            >
-              Edit
-            </button>
-            <button
-              (click)="confirmBox()"
-              class="bg-rose-500 hover:bg-rose-600"
-            >
-              Del
-            </button>
-          </td>
-        </tr>
+     
       </tbody>
     </table>
   </div>
@@ -166,7 +87,7 @@
       <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
         <li>
           <a
-            href="#"
+          (click)="previousPage()"
             class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span class="sr-only">Previous</span>
@@ -190,29 +111,15 @@
         <li>
           <a
             href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >1</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
             aria-current="page"
             class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-            >2</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >3</a
+            >{{pageUser.pageNum + 1}}</a
           >
         </li>
 
         <li>
           <a
-            href="#"
+            (click)="nextPage()"
             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span class="sr-only">Next</span>

@@ -4,94 +4,82 @@
   <!-- Cards -->
   <section class="grid grid-cols-6 gap-3 h-3/4">
     <!-- column 1 -->
-    <div
-      class="col-span-2 bg-white rounded-md shadow-lg flex-auto p-4 relative"
-    >
+    <div class="col-span-2 bg-white rounded-md shadow-lg flex-auto p-4 relative">
       <!-- content -->
       <div class="flex flex-wrap">
         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
           <h5 class="text-blueGray-400 uppercase font-bold text-base">
             Total Balance
           </h5>
-          <span class="font-bold text-xl">350,897</span>
+          <span class="font-bold text-xl">{{totalYear[0] - totalYear[1] | currency:"IDR":"symbol"}} </span>
           <!-- in line -->
           <div class="w-full h-0.5 bg-gray-300 drop-shadow-md my-5"></div>
-          <span class="text-xl">Total Profit (Year)</span><br />
-          <span class="text-xl">Total Outcome (Year)</span>
+          <span class="text-xl">Total Profit {{totalYear[0] | currency:"IDR":"symbol"}} ({{currDate.getFullYear()}})</span><br />
+          <span class="text-xl">Total Outcome {{totalYear[1] | currency:"IDR":"symbol"}}  ({{currDate.getFullYear()}})</span>
         </div>
         <div class="relative w-auto pl-4 flex-initial">
           <div
-            class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-orange-500"
-          >
+            class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-orange-500">
             <i class="far fa-chart-bar"></i>
           </div>
         </div>
       </div>
       <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-        <span class="text-emerald-500 mr-2"
-          ><i class="fas fa-arrow-up"></i> 3.48%</span
-        ><span class="whitespace-nowrap">This year</span>
+        <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span
+          class="whitespace-nowrap">This year</span> -->
       </p>
     </div>
 
     <!-- column 2 -->
 
     <div class="col-span-2">
-      <div
-        class="mb-4 bg-white rounded-md shadow-lg h-[140px] flex-auto p-4 relative"
-      >
+      <div class="mb-4 bg-white rounded-md shadow-lg h-[140px] flex-auto p-4 relative">
         <!-- content -->
         <div class="flex flex-wrap">
-          <div
-            class="relative w-full h-full pr-4 max-w-full max-h-full flex-grow flex-1"
-          >
+          <div class="relative w-full h-full pr-4 max-w-full max-h-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-base">
               Total Income
             </h5>
-            <span class="font-bold text-xl">350,897</span>
+            <span class="font-bold text-xl">{{totalMonth[0] | currency:"IDR":"symbol"}} </span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-orange-500"
-            >
+              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-orange-500">
               <i class="far fa-chart-bar"></i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <span class="text-emerald-500 mr-2"
-            ><i class="fas fa-arrow-up"></i> 3.48%</span
-          ><span class="whitespace-nowrap">This month</span>
+          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span> -->
+          <span
+            class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
         </p>
       </div>
 
-      <div
-        class="bg-white mb-0 rounded-md shadow-lg h-[140px] max-h-fit flex-auto p-4 relative"
-      >
+      <div class="bg-white mb-0 rounded-md shadow-lg h-[140px] max-h-fit flex-auto p-4 relative">
         <!-- content -->
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-base">
               Total Outcome
             </h5>
-            <span class="font-bold text-xl">350,897</span>
+            <span class="font-bold text-xl">{{totalMonth[1] | currency:"IDR":"symbol"}} </span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-orange-500"
-            >
+              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-orange-500">
               <i class="far fa-chart-bar"></i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <span class="text-emerald-500 mr-2"
-            ><i class="fas fa-arrow-up"></i> 3.48%</span
-          ><span class="whitespace-nowrap">This month</span>
+          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span> -->
+          <span
+            class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
         </p>
       </div>
     </div>
-
+    <!-- {{date}} -->
     <!-- column 3 -->
     <!-- <div class="col-span-2"> -->
     <div class="col-span-1 gap-3">
@@ -102,20 +90,18 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Income
             </h5>
-            <span class="font-bold text-xl">350,897</span>
+            <span class="font-bold text-xl">{{income[0].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-green-500"
-            >
+              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-green-500">
               <i class="far fa-chart-bar"></i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <span class="text-emerald-500 mr-2"
-            ><i class="fas fa-arrow-up"></i> 3.48%</span
-          ><span class="whitespace-nowrap">This month</span>
+          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span -->
+            <!-- class="whitespace-nowrap">This month</span> -->
         </p>
       </div>
       <!-- content 3_2-->
@@ -125,20 +111,18 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Lowest Income
             </h5>
-            <span class="font-bold text-xl">350,897</span>
+            <span class="font-bold text-xl">{{income[1].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-red-500"
-            >
+              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-red-500">
               <i class="far fa-chart-bar"></i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <span class="text-emerald-500 mr-2"
-            ><i class="fas fa-arrow-up"></i> 3.48%</span
-          ><span class="whitespace-nowrap">This month</span>
+          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span
+            class="whitespace-nowrap">This month</span> -->
         </p>
       </div>
     </div>
@@ -151,20 +135,18 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Outcome
             </h5>
-            <span class="font-bold text-xl">350,897</span>
+            <span class="font-bold text-xl">{{outcome[0].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-green-500"
-            >
+              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-green-500">
               <i class="far fa-chart-bar"></i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <span class="text-emerald-500 mr-2"
-            ><i class="fas fa-arrow-up"></i> 3.48%</span
-          ><span class="whitespace-nowrap">This month</span>
+          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span
+            class="whitespace-nowrap">This month</span> -->
         </p>
       </div>
       <!-- content 3_4-->
@@ -174,20 +156,18 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Lowest Outcome
             </h5>
-            <span class="font-bold text-xl">350,897</span>
+            <span class="font-bold text-xl">{{outcome[1].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-red-500"
-            >
+              class="text-white p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full bg-red-500">
               <i class="far fa-chart-bar"></i>
             </div>
           </div>
           <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-            <span class="text-emerald-500 mr-2">
-              <i class="fas fa-arrow-up"></i> 3.48%</span
-            >
-            <span class="whitespace-nowrap">This month</span>
+            <!-- <span class="text-emerald-500 mr-2">
+              <i class="fas fa-arrow-up"></i> 3.48%</span>
+            <span class="whitespace-nowrap">This month</span> -->
           </p>
         </div>
       </div>
@@ -199,144 +179,96 @@
   <h4 class="text-2xl font-semibold mt-32">Recent Transactions</h4>
   <div class="max-w-full my-2 flex relative gap-3">
     <div class="-left-0">
-      <button
-        id="dropdownRadioBgHoverButton"
-        data-dropdown-toggle="dropdownRadioBgHover"
-        class="bg-slate-800 hover:bg-blue-700 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm font-bold py-2.5 px-4 mx-2 rounded-md text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        <svg
-          class="w-4 h-4 mr-2.5 text-white-800 dark:text-white"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
+      <button id="dropdownRadioBgHoverButton" data-dropdown-toggle="dropdownRadioBgHover"
+        class="bg-slate-800 hover:bg-blue-700 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm font-bold py-2.5 px-4 mx-2 rounded-md text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg class="w-4 h-4 mr-2.5 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor" viewBox="0 0 20 20">
           <path d="M5 20h10a1 1 0 0 0 1-1v-5H4v5a1 1 0 0 0 1 1Z" />
           <path
-            d="M18 7H2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-1-2V2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3h14Z"
-          /></svg
-        >Print
+            d="M18 7H2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-1-2V2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3h14Z" />
+        </svg>Print
       </button>
       <!-- Dropdown menu -->
-      <div
-        id="dropdownRadioBgHover"
-        class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-      >
-        <ul
-          class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownRadioBgHoverButton"
-        >
+      <div id="dropdownRadioBgHover"
+        class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+        <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
           <li>
-            <div
-              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-            >
-              <input
-                id="default-radio-4"
-                type="radio"
-                value=""
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-4"
-                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-                >All Date</label
-              >
+            <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input id="default-radio-4" type="radio" value="" name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="default-radio-4"
+                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">All Date</label>
             </div>
           </li>
           <li>
-            <div
-              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-            >
-              <input
-                checked
-                id="default-radio-5"
-                type="radio"
-                value=""
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-5"
-                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-                >2023</label
-              >
+            <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input checked id="default-radio-5" type="radio" value="" name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="default-radio-5"
+                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">2023</label>
             </div>
           </li>
           <li>
-            <div
-              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-            >
-              <input
-                id="default-radio-6"
-                type="radio"
-                value=""
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-6"
-                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-                >2024</label
-              >
+            <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input id="default-radio-6" type="radio" value="" name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="default-radio-6"
+                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">2024</label>
             </div>
           </li>
         </ul>
         <button
-          class="flex items-center p-3 text-sm w-full font-medium text-blue-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-300 hover:bg-gray-100 dark:bg-gray-100 dark:hover:bg-gray-600 dark:text-blue-500 hover:underline"
-        >
-          <svg
-            class="w-4 h-4 mr-2.5 text-white-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
+          (click)="downloadExcel()"
+          class="flex items-center p-3 text-sm w-full font-medium text-blue-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-300 hover:bg-gray-100 dark:bg-gray-100 dark:hover:bg-gray-600 dark:text-blue-500 hover:underline">
+          <svg class="w-4 h-4 mr-2.5 text-white-800 dark:text-white" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M5 20h10a1 1 0 0 0 1-1v-5H4v5a1 1 0 0 0 1 1Z" />
             <path
-              d="M18 7H2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-1-2V2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3h14Z"
-            />
+              d="M18 7H2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-1-2V2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3h14Z" />
           </svg>
           Print to Excel
         </button>
       </div>
     </div>
-    <div class="absolute top-0 right-28 mx-[300px]">
+    <div class="absolute top-0 right-29 mx-[300px]">
       <label class="">
         <a class="font-semibold">From: </a>
-        <input
-          type="date"
-          class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input"
-        />
+        <input type="date"
+        [ngModel]="fromDate"
+        (ngModelChange)="changeFrom($event)"
+          max=`${maxDate}`
+          class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>
     </div>
-    <div class="absolute top-0 right-20 mx-[150px]">
+    <div class="absolute top-0 right-28 mx-[150px]">
       <label class="">
         <a class="font-semibold">To: </a>
-        <input
-          type="date"
-          class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input"
-        />
+        <input  type="date"
+        min=`${minDate}`
+        [ngModel]="toDate"
+        (ngModelChange)="changeTo($event)"
+          class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>
     </div>
     <div class="absolute top-0 right-20 mx-4">
       <label class="">
-        <select
-          class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select"
-        >
-          <option disabled selected value>Category</option>
-          <option>Category1</option>
-          <option>Category2</option>
-          <option>Category3</option>
-          <option>Category5</option>
+        <select 
+        [(ngModel)]="pageBookkeeping.category"
+        (ngModelChange)="changeCategory($event)"
+        class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
+          <option
+          *ngFor="let item of category"
+          [value]="item.categoryName"
+          [attr.selected]="pageBookkeeping.category == item.categoryName? true : null">{{item.categoryName}}</option>
         </select>
       </label>
     </div>
     <div class="absolute top-0 right-0">
       <label class="">
-        <select
-          class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select"
-        >
+        <select 
+        [(ngModel)]="pageBookkeeping.year"
+        (ngModelChange)="changeYear($event)"
+        class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
           <option disabled selected value>Year</option>
           <option>2023</option>
           <option>2024</option>
@@ -354,60 +286,87 @@
           <th>Created</th>
           <th>Category</th>
           <th>Type</th>
-          <th>Amound</th>
+          <th>Amount</th>
           <th class="w-16">Description</th>
         </tr>
       </thead>
 
       <tbody class="divide-y divide-gray-100">
-        <tr class="bg-white">
-          <td>09/04/12</td>
-          <td>Category1</td>
+        <tr *ngFor="let transaction of transactions, let i = index"
+        [ngClass]=" i%2 == 0 ? 'bg-white' : 'bg-gray-50'">
+          <td>{{transaction.createdAt | date: 'dd/MM/yyyy HH:mm '}}</td>
+          <td>{{transaction.category}}</td>
           <td>
-            <span class="text-green-800 bg-green-200">Income</span>
+            <span [ngClass]="transaction.type == 'income' ? 'text-green-800 bg-green-200': 'text-red-800 bg-red-200'">
+              {{transaction.type}}</span>
           </td>
-          <td>12.000.000</td>
-          <td>Advertising and Sponsorship</td>
-        </tr>
-
-        <tr class="bg-gray-50">
-          <td>10/28/12</td>
-          <td>Category2</td>
-          <td>
-            <span class="text-red-800 bg-red-200">Expence</span>
-          </td>
-          <td>4.000.000</td>
-          <td>Financial Costs</td>
-        </tr>
-        <tr class="bg-white">
-          <td>01/15/12</td>
-          <td>Category1</td>
-          <td>
-            <span class="text-green-800 bg-green-200">Income</span>
-          </td>
-          <td>7.000.000</td>
-          <td>Product or Service Sales</td>
-        </tr>
-        <tr class="bg-gray-50">
-          <td>05/19/12</td>
-          <td>Category3</td>
-          <td>
-            <span class="text-green-800 bg-green-200">Income</span>
-          </td>
-          <td>9.000.000</td>
-          <td>Licenses and Royalties</td>
-        </tr>
-        <tr class="bg-white">
-          <td>09/04/12</td>
-          <td>Category4</td>
-          <td>
-            <span class="text-red-800 bg-red-200">Expence</span>
-          </td>
-          <td>8.000.000</td>
-          <td>Research and Development Costs</td>
+          <td>{{transaction.amount | currency : "IDR": "symbol"}}</td>
+          <td>{{transaction.description}}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <!-- </body> -->
-</body>
+  
+   <!-- Pages number -->
+  <!-- <div>
+    <nav aria-label="Page navigation example" class="">
+      <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
+        <li>
+          <a
+          (click)="previousPage()"
+            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span class="sr-only">Previous</span>
+            <svg
+              class="w-2.5 h-2.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 1 1 5l4 4"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            aria-current="page"
+            class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+            >{{pageUser.pageNum + 1}}</a
+          >
+        </li>
+
+        <li>
+          <a
+            (click)="nextPage()"
+            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span class="sr-only">Next</span>
+            <svg
+              class="w-2.5 h-2.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+ </body>

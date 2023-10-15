@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { MatDialog } from '@angular/material/dialog';
 import { UserCreateComponent } from '../user-create/user-create.component';
-declare var Flowbite: any; 
+
 // import Flowbite from 'flowbite';
 import { Router } from '@angular/router';
+import {UserService} from '../../services/user.service';
+import {PageUser} from '../../models/page-user';
+import {User} from '../../models/user';
+import {Delete} from '../../models/delete';
 // import { UserCreateComponent } from './components/user-create/user-create.component';
 
 
@@ -13,8 +17,58 @@ import { Router } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
-  confirmBox(){
+export class UserComponent implements OnInit {
+  users: User[] = [];
+  pageUser : PageUser;
+  delete: Delete;
+  name: string;
+
+  constructor(private _dialog: MatDialog, private userService: UserService, public router: Router) {
+    this.pageUser = new PageUser();
+    this.delete = new Delete();
+  }
+
+  ngOnInit(){
+    this.pageUser.name = "";
+    this.pageUser.pageNum = 0;
+    this.pageUser.pageSize = 5;
+    this.userService.findAll(this.pageUser).subscribe(data => {
+      this.users = data.content;
+    })
+  }
+
+  nextPage(){
+    this.pageUser.pageNum += 1;
+    this.userService.findAll(this.pageUser).subscribe(data => {
+      this.users = data.content;
+  })
+}
+
+  previousPage(){
+    if(this.pageUser.pageNum != 0){
+          this.pageUser.pageNum -= 1
+          this.userService.findAll(this.pageUser).subscribe(data => {
+            this.users = data.content;}
+          )
+      }
+    else{
+      this.pageUser.pageNum = 0;
+    }
+  }
+
+  handleSearch(input: string): void{
+    this.pageUser.name = input;
+    this.userService.findAll(this.pageUser).subscribe(data => {
+      console.log(data)
+      this.users = data.content;
+    })
+  }
+
+  gotoEditUser(user: User){
+    this.router.navigateByUrl('/user-update', {state: user});
+  }
+
+  confirmBox(user: User){
     Swal.fire({
       title: 'Are you sure want to remove?',
       text: 'You will not be able to recover this file!',
@@ -24,11 +78,20 @@ export class UserComponent {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Deleted!',
-          'Your imaginary file has been deleted.',
-          'success'
-        )
+        this.delete.id = user.userId;
+        this.delete.updatedBy = localStorage.getItem("email") || "null";
+        this.userService.deleteUser(this.delete).subscribe(result => {
+          this.userService.findAll(this.pageUser).subscribe(data => {
+            this.users = data.content;
+          })
+          if(result == "User has been deleted"){
+            Swal.fire(
+              'Deleted!',
+              'User has been deleted.',
+              'success'
+            ) 
+          }
+        })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
@@ -53,10 +116,18 @@ export class UserComponent {
 //   });
 //   }
 
-constructor(private _dialog: MatDialog) {}
+
 
   openNewPage() {
     this._dialog.open(UserCreateComponent); // Ganti dengan rute tujuan yang sesuai
     // Flowbite.closePopup(); // Tutup pop-up setelah mengarahkan pengguna
   }
+
+  downloadExcel(){
+    window.location.href='https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/users/export-to-excel';
+  }
 }
+
+export const APP_URLS = {
+  'excel': 'https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/users/export-to-excel',
+};
