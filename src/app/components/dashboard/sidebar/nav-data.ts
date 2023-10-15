@@ -10,7 +10,7 @@ export const navbarData = [
     label: 'Bookkeeping'
   },
   {
-    routeLink: 'ebudgetting',
+    routeLink: 'ebudgeting',
     icon: 'heroChartBar',
     label: 'E-Budgetting'
   },

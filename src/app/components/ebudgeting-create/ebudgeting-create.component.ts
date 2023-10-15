@@ -73,6 +73,6 @@ onItemChange(data: any){
   }
 
   gotoBudgetList(){
-    this.router.navigate(['/ebudgetting']);
+    this.router.navigate(['/ebudgeting']);
   }
 }
