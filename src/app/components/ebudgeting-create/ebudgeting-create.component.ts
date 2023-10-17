@@ -20,6 +20,8 @@ export class EbudgetingCreateComponent implements OnInit {
   budget: Budget;
   category: Category[] = [];
   transaction: Transaction;
+  years: string[] = ['2023', '2024'];
+
 
   constructor(private route: ActivatedRoute,
     private router: Router, private transactionService: TransactionService, private budgetService: BudgetService, private categoryService: CategoryService){

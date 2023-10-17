@@ -11,12 +11,18 @@
           <h5 class="text-blueGray-400 uppercase font-bold lg:text-lg xl:text-xl">
             Total Balance
           </h5>
-          <span class="font-semibold lg:text-md xl:text-lg">{{totalYear[0] - totalYear[1] | currency:"IDR":"symbol"}} </span>
+          <span 
+          *ngIf="totalYear && totalYear.length > 0"
+          class="font-semibold lg:text-md xl:text-lg">{{totalYear[0] - totalYear[1] | currency:"IDR":"symbol"}} </span>
           <!-- in line -->
           <div class="w-full h-0.5 bg-gray-300 drop-shadow-md my-5"></div>
-          <span class="lg:text-md xl:text-lg">Total Profit {{totalYear[0] | currency:"IDR":"symbol"}}
+          <span 
+          *ngIf="totalYear && totalYear.length > 0"
+          class="lg:text-md xl:text-lg">Total Profit {{totalYear[0] | currency:"IDR":"symbol"}}
             ({{currDate.getFullYear()}})</span><br />
-          <span class="lg:text-md xl:text-lg">Total Outcome {{totalYear[1] | currency:"IDR":"symbol"}}
+          <span 
+          *ngIf="totalYear && totalYear.length > 0"
+          class="lg:text-md xl:text-lg">Total Outcome {{totalYear[1] | currency:"IDR":"symbol"}}
             ({{currDate.getFullYear()}})</span>
         </div>
         <div class="relative w-auto pl-4 flex-initial">
@@ -90,7 +96,9 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Income
             </h5>
-            <span class="font-semibold text-sm">{{income[0].amount | currency:"IDR":"symbol"}}</span>
+            <span 
+            *ngIf="income && income.length > 0"
+            class="font-semibold text-sm">{{income[0].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -111,7 +119,9 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Lowest Income
             </h5>
-            <span class="font-bold text-xl">{{income[1].amount | currency:"IDR":"symbol"}}</span>
+            <span 
+            *ngIf="income && income.length > 0"
+            class="font-bold text-xl">{{income[1].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -135,7 +145,9 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Outcome
             </h5>
-            <span class="font-bold text-xl">{{outcome[0].amount | currency:"IDR":"symbol"}}</span>
+            <span 
+            *ngIf="outcome && outcome.length > 0"
+            class="font-bold text-xl">{{outcome[0].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -156,7 +168,9 @@
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Lowest Outcome
             </h5>
-            <span class="font-bold text-xl">{{outcome[1].amount | currency:"IDR":"symbol"}}</span>
+            <span 
+            *ngIf="outcome && outcome.length > 0"
+            class="font-bold text-xl">{{outcome[1].amount | currency:"IDR":"symbol"}}</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -192,17 +206,17 @@
       <div id="dropdownRadioBgHover"
         class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
         <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
-          <li>
+          <!-- <li>
             <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-              <input id="default-radio-4" type="radio" value="" name="default-radio"
+              <input id="default-radio-4" type="radio" value="" name="default-radio" [(ngModel)]="chosenYear"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
               <label for="default-radio-4"
                 class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">All Date</label>
             </div>
-          </li>
+          </li> -->
           <li>
             <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-              <input checked id="default-radio-5" type="radio" value="" name="default-radio"
+              <input checked id="default-radio-5" type="radio" value="2023" name="default-radio" [(ngModel)]="chosenYear"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
               <label for="default-radio-5"
                 class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">2023</label>
@@ -210,7 +224,7 @@
           </li>
           <li>
             <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-              <input id="default-radio-6" type="radio" value="" name="default-radio"
+              <input id="default-radio-6" type="radio" value="2024" name="default-radio" [(ngModel)]="chosenYear"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
               <label for="default-radio-6"
                 class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">2024</label>

@@ -100,13 +100,6 @@ export class UserComponent implements OnInit {
             console.log(error);
           })
       }
-      //  else if (result.dismiss === Swal.DismissReason.cancel) {
-      //   Swal.fire(
-      //     'Cancelled',
-      //     'Your imaginary file is safe :)',
-      //     'error'
-      //   )
-      // }
     })
   }
 // openPopup(): void {

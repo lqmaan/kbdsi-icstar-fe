@@ -6,11 +6,8 @@ import { DatePipe } from '@angular/common';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';  
-import {Transaction} from '../../models/transaction';
-import {Category} from '../../models/category';
 import {Reminder} from '../../models/reminder';
 import {User} from '../../models/user';
-import {TransactionService} from '../../services/transaction.service';
 import {ReminderService} from '../../services/reminder.service';
 import {UserService} from '../../services/user.service';
 
@@ -23,8 +20,6 @@ import {UserService} from '../../services/user.service';
 })
 export class ReminderCreateComponent {
   reminder: Reminder;
-  category: Category[] = [];
-  transaction: Transaction;
   users: User[] = [];
   pipe = new DatePipe("id-ID");
 

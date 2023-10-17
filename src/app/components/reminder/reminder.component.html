@@ -19,7 +19,9 @@
       </button>
     </div>
     <div class="absolute top-0 right-20 px-8">
-      <button class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded">
+      <button 
+      (click)="downloadExcel()"
+      class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded">
         Print
       </button>
     </div>
@@ -91,7 +93,7 @@
                   <td>{{reminder.description}}</td>
                   <td>{{reminder.scheduleDate | date: 'dd/MM/yyyy HH:mm'}}</td>
                   <td>{{reminder.paymentDate | date: 'dd/MM/yyyy HH:mm'}}</td>
-                  <td>{{reminder.amount}}</td>
+                  <td>{{reminder.amount | currency:"IDR":"symbol"}}</td>
                   <td>{{reminder.email}}</td>
                   <td>
                     <span [ngClass]="reminder.status == 'ongoing' ? 'text-yellow-800 bg-yellow-200' : 'text-green-800 bg-green-200'"> {{reminder.status == 'ongoing'? 'On Going': 'Done' }}</span>
@@ -99,13 +101,13 @@
                   <td class="font-bold">{{reminder.repeated ? 'YES' : 'NO'}}</td>
                   <td>
                     <button
-                      routerLink="/reminder-update"
+                    (click)="gotoEditReminder(reminder)"
                       class="bg-blue-500 hover:bg-blue-600"
                     >
                       Edit
                     </button>
                     <button
-                      (click)="confirmBox()"
+                      (click)="confirmBox(reminder)"
                       class="bg-rose-500 hover:bg-rose-600"
                     >
                       Del
@@ -136,25 +138,25 @@
               </thead>
 
               <tbody class="divide-y divide-gray-100">
-                <tr class="bg-white">
-                  <td>Administrative Costs</td>
-                  <td>09/04/23</td>
-                  <td>09/17/23</td>
-                  <td>23.000.000</td>
-                  <td>ddddddd@gmail.com</td>
+                <tr [ngClass]="i%2 == 0 ? 'bg-white' : 'bg-gray-50'" *ngFor="let reminder of reminders, let i = index">
+                  <td>{{reminder.description}}</td>
+                  <td>{{reminder.scheduleDate | date: 'dd/MM/yyyy HH:mm'}}</td>
+                  <td>{{reminder.paymentDate | date: 'dd/MM/yyyy HH:mm'}}</td>
+                  <td>{{reminder.amount | currency:"IDR":"symbol"}}</td>
+                  <td>{{reminder.email}}</td>
                   <td>
-                    <span class="text-green-800 bg-green-200"> Done </span>
+                    <span [ngClass]="reminder.status == 'ongoing' ? 'text-yellow-800 bg-yellow-200' : 'text-green-800 bg-green-200'"> {{reminder.status == 'ongoing'? 'On Going': 'Done' }}</span>
                   </td>
-                  <td class="font-bold">YES</td>
+                  <td class="font-bold">{{reminder.repeated ? 'YES' : 'NO'}}</td>
                   <td>
                     <button
-                      routerLink="/reminder-update"
+                    (click)="gotoEditReminder(reminder)"
                       class="bg-blue-500 hover:bg-blue-600"
                     >
                       Edit
                     </button>
                     <button
-                      (click)="confirmBox()"
+                      (click)="confirmBox(reminder)"
                       class="bg-rose-500 hover:bg-rose-600"
                     >
                       Del
@@ -162,62 +164,11 @@
                   </td>
                 </tr>
 
-                <tr class="bg-gray-50">
-                  <td>Employee Salaries</td>
-                  <td>10/28/23</td>
-                  <td>03/29/24</td>
-                  <td>220.200.000</td>
-                  <td>eeeeee@gmail.com</td>
-                  <td>
-                    <span class="text-green-800 bg-green-200">Done</span>
-                  </td>
-                  <td class="font-bold">YES</td>
-                  <td>
-                    <button
-                      routerLink="/reminder-update"
-                      class="bg-blue-500 hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      (click)="confirmBox()"
-                      class="bg-rose-500 hover:bg-rose-600"
-                    >
-                      Del
-                    </button>
-                  </td>
-                </tr>
-
-                <tr class="bg-white">
-                  <td>Employee Salaries</td>
-                  <td>10/28/23</td>
-                  <td>12/28/23</td>
-                  <td>560.200.000</td>
-                  <td>fffffff08@gmail.com</td>
-                  <td>
-                    <span class="text-green-800 bg-green-200">Done</span>
-                  </td>
-                  <td class="font-bold">YES</td>
-                  <td>
-                    <button
-                      routerLink="/reminder-update"
-                      class="bg-blue-500 hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      (click)="confirmBox()"
-                      class="bg-rose-500 hover:bg-rose-600"
-                    >
-                      Del
-                    </button>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div [ngClass]="{ hidden: openTab !== 3, block: openTab === 3 }">
+        <!-- <div [ngClass]="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="overflow-auto rounded-lg shadow">
             <table class="w-full">
               <thead class="bg-gray-50 border-b-2 border-gray-200">
@@ -314,7 +265,7 @@
               </tbody>
             </table>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

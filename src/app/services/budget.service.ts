@@ -33,7 +33,7 @@ export class BudgetService {
   }
 
   public editBudget(budget: Budget):Observable<Budget>{
-    return this.http.put<Budget>(`${this.budgetUrl}/${budget.id}`, budget)
+    return this.http.put<Budget>(`${this.budgetUrl}/${budget.budgetId}`, budget)
   }
 
   public createBudget(budget: Budget):Observable<any>{
@@ -49,7 +49,7 @@ export class BudgetService {
   }
 
   public downloadExcel(year: string){
-    window.location.href = `${this.budgetUrl}/export-to-excel/${year}`;
+    window.location.href = `https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/budgeting/export-to-excel/${year}`;
   }
 
 }

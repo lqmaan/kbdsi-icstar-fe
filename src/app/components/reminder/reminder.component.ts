@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import {ReminderService} from '../../services/reminder.service';
 import {PageReminder} from '../../models/page-reminder';
 import {Reminder} from '../../models/reminder';
+import {Delete} from '../../models/delete';
 
 @Component({
   selector: 'app-reminder',
@@ -21,9 +22,11 @@ export class ReminderComponent implements OnInit {
   reminders: Reminder[] = [];
   pageReminder : PageReminder;
   description: string;
+  delete: Delete;
 
   constructor(private reminderService: ReminderService, public router: Router) {
     this.pageReminder = new PageReminder();
+    this.delete = new Delete();
   }
 
   ngOnInit(){
@@ -44,7 +47,7 @@ export class ReminderComponent implements OnInit {
     })
   }
 
-  confirmBox(){
+  confirmBox(reminder: Reminder){
     Swal.fire({
       title: 'Are you sure want to remove?',
       text: 'You will not be able to recover this file!',
@@ -54,22 +57,34 @@ export class ReminderComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
-        // Swal.fire({
-        //   title: 'Edit Transaction Success',
-        // }).then((result) => {
-        //     this.gotoTransactionList();
-        //   })
-        // }, error => {
-        //   Swal.fire({
-        //     title: 'Edit Transaction Failed',
-        //     icon:'error'
-        //   })
-        //   console.log(error);
-        // }
+        this.delete.id = reminder.reminderId;
+        this.delete.updatedBy = localStorage.getItem("email") || "null";
+        this.reminderService.deleteReminder(this.delete).subscribe(result => {
+          this.reminderService.findAll(this.pageReminder).subscribe(data => {
+            this.reminders = data.content;
+          })
+          if(result == "Reminder has been deleted"){
+            Swal.fire(
+              'Deleted!',
+              'Reminder has been deleted.',
+              'success'
+            ) 
+          }
+        }
+        , error => {
+            Swal.fire({
+              title: 'Delete Reminder Failed',
+              icon:'error'
+            })
+            console.log(error);
+          })
       } 
     })
   }
   
+  downloadExcel(){
+    this.reminderService.downloadExcel();
+  }
 
   gotoEditReminder(reminder: Reminder){
     this.router.navigateByUrl('/reminder-update', {state: reminder});

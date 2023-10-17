@@ -23,15 +23,24 @@ export class UserCreateComponent {
     }
 
   form: FormGroup = new FormGroup({  
-    email : new FormControl(''),  
-    name: new FormControl(''),
-    phone : new FormControl(''),
-    password : new FormControl(''),
-    repeatpassword: new FormControl('')
+    email : new FormControl('', [Validators.required, Validators.email]),  
+    name: new FormControl('', Validators.required),
+    phone : new FormControl('', Validators.required),
+    password : new FormControl('', Validators.required),
+    repeatpassword: new FormControl('', Validators.required)
 });  
 
 
   onSubmit(){
+//     const phoneControl = this.form.get('phone');
+// if (phoneControl) {
+//   phoneControl.setValidators(Validators.required);
+// }
+    // if (this.form.get('phone')) {
+    //   // Formulir valid, lakukan sesuatu
+    //    this.form.get('phone').setValidators(Validators.required);
+      
+    // }
     this.user.createdBy =  localStorage.getItem('email') || "null";
     this.user.name = this.form.controls['name'].value;
     this.user.email = this.form.controls['email'].value;

@@ -1,5 +1,5 @@
 export class Budget {
-    id: number;
+    budgetId: number;
     name: string;
     description: string;
     createdAt: string;

@@ -30,6 +30,7 @@ export class BookkeepingComponent implements OnInit {
   toDate: Date;
   minDate: string = "";
   maxDate: string = "";
+  chosenYear: string = "";
 
 
   constructor(private transactionService: TransactionService, private categoryService: CategoryService, public router: Router) {
@@ -153,8 +154,14 @@ export class BookkeepingComponent implements OnInit {
   }
 
 
+  // downloadExcel(){
+  //   window.location.href='https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/transactions/export-to-excel';
+  // }
+
   downloadExcel(){
-    window.location.href='https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/transactions/export-to-excel';
+    // console.log(this.chosenYear);
+    this.transactionService.downloadExcel();
   }
+
 
 }
