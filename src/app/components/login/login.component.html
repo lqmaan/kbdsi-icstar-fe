@@ -7,14 +7,21 @@
     <h2 class="flex items-center justify-center font-bold py-2 mb-8 text-3xl">
       LOGIN
     </h2>
-    <label class="text-gray-700 font-semibold">Email</label>
+    <div class="mb-6">
+     <label class="text-gray-700 font-semibold">Email</label>
     <input
-      class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-      placeholder="Enter email address" type="email" required formControlName="email" />
-    <div class="relative">
+    class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+      placeholder="Enter email address" type="email" required formControlName="email" /> 
+         <div class=" text-red-500 font-xs italic"
+                *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+                Email is required.
+            </div>
+    </div>
+    
+    <div class="relative mb-6">
        <label class="text-gray-700 font-semibold">Password</label>
         <input
-        class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         placeholder="Enter password" [(ngModel)]="password"
         name="password" 
         [type]="showPassword ? 'text': 'password'"
@@ -26,16 +33,21 @@
       >
           <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
         </div>
+        <div class="absolute text-red-500 font-xs italic"
+                *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+                Password is required.
+            </div>
       </div>
       
     <!-- <div class="mb-6">
       <input id="remember" class="mb-4 mr-1" type="checkbox" />
       <label class="text-gray-700 text-base" for="remember">Remember Me</label>
     </div> -->
-    <button type="submit" class="bg-slate-800 w-full text-gray-100 py-2 rounded hover:bg-blue-600 transition-colors">
+    <button [disabled]="!form.valid"
+       type="submit" class="mt-8 bg-slate-800 w-full text-gray-100 py-3 rounded-md shadow-md hover:bg-blue-600 transition-colors">
       LOGIN
     </button>
-    <p for="sign-up" class="text-gray-700 flex items-center justify-center my-1">
+    <p for="sign-up" class="text-gray-700 flex items-center justify-center my-1 ">
       Don’t have an account?
       <a routerLink="/sign-up" class="underline text-blue-700 pl-1"> Sign-up</a>
     </p>

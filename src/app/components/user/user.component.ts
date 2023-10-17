@@ -29,12 +29,18 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.pageUser.name = "";
     this.pageUser.pageNum = 0;
     this.pageUser.pageSize = 5;
     this.userService.paginationUser(this.pageUser).subscribe(data => {
       this.users = data.content;
     })
+  }
   }
 
   nextPage(){

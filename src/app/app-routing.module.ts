@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
+// import {AuthguardService} from './services/authguard.service';
+
 //Component
 import {LoginComponent} from './components/login/login.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
@@ -23,6 +25,7 @@ import { CategoryAddComponent } from './components/category-add/category-add.com
 
 const routes: Routes = [ 
   {path: '', redirectTo: 'login', pathMatch: 'full'},
+  // {path: '**', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'user', component: UserComponent},

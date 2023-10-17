@@ -1,5 +1,5 @@
 body{
-    @apply px-8 py-2 bg-white w-full rounded-lg
+    @apply px-8 py-2 bg-white w-full rounded-lg 
   }
 
 th, td{

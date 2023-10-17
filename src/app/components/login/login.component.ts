@@ -1,23 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';  
 import {Login} from '../../models/login';
 import {LoginService} from "../../services/login.service";
-
+import {NavbarService} from '../../services/navbar.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   // styleUrls: ['../../../dist/output.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy{
   private login: Login;
 
   constructor(private route: ActivatedRoute,
       private router: Router,
-      private loginService: LoginService
+      private loginService: LoginService,
+      private navbarService: NavbarService
     ){
       this.login = new Login();
+    }
+
+    ngOnInit() : void {
+      this.navbarService.hide();
+    }
+
+    ngOnDestroy() : void {
+      this.navbarService.display();
     }
 
 
@@ -34,18 +45,30 @@ export class LoginComponent {
       this.loginService.login(this.login)
         .subscribe((result) => 
         {
-          console.log(result)
         localStorage.setItem('id', result.id);
         localStorage.setItem('email', result.email);
         localStorage.setItem('name', result.name);
         localStorage.setItem('phone', result.phone);
         localStorage.setItem('roles', result.roles);
-        this.gotoUserList();
+        this.gotoBookkeeping();
+      }, (error) => {
+        if(error.status == 404){
+          Swal.fire({
+            title: "Email doesn't exist",
+            icon:'error'
+          })
+        }
+        else if(error.status == 400){
+          Swal.fire({
+            title: 'Wrong Password',
+            icon:'error'
+          })
+        }
       });
     }
 
-    gotoUserList(){
-      this.router.navigate(['/user']);
+    gotoBookkeeping(){
+      this.router.navigate(['/bookkeeping']);
     }
 
     //show-hide password

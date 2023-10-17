@@ -24,17 +24,23 @@ export class UserUpdateComponent implements OnInit {
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     console.log(history.state)
     this.preemail = history.state.email;
     this.prename =  history.state.name;
     this.prephone = history.state.phone;
+    }
   }
 
   form: FormGroup = new FormGroup({  
-    email : new FormControl(''),
-    name : new FormControl(''),  
-    phone: new FormControl(''),
-    password : new FormControl(''),
+    email : new FormControl('', [Validators.required, Validators.email]),
+    name : new FormControl('', Validators.required),  
+    phone: new FormControl('', Validators.required),
+    password : new FormControl('', Validators.required),
 });  
 
  onEdit(){

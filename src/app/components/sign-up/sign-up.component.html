@@ -9,14 +9,21 @@
       >
         Create a Your Account
       </h1>
-
-      <label class="text-gray-700 text-lg">Email</label>
+    <div class="mb-6">
+     <label class="text-gray-700 text-lg">Email</label>
       <input
         placeholder="Enter email address"
         type="email"
         [required]="true"
         formControlName="email"
       />
+      <span class="text-danger text-red-500 font-xs italic"
+      *ngIf="formControl['email'].hasError('required') && formControl['email'].touched">
+      Email is required
+      </span>
+    </div>
+      
+      <div class="mb-6">
       <label class="text-gray-700">Name</label>
       <input
         placeholder="Enter full name"
@@ -24,21 +31,27 @@
         [required]="true"
         formControlName="name"
       />
-      <span class="text-danger"
+      <span class="text-danger text-red-500 font-xs italic"
       *ngIf="formControl['name'].hasError('required') && formControl['name'].touched">
       Name is required
       </span>
-
-
-      <br/>
-      <label class="text-gray-700">Phone</label>
+      </div>
+     
+      <div class="mb-6">
+   <label class="text-gray-700">Phone</label>
       <input
         placeholder="Ex: 8xxxxxxx"
         type="phone"
         [required]="true"
         formControlName="phone"
       />
-       <div class="relative">
+      <span class="text-danger text-red-500 font-xs italic"
+      *ngIf="formControl['phone'].hasError('required') && formControl['phone'].touched">
+      Phone is required
+      </span>
+      </div>
+   
+    <div class="relative mb-6">
       <label class="text-gray-700">Password</label>
       <input
         placeholder="Password must be at least 6 characters"
@@ -54,17 +67,22 @@
       >
           <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
         </div>
+        <span class="text-danger absolute text-red-500 font-xs italic"
+      *ngIf="formControl['password'].hasError('required') && formControl['password'].touched">
+      Password is required
+      </span>
       </div>
-       </div>
-      <div class="flex justify-end mt-8">
+   </div>
+
+      <div class="flex justify-end mt-12">
         <button
           routerLink="/login"
-          class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2 px-4 my-4 mx-1 rounded-md"
+          class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2 px-4 my-4 mx-1 rounded-md shadow-md"
         >
           Cancel
         </button>
-        <button
-          class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 mx-1 rounded-md"
+        <button [disabled]="!form.valid" type="submit"
+          class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 mx-1 rounded-md shadow-md"
         >
           Sign-up
         </button>

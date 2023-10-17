@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,7 +14,7 @@ import {CategoryService} from '../../services/category.service';
   templateUrl: './transaction-create.component.html',
   styleUrls: ['./transaction-create.component.css']
 })
-export class TransactionCreateComponent {
+export class TransactionCreateComponent implements OnInit{
   category: Category[] = [];
   transaction: Transaction;
 
@@ -24,16 +24,22 @@ export class TransactionCreateComponent {
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
   }
+  }
 
   form: FormGroup = new FormGroup({  
-    description : new FormControl(''),  
-    type: new FormControl(''),
-    category : new FormControl(''),
-    amount : new FormControl(''),
+    description : new FormControl('', Validators.required),  
+    type: new FormControl('', Validators.required),
+    category : new FormControl('', Validators.required),
+    amount : new FormControl('', Validators.required),
 
 });  
 

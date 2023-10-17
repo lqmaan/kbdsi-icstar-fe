@@ -1,77 +1,97 @@
 <main>
     <form [formGroup]="reminderForm" (ngSubmit)="onSubmit()">
         <h2 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">Update Reminder</h2>
+                <div class="mb-6">
+                    <label class="text-gray-700 font-semibold">Email</label>
+                    <label class="block w-full">
+                        <select formControlName="email" [(ngModel)]="preemail"
+                            class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <option class="text-gray-500" disabled selected value>-- Choose Email --</option>
+                            <option *ngFor="let user of users" [value]="user.email"
+                                [attr.selected]="preemail == user.email ? true : null">{{user.email}}</option>
+                        </select>
+                    </label>
+                    <div class=" text-red-500 font-xs italic"
+                        *ngIf="reminderForm.get('email')?.touched && reminderForm.get('email')?.invalid">
+                        Email is required.
+                    </div>
+                </div>
+ 
+            <div class="mb-6">
+            <label class="text-gray-700 font-semibold">Description</label>
+            <input formControlName="description" [(ngModel)]="predesc"
+            class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm "
+            type="description" required />
+            <div class=" text-red-500 font-xs italic"
+                *ngIf="reminderForm.get('description')?.touched && reminderForm.get('description')?.invalid">
+                Description is required.
+                </div>
+                </div>
+              
+        <div class="mb-6">
+            <label class="text-gray-700 font-semibold">Schedule Date</label>
+            <label class="block flex-1">
+              <input formControlName="scheduleDate" [(ngModel)]="preschedule" type="date"
+                    class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none  mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm block">
+            </label>
+            <div class=" text-red-500 font-xs italic"
+                *ngIf="reminderForm.get('scheduleDate')?.touched && reminderForm.get('scheduleDate')?.invalid">
+                Schedule Date is required.
+            </div>
+        </div>
 
-        <div class="text-base">
-            <label class="text-gray-700 font-semibold">Email</label>
-        <div class="">
-            <!-- <div class="mt-6 flex"> -->
-                <label class="block w-full">
-                    <select 
-                    formControlName="email"
-                    [(ngModel)]="preemail"
-                    class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-smform-select block w-full">
-                        <option class="text-gray-500" disabled selected value >-- Choose Email --</option>
-                        <option
-                        *ngFor="let user of users" [value]="user.email"
-                        [attr.selected]="preemail == user.email ? true : null">{{user.email}}</option>
-                    </select>
-                </label>
-            <!-- </div> -->
+        <div class="mb-6">
+            <label class="text-gray-700 font-semibold">Due Date</label>
+            <label class="block flex-1">
+                <input formControlName="paymentDate" [(ngModel)]="prepayment" type="date"
+                    class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm block">
+            </label>
+            <div class=" text-red-500 font-xs italic"
+                *ngIf="reminderForm.get('paymentDate')?.touched && reminderForm.get('paymentDate')?.invalid">
+                Due Date is required.
+            </div>
         </div>
-        <label class="text-gray-700 font-semibold">Description</label>
-        <input 
-        formControlName="description"
-        [(ngModel)]="predesc"
-        class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="description" required/>
-        <label class="text-gray-700 font-semibold">Schedule Date</label>
-        <div class="">
-                <label class="block flex-1">
-                    <input 
-                    formControlName="scheduleDate"
-                    [(ngModel)]="preschedule"
-                    type="date" class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm block">
-                </label>
-        </div>
-        <label class="text-gray-700 font-semibold">Due Date</label>
-        <div class="">
-                <label class="block flex-1">
-                    <input 
-                    formControlName="paymentDate"
-                    [(ngModel)]="prepayment"
-                    type="date" class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm block">
-                </label>
-        </div>
-        <label class="text-gray-700 mt-2 font-semibold">Repeated</label>
-        <div class="mt-1 mb-3 pb-1 ml-2 max-w-full relative text-gray-600">
-            
-            <!-- <legend>Choose your delivery preference</legend> -->
+
+        <div class="mb-6">
+            <label class="text-gray-700 mt-2 font-semibold">Repeated</label>
+            <div class="mt-1 mb-3 pb-1 ml-2 max-w-full relative text-gray-600">
+                <!-- <legend>Choose your delivery preference</legend> -->
             <div class=" -left-0">
-                <input type="radio" id="repeat_1" [value]="true" name="repeated" formControlName="repeated" [ngModel]="prerepeated"
-                (change)="onItemChange($event)">
-                <label for="repeat_1"> Yes</label>
+             <input type="radio" id="repeat_1" [value]="true" name="repeated" formControlName="repeated"
+                        [ngModel]="prerepeated" (change)="onItemChange($event)">
+                    <label for="repeat_1"> Yes</label>
+                </div>
+                <div class="absolute  top-0  right-[340px]">
+                    <input type="radio" id="repeat_2" [value]="false" name="repeated" formControlName="repeated"
+                        [ngModel]="prerepeated" (change)="onItemChange($event)">
+                    <label for="repeat_2"> No</label>
+                </div>
             </div>
-            <div class="absolute  top-0  right-[340px]">
-                <input type="radio" id="repeat_2" [value]="false" name="repeated" formControlName="repeated" [ngModel]="prerepeated"
-                (change)="onItemChange($event)">
-                <label for="repeat_2"> No</label>
+            <div class=" text-red-500 font-xs italic"
+                *ngIf="reminderForm.get('repeated')?.touched && reminderForm.get('repeated')?.invalid">
+                Repeated is required.
             </div>
-        </div>
         </div>
 
-        <label class="text-gray-700 font-semibold">Amount</label>
-        <input 
-        formControlName="amount" [(ngModel)]="preamount"
-        class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="number" placeholder="Rp." required/>
-        
-        <div class="flex justify-end mt-8">
+        <div class="mb-6">
+            <label class="text-gray-700 font-semibold">Amount</label>
+            <input formControlName="amount" [(ngModel)]="preamount"
+                class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                type="number" placeholder="Rp." required />
+            <div class=" text-red-500 font-xs italic"
+                *ngIf="reminderForm.get('amount')?.touched && reminderForm.get('amount')?.invalid">
+                Amount is required.
+            </div>
+        </div>
+        <div class="flex justify-end mt-12">
             <!-- <button (click)="alertWithSuccees()" routerLink="/user" class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2 px-4 mx-1 rounded">
                 Cancel
               </button> -->
-              <!-- (click)="simpleAlert() -->
-            <button  class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded">
+            <!-- (click)="simpleAlert() -->
+            <button [disabled]="!reminderForm.valid" type="submit"
+                class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded-md shadow-md">
                 Save
-              </button>
-          </div>
+            </button>
+        </div>
     </form>
 </main>

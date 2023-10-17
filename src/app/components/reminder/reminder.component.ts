@@ -30,6 +30,11 @@ export class ReminderComponent implements OnInit {
   }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.pageReminder.description = "";
     this.pageReminder.status = "ongoing";
     this.pageReminder.pageNum = 0;
@@ -37,6 +42,7 @@ export class ReminderComponent implements OnInit {
     this.reminderService.findAll(this.pageReminder).subscribe(data => {
       this.reminders = data.content;
     })
+  }
   }
 
 

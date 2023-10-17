@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import {formatDate} from '@angular/common';
 import {PageBookkeeping} from '../../models/page-bookkeeping';
@@ -28,6 +29,7 @@ export class BookkeepingComponent implements OnInit {
   pipe = new DatePipe("id-ID");
   fromDate: Date;
   toDate: Date;
+
   minDate: string = "";
   maxDate: string = "";
   chosenYear: string = "";
@@ -39,6 +41,11 @@ export class BookkeepingComponent implements OnInit {
   }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.currDate = new Date();
     this.pageBookkeeping.pageNum = 0;
     this.pageBookkeeping.pageSize = 5;
@@ -70,6 +77,7 @@ export class BookkeepingComponent implements OnInit {
       this.category = data;
     })
   }
+  }
 
   // date1 = formatDate(new Date(),'yyyy-MM-dd','en_US');
   // date2 = let FToday = formatDate(datecomingfromdb,'yyyy-MM-dd','en_US');
@@ -88,7 +96,10 @@ export class BookkeepingComponent implements OnInit {
     // console.log(this.pageBookkeeping, this.minDate);
     if (this.toDate != null) {
       if(this.fromDate > this.toDate){
-        console.log("More than max date (to)");
+        Swal.fire({
+          title: "Can't be later than the to date",
+          icon:'warning'
+        })
       }
       else{
         this.pageBookkeeping.startDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
@@ -108,7 +119,10 @@ export class BookkeepingComponent implements OnInit {
     // console.log(this.pageBookkeeping, this.maxDate);
     if (this.fromDate != null) {
       if(this.toDate < this.fromDate){
-        console.log("Less than min date (from)");
+        Swal.fire({
+          title: "Can't be earlier than the from date",
+          icon:'warning'
+        })
       }
       else{
         this.pageBookkeeping.endDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";

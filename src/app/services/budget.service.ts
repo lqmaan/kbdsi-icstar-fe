@@ -41,7 +41,7 @@ export class BudgetService {
   }
 
   public deleteBudget(data: Delete):Observable<any>{
-    return this.http.put<Delete>(`${this.budgetUrl}/delete/${data.id}`, data)
+    return this.http.put(`${this.budgetUrl}/delete/${data.id}`, data, {responseType: "text"})
   }
 
   public getTotalYear(year: number):Observable<any>{

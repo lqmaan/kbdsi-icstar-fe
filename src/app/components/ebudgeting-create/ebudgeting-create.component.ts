@@ -29,9 +29,15 @@ export class EbudgetingCreateComponent implements OnInit {
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
+  }
   }
 
   form: FormGroup = new FormGroup({  
@@ -62,6 +68,8 @@ onItemChange(data: any){
     this.budgetService.createBudget(this.budget).subscribe((result) => {
       Swal.fire({
         title: 'Create Budget Success',
+        icon:'success'
+
       }).then((result) => {
           this.gotoBudgetList();
         })

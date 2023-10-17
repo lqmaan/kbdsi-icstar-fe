@@ -34,11 +34,17 @@ export class EbudgetingUpdateComponent {
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
     console.log(history.state);
     this.precategory = history.state.category;
+  }
   }
 
   form: FormGroup = new FormGroup({  

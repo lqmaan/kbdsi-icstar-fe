@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 // import Flowbite from 'flowbite';
 
@@ -14,12 +14,18 @@ import {UserService} from '../../services/user.service';
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css']
 })
-export class UserCreateComponent {
+export class UserCreateComponent implements OnInit{
   user: User;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private userService: UserService){
       this.user = new User();
+    }
+
+    ngOnInit(){
+      if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+        this.router.navigateByUrl('/login');
+      }
     }
 
   form: FormGroup = new FormGroup({  
@@ -32,15 +38,6 @@ export class UserCreateComponent {
 
 
   onSubmit(){
-//     const phoneControl = this.form.get('phone');
-// if (phoneControl) {
-//   phoneControl.setValidators(Validators.required);
-// }
-    // if (this.form.get('phone')) {
-    //   // Formulir valid, lakukan sesuatu
-    //    this.form.get('phone').setValidators(Validators.required);
-      
-    // }
     this.user.createdBy =  localStorage.getItem('email') || "null";
     this.user.name = this.form.controls['name'].value;
     this.user.email = this.form.controls['email'].value;
@@ -84,7 +81,6 @@ export class UserCreateComponent {
   alertWithSuccees(){
     Swal.fire ( "Oops, something went wrong!" );
 }
-
 
     //show-hide password
     showPassword: boolean = false;

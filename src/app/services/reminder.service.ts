@@ -38,7 +38,7 @@ export class ReminderService {
   }
 
   public deleteReminder(data: Delete):Observable<any>{
-    return this.http.put<Delete>(`${this.reminderUrl}/delete/${data.id}`, data);
+    return this.http.put(`${this.reminderUrl}/delete/${data.id}`, data, {responseType: "text"});
   }
 
   public downloadExcel(){

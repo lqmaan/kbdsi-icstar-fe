@@ -3,38 +3,47 @@
     <h2 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">
       Create Account
     </h2>
-
-    <label class="text-gray-700">Email</label>
+<div class="mb-6">
+  <label class="text-gray-700">Email</label>
     <input
-      class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4"
       type="email"
       name="email"
       id="email"
       required formControlName="email"
-    />
-    <label class="text-gray-700">Name</label>
+    /><div class="text-red-500  font-xs italic" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+    Email is required.
+  </div>
+</div>
+    
+    <div class="mb-6">
+       <label class="text-gray-700">Name</label>
     <input
-      class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4"
       type="name"
       required formControlName="name"
-    />
-    <label class="text-gray-700">Phone</label>
+    /><div class="text-red-500  font-xs italic" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+    Name is required.
+  </div>
+    </div>
+   
+    <div class="mb-12">
+      <label class="text-gray-700">Phone</label>
     <input
-      class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4"
       type="phone"
+      placeholder="Ex: 8xxxxxxx"
       required formControlName="phone"
     />
-    <div class="text-red-800" *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
+    <div class="text-red-500  font-xs italic" *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
     Phone is required.
   </div>
+    </div>
+    
       <!-- <div *ngIf="form.get('phone').hasError('required')">
     Field is required.
   </div>   -->
 
-    <div class="relative">
+    <div class="relative mb-6">
       <label class="text-gray-700">Password</label>
       <input
-      class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
       placeholder="Enter password" 
         name="password" 
         [type]="showPassword ? 'text': 'password'"
@@ -46,16 +55,19 @@
       >
         <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
         </div>
+        <div class="absolute text-red-500 font-xs italic" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+    Password is required.
+  </div>
       </div>
 
-    <div class="relative">
+    <div class="relative mb-6">
       <label class="text-gray-700">Repeat Password</label>
       <input
-      class="w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4 mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
       placeholder="Enter password" 
       [type]="showPassword ? 'text': 'password'"
       required formControlName="repeatpassword"
-      />
+      /> <div class="absolute text-red-500 font-xs italic" *ngIf="form.get('repeatpassword')?.touched && form.get('repeatpassword')?.invalid">
+    Repeat is required.</div> 
       <div
         (click)="toggleShowPassword()"
         class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8"
@@ -64,10 +76,10 @@
         </div>
       </div> 
    
-    <div class="flex justify-end mt-8">
+    <div class="flex justify-end gap-2 mt-12">
       <button
         routerLink="/user"
-        class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2 px-4 mx-1 rounded"
+        class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2 px-4 rounded"
       >
         Cancel
       </button>
@@ -75,7 +87,7 @@
       <button
       [disabled]="!form.valid"
         type="submit"
-        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded"
+        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md"
       >
         Save
       </button>

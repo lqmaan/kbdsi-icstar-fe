@@ -27,6 +27,11 @@ export class TransactionUpdateComponent implements OnInit{
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     console.log(history.state)
     this.predesc = history.state.description;
     this.pretype =  history.state.type;
@@ -36,14 +41,14 @@ export class TransactionUpdateComponent implements OnInit{
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
-
+    }
   }
 
   form: FormGroup = new FormGroup({  
-    description : new FormControl(history.state.description),
-    type : new FormControl(history.state.type),  
-    category: new FormControl(history.state.category),
-    amount : new FormControl(history.state.amount),
+    description : new FormControl(history.state.description,Validators.required),
+    type : new FormControl(history.state.type, Validators.required),  
+    category: new FormControl(history.state.category, Validators.required),
+    amount : new FormControl(history.state.amount, Validators.required),
 });  
 
   onItemChange(data: any){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { MatDialog } from  '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from  '@angular/material/dialog';
 import { ElementRef} from '@angular/core';
 import {Modal} from 'bootstrap';
 
@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-ebudgeting',
   templateUrl: './ebudgeting.component.html',
-  styleUrls: ['./ebudgeting.component.css']
+  styleUrls: ['./ebudgeting.component.css'],
 })
 export class EbudgetingComponent implements OnInit {
   delete: Delete;
@@ -34,12 +34,17 @@ export class EbudgetingComponent implements OnInit {
   chosenYear: string = "";
 
 
-  constructor(private budgetService: BudgetService, private categoryService: CategoryService, public router: Router, private dialogRef: MatDialog) {
+  constructor(public dialog: MatDialog, private budgetService: BudgetService, private categoryService: CategoryService, public router: Router) {
     this.pageBudget = new PageBudget();
     this.delete = new Delete();
   }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.currDate = new Date();
     this.pageBudget.pageNum = 0;
     this.pageBudget.pageSize = 5;
@@ -57,6 +62,7 @@ export class EbudgetingComponent implements OnInit {
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
+    }
   }
 
   changeYear(data: any){
@@ -109,16 +115,22 @@ export class EbudgetingComponent implements OnInit {
   //   const modal=new Modal(modalRef.nativeElement);
   //   modal.show();
   // }
-  
-  openModal(){
-      this.dialogRef.open(CategoryAddComponent);
-    
-    // const dialogRef=this.dialog.open(CategoryAddComponent,{
-    //   width: '60%',
-    //   height: '40%',
-    // } );
+    child: any;
+  show(modalRef:ElementRef){
+    const modal=new Modal(modalRef.nativeElement);
+    modal.show();
   }
+  openModal(){
+    const mdConfig = new MatDialogConfig();
+    mdConfig.disableClose = false;
+    mdConfig.hasBackdrop = true;
+    mdConfig.width = "500px";
+    mdConfig.height = "200px";
 
+    this.dialog.open(CategoryAddComponent, mdConfig);
+    }
+  
+  
   downloadExcel(year: string){
     console.log(this.chosenYear);
     this.budgetService.downloadExcel(year);

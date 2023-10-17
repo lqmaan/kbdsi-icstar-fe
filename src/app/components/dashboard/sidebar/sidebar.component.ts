@@ -1,11 +1,12 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
-import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { navbarData } from './nav-data';
 // import { faCoffee } from '@fontawesome/free-solid-svg-icons';
 // import { CommonModule } from '@angular/common';
 
 import {LoginService} from '../../../services/login.service';
-import {Observable} from 'rxjs';
+import {NavbarService} from '../../../services/navbar.service';
+import {Observable, Subscription} from 'rxjs';
 
 
 interface SideNavToggle {
@@ -45,8 +46,9 @@ interface SideNavToggle {
   ]
 })
 
-export class SidebarComponent implements OnInit {
-
+export class SidebarComponent implements OnInit, OnDestroy {
+    showSidebar: boolean;
+    subscription: Subscription;
     isLoggedIn$: Observable<boolean>;
 
     @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
@@ -63,12 +65,25 @@ export class SidebarComponent implements OnInit {
       }
     }
 
-    constructor(private loginService: LoginService) {
+    constructor(private loginService: LoginService, private navbarService: NavbarService) {
+      // this.subscription =  this.navbarService.showSidebar.subscribe((value) => {
+      //   this.showSidebar = value;
+      // })
+    }
+
+    ngAfterViewInit() {
+      setTimeout(()=>
+      this.subscription =  this.navbarService.showSidebar.subscribe((value) => {
+        this.showSidebar = value;
+      }),0)
     }
 
     ngOnInit(): void {
         this.screenWidth = window.innerWidth;
         this.isLoggedIn$ = this.loginService.isLoggedIn;
+    }
+    ngOnDestroy(): void {
+      this.subscription.unsubscribe()
     }
 
     toggleCollapse(): void {

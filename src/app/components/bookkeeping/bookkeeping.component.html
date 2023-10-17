@@ -246,14 +246,14 @@
     <div class="absolute top-0 right-29 mx-[300px]">
       <label class="">
         <a class="font-semibold">From: </a>
-        <input type="date" [ngModel]="fromDate" (ngModelChange)="changeFrom($event)" max=`${maxDate}`
+        <input type="date" [ngModel]="fromDate" (ngModelChange)="changeFrom($event)" [max]="toDate != null ? toDate : null  | date: 'yyyy-MM-dd'"
           class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>
     </div>
     <div class="absolute top-0 right-28 mx-[150px]">
       <label class="">
         <a class="font-semibold">To: </a>
-        <input type="date" min=`${minDate}` [ngModel]="toDate" (ngModelChange)="changeTo($event)"
+        <input type="date" min=`${minDate}` [ngModel]="toDate" (ngModelChange)="changeTo($event)" [min]="fromDate != null ? fromDate : null | date: 'yyyy-MM-dd'"
           class="rounded py-1 bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>
     </div>
@@ -261,6 +261,7 @@
       <label class="">
         <select [(ngModel)]="pageBookkeeping.category" (ngModelChange)="changeCategory($event)"
           class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
+          <option disabled selected [value]="">Category</option>
           <option *ngFor="let item of category" [value]="item.categoryName"
             [attr.selected]="pageBookkeeping.category == item.categoryName? true : null">{{item.categoryName}}</option>
         </select>
@@ -270,7 +271,7 @@
       <label class="">
         <select [(ngModel)]="pageBookkeeping.year" (ngModelChange)="changeYear($event)"
           class="bg-slate-800 text-white text-sm font-bold py-2 px-4 rounded outline-none mb-4 form-select">
-          <option disabled selected value>Year</option>
+          <option disabled selected [value]="">Year</option>
           <option>2023</option>
           <option>2024</option>
         </select>

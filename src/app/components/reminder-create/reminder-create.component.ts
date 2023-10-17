@@ -31,9 +31,15 @@ export class ReminderCreateComponent {
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.userService.findAll().subscribe((result) => {
       this.users = result;
     })
+    }
   }
 
   reminderForm: FormGroup = new FormGroup({  

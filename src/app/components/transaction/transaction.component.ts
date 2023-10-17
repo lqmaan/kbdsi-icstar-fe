@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { MatDialog, MatDialogConfig } from  '@angular/material/dialog';
+
+import {CategoryAddComponent} from '../../components/category-add/category-add.component';
 
 import {formatDate} from '@angular/common';
 import {PageTransaction} from '../../models/page-transaction';
@@ -28,12 +31,17 @@ export class TransactionComponent implements OnInit {
   delete: Delete;
 
 
-  constructor(private transactionService: TransactionService, private categoryService: CategoryService, public router: Router) {
+  constructor(private transactionService: TransactionService, private categoryService: CategoryService, public router: Router, public dialog: MatDialog) {
     this.pageTransaction = new PageTransaction();
     this.delete = new Delete()
   }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.currDate = new Date();
     this.pageTransaction.pageNum = 0;
     this.pageTransaction.pageSize = 5;
@@ -49,6 +57,7 @@ export class TransactionComponent implements OnInit {
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
+  }
   }
     
   
@@ -116,4 +125,14 @@ export class TransactionComponent implements OnInit {
       }
     })
   }
+
+  openModal(){
+    const mdConfig = new MatDialogConfig();
+    mdConfig.disableClose = false;
+    mdConfig.hasBackdrop = true;
+    mdConfig.width = "500px";
+    mdConfig.height = "200px";
+
+    this.dialog.open(CategoryAddComponent, mdConfig);
+    }
 }

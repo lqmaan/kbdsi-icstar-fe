@@ -35,6 +35,11 @@ export class ReminderUpdateComponent {
     }
 
   ngOnInit(){
+    if(localStorage.getItem('email') == "" || localStorage.getItem('email') == null){
+      this.router.navigateByUrl('/login');
+    }
+    else
+    {
     this.userService.findAll().subscribe((result) => {
       this.users = result;
     })
@@ -45,17 +50,16 @@ export class ReminderUpdateComponent {
     this.prepayment = this.pipe.transform(history.state.paymentDate, 'yyyy-MM-dd') || "";
     this.preamount = history.state.amount;
     this.prerepeated = history.state.repeated;
-
-    console.log(this.prerepeated);
+  }
   }
 
   reminderForm: FormGroup = new FormGroup({  
-    description : new FormControl(history.state.description),  
-    repeated: new FormControl(history.state.repeated),
-    email: new FormControl(history.state.email),
-    scheduleDate : new FormControl(history.state.scheduleDate),
-    paymentDate : new FormControl(history.state.paymentDate),
-    amount : new FormControl(history.state.amount),
+    description : new FormControl(history.state.description, Validators.required),  
+    repeated: new FormControl(history.state.repeated, Validators.required),
+    email: new FormControl(history.state.email, Validators.required),
+    scheduleDate : new FormControl(history.state.scheduleDate, Validators.required),
+    paymentDate : new FormControl(history.state.paymentDate, Validators.required),
+    amount : new FormControl(history.state.amount, Validators.required),
 
 });  
 
@@ -65,6 +69,7 @@ onItemChange(data: any){
 
 
   onSubmit(){
+    this.reminder.reminderId = history.state.reminderId;
     this.reminder.updatedBy =  localStorage.getItem('email') || "null";
     this.reminder.description = this.reminderForm.controls['description'].value;
     this.reminder.amount = this.reminderForm.controls['amount'].value;
