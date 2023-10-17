@@ -18,7 +18,6 @@ import {CategoryService} from '../../services/category.service';
 export class EbudgetingUpdateComponent {
   budget: Budget;
   category: Category[] = [];
-  transaction: Transaction;
   years: string[] = ['2023', '2024'];
 
   preyear: string;
@@ -55,18 +54,21 @@ export class EbudgetingUpdateComponent {
 
 onItemChange(data: any){
   this.budget.type = data.target.defaultValue;
-  console.log(this.transaction)
+  console.log(this.budget)
 }
 
 
   onSubmit(){
     // console.log(this.login)
+    this.budget.budgetId = history.state.budgetId;
     this.budget.updatedBy =  localStorage.getItem('email') || "null";
     this.budget.name = this.form.controls['name'].value;
     this.budget.description = this.form.controls['description'].value;
     this.budget.amount = this.form.controls['amount'].value;
     this.budget.category = this.form.controls['category'].value;
     this.budget.year = this.form.controls['year'].value;
+    this.budget.type =  this.form.controls['type'].value;
+    console.log(this.budget)
     this.budgetService.editBudget(this.budget).subscribe((result) => {
       Swal.fire({
         title: 'Edit Budget Success',

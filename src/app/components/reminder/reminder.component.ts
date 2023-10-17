@@ -94,6 +94,8 @@ export class ReminderComponent implements OnInit {
   toggleTabs($tabNumber: number, status: string){
     this.openTab = $tabNumber;
     this.pageReminder.status = status;
-    console.log(this.pageReminder);
+    this.reminderService.findAll(this.pageReminder).subscribe(data => {
+      this.reminders = data.content;
+    })
   }
 }

@@ -22,10 +22,12 @@ export class ReminderCreateComponent {
   reminder: Reminder;
   users: User[] = [];
   pipe = new DatePipe("id-ID");
+  currDate : Date;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private userService: UserService, private reminderService: ReminderService){
       this.reminder = new Reminder();
+      this.currDate = new Date();
     }
 
   ngOnInit(){
@@ -52,14 +54,17 @@ onItemChange(data: any){
   onSubmit(){
     this.reminder.createdBy =  localStorage.getItem('email') || "null";
     this.reminder.description = this.reminderForm.controls['description'].value;
+    this.reminder.email = this.reminderForm.controls['email'].value;
     this.reminder.amount = this.reminderForm.controls['amount'].value;
     this.reminder.scheduleDate = this.pipe.transform(this.reminderForm.controls['scheduleDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.paymentDate = this.pipe.transform(this.reminderForm.controls['paymentDate'].value, 'dd/MM/yyyy') || "";
+    this.reminder.status = "ongoing";
+    console.log(this.reminder)
     this.reminderService.createReminder(this.reminder).subscribe((result) => {
       Swal.fire({
         title: 'Create Reminder Success',
       }).then((result) => {
-          this.gotoReminderList();
+          // this.gotoReminderList();
         })
       }, error => {
         Swal.fire({

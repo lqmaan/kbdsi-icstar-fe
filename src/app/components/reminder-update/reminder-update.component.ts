@@ -70,6 +70,7 @@ onItemChange(data: any){
     this.reminder.amount = this.reminderForm.controls['amount'].value;
     this.reminder.scheduleDate = this.pipe.transform(this.reminderForm.controls['scheduleDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.paymentDate = this.pipe.transform(this.reminderForm.controls['paymentDate'].value, 'dd/MM/yyyy') || "";
+    this.reminder.status = history.state.status;
     this.reminderService.editReminder(this.reminder).subscribe((result) => {
       Swal.fire({
         title: 'Edit Reminder Success',
