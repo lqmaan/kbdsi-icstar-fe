@@ -1,5 +1,5 @@
 main{
-    @apply flex items-center justify-center bg-gray-100
+    @apply flex items-center justify-center 
 }
 
 form{
@@ -13,3 +13,5 @@ label{
 input{
     @apply w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder:italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
  } 
+
+ 

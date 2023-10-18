@@ -2,27 +2,28 @@
   <h1>REMINDER</h1>
 
   <!-- search and button add -->
-  <div class="max-w-full my-6 relative">
+  <div class="max-w-full my-6 relative ">
     <div class="-left-5">
       <input
-        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md mb-2 py-[6px] pl-2 pr-12 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-md mb-2 py-2 pl-2 pr-12 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
         placeholder="Search for Description..." type="text" name="search" 
         [ngModel]="pageReminder.description"
         (ngModelChange)="handleSearch($event)"
         />
     </div>
 
-    <div class="absolute top-0 right-0">
+    <div class="absolute top-0 right-0 ">
       <button routerLink="/reminder-create"
-        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2 rounded-md">
-        Add Reminder
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2.5 rounded-md shadow-md">
+        <ng-icon class="icon-plus" size="20px"  name='heroPlus'></ng-icon> Add Reminder
       </button>
     </div>
-    <div class="absolute top-0 right-20 px-8">
+    <div class="absolute top-0 right-20 px-8 mr-[28px]">
       <button 
       (click)="downloadExcel()"
-      class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded">
-        Print
+      class="bg-slate-800 py-2.5 px-3 hover:bg-blue-700 text-white text-sm font-bold mx-2 rounded-md shadow-md">
+       <ng-icon class="icon-print" size="20px"  name='heroPrinter'></ng-icon>
+      Print
       </button>
     </div>
   </div>
@@ -35,6 +36,7 @@
       <ul class="flex flex-wrap ml-2">
         <li class="">
           <a
+          style="cursor: pointer;"
             class="inline-block px-4 py-3 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
             (click)="toggleTabs(1, 'ongoing')"
             [ngClass]="{
@@ -47,6 +49,7 @@
         </li>
         <li class="">
           <a
+          style="cursor: pointer;"
             class="inline-block px-4 py-3 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
             (click)="toggleTabs(2, 'done')"
             [ngClass]="{'': openTab !== 2,
@@ -77,14 +80,14 @@
             <table class="w-full">
               <thead class="bg-gray-50 border-b-2 border-gray-200">
                 <tr>
-                  <th class="w-20">Description</th>
-                  <th class="w-24">Created</th>
-                  <th class="w-24">Due Date</th>
-                  <th class="w-20">Amount</th>
-                  <th class="w-24">Email</th>
+                  <th class="w-40">Description</th>
+                  <th class="w-40">Schedule</th>
+                  <th class="w-40">Due Date</th>
+                  <th class="w-32">Amount</th>
+                  <th class="w-40">Email</th>
                   <th class="w-32">Status</th>
-                  <th class="w-24">Repeated</th>
-                  <th class="w-20">Action</th>
+                  <th class="w-32">Repeated</th>
+                  <th class="w-32">Action</th>
                 </tr>
               </thead>
 
@@ -115,8 +118,6 @@
                     </button>
                   </td>
                 </tr>
-
-               
               </tbody>
             </table>
           </div>
@@ -127,14 +128,14 @@
             <table class="w-full">
               <thead class="bg-gray-50 border-b-2 border-gray-200">
                 <tr>
-                  <th class="w-20">Description</th>
-                  <th class="w-24">Created</th>
-                  <th class="w-24">Due Date</th>
-                  <th class="w-20">Amount</th>
-                  <th class="w-24">Email</th>
+                  <th class="w-40">Description</th>
+                  <th class="w-40">Schedule</th>
+                  <th class="w-40">Due Date</th>
+                  <th class="w-32">Amount</th>
+                  <th class="w-40">Email</th>
                   <th class="w-32">Status</th>
-                  <th class="w-24">Repeated</th>
-                  <th class="w-20">Action</th>
+                  <th class="w-32">Repeated</th>
+                  <th class="w-32">Action</th>
                 </tr>
               </thead>
 
@@ -165,226 +166,40 @@
                     </button>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>
         </div>
-        <!-- <div [ngClass]="{ hidden: openTab !== 3, block: openTab === 3 }">
-          <div class="overflow-auto rounded-lg shadow">
-            <table class="w-full">
-              <thead class="bg-gray-50 border-b-2 border-gray-200">
-                <tr>
-                  <th class="w-20">Description</th>
-                  <th class="w-24">Created</th>
-                  <th class="w-24">Due Date</th>
-                  <th class="w-20">Amount</th>
-                  <th class="w-24">Email</th>
-                  <th class="w-32">Status</th>
-                  <th class="w-24">Repeated</th>
-                  <th class="w-20">Action</th>
-                </tr>
-              </thead>
-
-              <tbody class="divide-y divide-gray-100">
-                <tr class="bg-white">
-                  <td>Administrative Costs</td>
-                  <td>09/04/23</td>
-                  <td>09/17/23</td>
-                  <td>23.000.000</td>
-                  <td>hhhhhhhh@gmail.com</td>
-                  <td>
-                    <span class="text-red-800 bg-red-200"> Cancel </span>
-                  </td>
-                  <td class="font-bold">YES</td>
-                  <td>
-                    <button
-                      routerLink="/reminder-update"
-                      class="bg-blue-500 hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      (click)="confirmBox()"
-                      class="bg-rose-500 hover:bg-rose-600"
-                    >
-                      Del
-                    </button>
-                  </td>
-                </tr>
-
-                <tr class="bg-gray-50">
-                  <td>Employee Salaries</td>
-                  <td>10/28/23</td>
-                  <td>03/29/24</td>
-                  <td>220.200.000</td>
-                  <td>yyyyyyy@gmail.com</td>
-                  <td>
-                    <span class="text-red-800 bg-red-200">Cancel</span>
-                  </td>
-                  <td class="font-bold">NO</td>
-                  <td>
-                    <button
-                      routerLink="/reminder-update"
-                      class="bg-blue-500 hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      (click)="confirmBox()"
-                      class="bg-rose-500 hover:bg-rose-600"
-                    >
-                      Del
-                    </button>
-                  </td>
-                </tr>
-
-                <tr class="bg-white">
-                  <td>Employee Salaries</td>
-                  <td>10/28/23</td>
-                  <td>12/28/23</td>
-                  <td>560.200.000</td>
-                  <td>wwwwwww08@gmail.com</td>
-                  <td>
-                    <span class="text-red-800 bg-red-200">Cancel</span>
-                  </td>
-                  <td class="font-bold">NO</td>
-                  <td>
-                    <button
-                      routerLink="/reminder-update"
-                      class="bg-blue-500 hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      (click)="confirmBox()"
-                      class="bg-rose-500 hover:bg-rose-600"
-                    >
-                      Del
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
-  
 
-  <!-- <div class="overflow-auto rounded-lg shadow">
-    <table class="w-full">
-      <thead class="bg-gray-50 border-b-2 border-gray-200">
-        <tr>
-          <th class="w-20">Description</th>
-          <th class="w-24">Created</th>
-          <th class="w-24">Due Date</th>
-          <th class="w-20">Amount</th>
-          <th class="w-24">Email</th>
-          <th class="w-32">Status</th>
-          <th class="w-24">Repeated</th>
-          <th class="w-20">Action</th>
-        </tr>
-      </thead>
-
-      <tbody class="divide-y divide-gray-100">
-        <tr class="bg-white">
-          <td>Administrative Costs</td>
-          <td>09/04/23</td>
-          <td>09/17/23</td>
-          <td>12.000.000</td>
-          <td>ckctm12@gmail.com</td>
-          <td>
-            <span class="text-yellow-800 bg-yellow-200"> On Going</span>
-          </td>
-          <td class="font-bold">Yes</td>
-          <td>
-            <button routerLink="/reminder-update" class="bg-blue-500 hover:bg-blue-600">
-              Edit
-            </button>
-            <button (click)="confirmBox()" class="bg-rose-500 hover:bg-rose-600">
-              Del
-            </button>
-          </td>
-        </tr>
-
-        <tr class="bg-gray-50">
-          <td>Employee Salaries and Wages</td>
-          <td>10/28/23</td>
-          <td>03/29/24</td>
-          <td>560.200.000</td>
-          <td>manhhachkt08@gmail.com</td>
-          <td>
-            <span class="text-green-800 bg-green-200">Done</span>
-          </td>
-          <td class="font-bold">Yes</td>
-          <td>
-            <button routerLink="/reminder-update" class="bg-blue-500 hover:bg-blue-600">
-              Edit
-            </button>
-            <button (click)="confirmBox()" class="bg-rose-500 hover:bg-rose-600">
-              Del
-            </button>
-          </td>
-        </tr>
-
-        <tr class="bg-white">
-          <td>Employee Salaries and Wages</td>
-          <td>10/28/23</td>
-          <td>12/28/23</td>
-          <td>560.200.000</td>
-          <td>manhhachkt08@gmail.com</td>
-          <td>
-            <span class="text-red-800 bg-red-200">Cancel</span>
-          </td>
-          <td class="font-bold">No</td>
-          <td>
-            <button routerLink="/reminder-update" class="bg-blue-500 hover:bg-blue-600">
-              Edit
-            </button>
-            <button (click)="confirmBox()" class="bg-rose-500 hover:bg-rose-600">
-              Del
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
 
   <!-- Pages number -->
-  <!-- <div>
+   <div>
     <nav aria-label="Page navigation example" class="">
       <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
         <li>
           <a (click)="previousPage()"
-            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white font-semibold">
             <span class="sr-only">Previous</span>
-            <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-              viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 1 1 5l4 4" />
-            </svg>
+            <ng-icon class="icon-ChevronLeft" size="15px" name='heroChevronLeft'></ng-icon>
           </a>
         </li>
         <li>
           <a href="#" aria-current="page"
-            class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{{pageUser.pageNum
-            + 1}}</a>
+            class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+            {{pageReminder.pageNum+ 1}}</a>
         </li>
 
         <li>
           <a (click)="nextPage()"
             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
             <span class="sr-only">Next</span>
-            <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-              viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="m1 9 4-4-4-4" />
-            </svg>
+            <ng-icon class="icon-ChevronRight" size="15px" name='heroChevronRight'></ng-icon>
           </a>
         </li>
       </ul>
     </nav>
-  </div> -->
+  </div> 
 </body>

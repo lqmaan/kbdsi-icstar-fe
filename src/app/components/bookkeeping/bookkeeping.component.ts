@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import {formatDate} from '@angular/common';
@@ -33,6 +33,10 @@ export class BookkeepingComponent implements OnInit {
   minDate: string = "";
   maxDate: string = "";
   chosenYear: string = "";
+
+
+  @ViewChild('inputFrom') fromDateInput: any;
+  @ViewChild('inputTo') toDateInput: any;
 
 
   constructor(private transactionService: TransactionService, private categoryService: CategoryService, public router: Router) {
@@ -79,21 +83,11 @@ export class BookkeepingComponent implements OnInit {
   }
   }
 
-  // date1 = formatDate(new Date(),'yyyy-MM-dd','en_US');
-  // date2 = let FToday = formatDate(datecomingfromdb,'yyyy-MM-dd','en_US');
-
-  // if(date1>date2){
-  //   console.log('---date1 is greater----');
-  //  }else{
-  //   console.log('---date2 is greater-----');
-  //  }
 
   changeFrom(data: any){
     console.log(data)
     this.fromDate = data;
-    // this.pageBookkeeping.startDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
-    // this.minDate = this.pipe.transform(data, 'YYYY-MM-dd') || "";
-    // console.log(this.pageBookkeeping, this.minDate);
+    this.pageBookkeeping.startDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
     if (this.toDate != null) {
       if(this.fromDate > this.toDate){
         Swal.fire({
@@ -102,21 +96,28 @@ export class BookkeepingComponent implements OnInit {
         })
       }
       else{
-        this.pageBookkeeping.startDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
-        this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(data => {
-          this.transactions = data.content;
+        this.pageBookkeeping.startDate = this.pipe.transform(this.fromDate, 'dd/MM/yyyy') || "";
+        this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(result => {
+          console.log(this.pageBookkeeping)
+          this.transactions = result.content;
         })
       }
     }    
     
   }
 
+  clear(){
+    this.pageBookkeeping.category = "";
+    this.pageBookkeeping.year = "";
+    this.pageBookkeeping.startDate = "";
+    this.fromDateInput.nativeElement.value = "";
+    this.toDateInput.nativeElement.value = "";
+  }
+
   changeTo(data: any){
     console.log(data)
     this.toDate = data;
     this.pageBookkeeping.endDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
-    // this.maxDate = this.pipe.transform(data, 'YYYY-MM-dd') || "";
-    // console.log(this.pageBookkeeping, this.maxDate);
     if (this.fromDate != null) {
       if(this.toDate < this.fromDate){
         Swal.fire({
@@ -125,9 +126,10 @@ export class BookkeepingComponent implements OnInit {
         })
       }
       else{
-        this.pageBookkeeping.endDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
-        this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(data => {
-          this.transactions = data.content;
+        this.pageBookkeeping.endDate = this.pipe.transform(this.toDate, 'dd/MM/yyyy') || "";
+        this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(result => {
+          console.log(this.pageBookkeeping)
+          this.transactions = result.content;
         })
       }
     }
@@ -168,12 +170,7 @@ export class BookkeepingComponent implements OnInit {
   }
 
 
-  // downloadExcel(){
-  //   window.location.href='https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/transactions/export-to-excel';
-  // }
-
   downloadExcel(){
-    // console.log(this.chosenYear);
     this.transactionService.downloadExcel();
   }
 

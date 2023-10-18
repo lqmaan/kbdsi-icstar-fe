@@ -53,6 +53,25 @@ export class ReminderComponent implements OnInit {
     })
   }
 
+  nextPage(){
+    this.pageReminder.pageNum += 1;
+    this.reminderService.findAll(this.pageReminder).subscribe(data => {
+      this.reminders = data.content;
+  })
+}
+
+  previousPage(){
+    if(this.pageReminder.pageNum != 0){
+          this.pageReminder.pageNum -= 1
+          this.reminderService.findAll(this.pageReminder).subscribe(data => {
+            this.reminders = data.content;}
+          )
+      }
+    else{
+      this.pageReminder.pageNum = 0;
+    }
+  }
+
   confirmBox(reminder: Reminder){
     Swal.fire({
       title: 'Are you sure want to remove?',
@@ -65,7 +84,9 @@ export class ReminderComponent implements OnInit {
       if (result.value) {
         this.delete.id = reminder.reminderId;
         this.delete.updatedBy = localStorage.getItem("email") || "null";
+        console.log(this.delete)
         this.reminderService.deleteReminder(this.delete).subscribe(result => {
+          console.log(result)
           this.reminderService.findAll(this.pageReminder).subscribe(data => {
             this.reminders = data.content;
           })

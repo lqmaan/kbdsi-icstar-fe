@@ -76,6 +76,7 @@ onItemChange(data: any){
     this.reminder.scheduleDate = this.pipe.transform(this.reminderForm.controls['scheduleDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.paymentDate = this.pipe.transform(this.reminderForm.controls['paymentDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.status = history.state.status;
+    this.reminder.email = this.reminderForm.controls['email'].value;
     this.reminderService.editReminder(this.reminder).subscribe((result) => {
       Swal.fire({
         title: 'Edit Reminder Success',
@@ -93,10 +94,5 @@ onItemChange(data: any){
 
   gotoReminderList(){
     this.router.navigate(['/reminder']);
-  }
-  
-  simpleAlert(){
-    Swal.fire(
-      "Good job!", "You clicked the button!", "success");
   }
 }

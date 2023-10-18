@@ -9,15 +9,25 @@ th, td{
 th{
     @apply p-3 font-bold tracking-wide text-base 
 }
-
-span{
+td > span{
     @apply p-1.5 text-xs font-medium uppercase tracking-wider rounded-lg bg-opacity-50
 }
 
 td{
-    @apply p-2 text-sm text-gray-700 whitespace-nowrap
+    @apply p-2 text-sm font-medium text-gray-700 whitespace-nowrap
 }
 
 td > button {
     @apply mx-0.5 px-2 py-1 my-1 rounded-md text-white transition-all font-bold
+}
+
+.icon-print {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.icon-plus {
+    vertical-align: middle;
+    margin-right: 2px;
+    margin-top: -3px;
 }

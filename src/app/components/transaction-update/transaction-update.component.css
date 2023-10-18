@@ -1,33 +1,7 @@
 main{
-    @apply flex items-center justify-center bg-gray-100
+    @apply flex items-center justify-center 
  }
  
  form{
      @apply bg-white w-[500px] p-6 my-14 rounded shadow-md
  }
-/* .input {
-    width: 100%;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-    background-color: #f3f4f6;
-    color: #6b7280;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    outline: none;
-    margin-bottom: 1rem;
-    margin-top: 0.25rem;
-    font-style: italic;
-    color: #718096;
-    display: block;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #d2d6dc;
-    border-radius: 0.375rem;
-    padding-left: 0.5rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    outline: none;
-    border-color: #93c5fd;
-    box-shadow: 0 0 0 3px rgba(135, 212, 245, 0.5);
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-    font-size: 0.875rem;
-} */

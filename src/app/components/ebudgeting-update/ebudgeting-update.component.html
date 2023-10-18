@@ -7,6 +7,7 @@
                 <label class="block w-full">
                     <select 
                     formControlName="year"
+                    style="cursor: pointer;"
                     class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-smform-select  block ">
                         <option disabled selected value class="text-gray-500">-- Choose year --</option>
                         <option *ngFor="let year of years"
@@ -35,6 +36,7 @@
               <label class="block w-full">
                     <select 
                     formControlName="category"
+                    style="cursor: pointer;"
                     class="w-full py-2.5 bg-gray-100 text-gray-500 px-1 outline-none mt-1 placeholder: italic placeholder:text-slate-400 block border border-slate-300 rounded-md pl-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm4 form-select block">
                         <option class="text-gray-500" disabled selected value >-- Choose Category --</option>
                         <option *ngFor="let item of category"
@@ -58,7 +60,7 @@
             </div>
             <div class="absolute  top-0  right-[270px]">
                 <input type="radio" id="type_2" value="outcome" name="type" formControlName="type" (change)="onItemChange($event)">
-                <label for="type_2"> Expence</label>
+                <label for="type_2"> Outcome</label>
             </div>
         </div>
         <div class=" text-red-500 font-xs italic"
@@ -87,11 +89,11 @@
                 Description is required.
                 </div>
         <div class="flex justify-end mt-12">
-            <!-- <button (click)="alertWithSuccees()" routerLink="/user" class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2 px-4 mx-1 rounded">
+            <button  routerLink="/ebudgeting" class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2.5 px-4 mx-1 rounded-md shadow-md">
                 Cancel
-              </button> -->
+              </button>
               <!-- (click)="simpleAlert() -->
-            <button [disabled]="!form.valid" type="submit" class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded-md shadow-md">
+            <button [disabled]="!form.valid" type="submit" class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4 mx-1 rounded-md shadow-md">
                 Save
               </button>
           </div>

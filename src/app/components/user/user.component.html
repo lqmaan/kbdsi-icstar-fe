@@ -1,10 +1,10 @@
 <body>
   <h1>USER</h1>
   <!-- search and button add -->
-  <div class="max-w-full my-6 relative">
+  <div class="max-w-full mb-2 mt-16 relative">
     <div class="-left-5">
       <input
-        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md mb-2 py-[6px] pl-2 pr-12 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-md mb-2 py-2 pl-2 pr-12 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
         placeholder="Search for name..."
         type="text"
         name="search"
@@ -13,29 +13,20 @@
       />
     </div>
 
-    <div class="absolute top-0 right-0">
-      <!-- <button
-        mat-raised-button
-        (click)="openNewPage()"
-        data-modal-target="authentication-modal"
-        data-modal-toggle="authentication-modal"
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button"
-      >
-        Add User
-      </button> -->
+    <div class="absolute top-0 right-0 mr-[2px]">
       <button
         routerLink="/user-create"
-        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2 rounded"
-      >
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2.5 rounded-md shadow-md"
+      ><ng-icon class="icon-plus" size="20px" name='heroPlus'></ng-icon>
         Add User
       </button>
     </div>
-    <div class="absolute top-0 right-20">
+    <div class="absolute top-0 right-20 mr-[28px]">
       <button
         (click)="downloadExcel()"
-        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 mx-2 rounded"
+        class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold px-4 mx-2 p-2.5 rounded-md shadow-md"
       >
+      <ng-icon class="icon-print" size="20px"  name='heroPrinter'></ng-icon>
         Print
       </button>
     </div>
@@ -90,29 +81,14 @@
           (click)="previousPage()"
             class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
-            <span class="sr-only">Previous</span>
-            <svg
-              class="w-2.5 h-2.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 1 1 5l4 4"
-              />
-            </svg>
+            <ng-icon class="icon-ChevronLeft" size="15px" name='heroChevronLeft'></ng-icon>
           </a>
         </li>
         <li>
           <a
             href="#"
             aria-current="page"
-            class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+            class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white font-semibold"
             >{{pageUser.pageNum + 1}}</a
           >
         </li>
@@ -123,21 +99,8 @@
             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span class="sr-only">Next</span>
-            <svg
-              class="w-2.5 h-2.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
+            <ng-icon class="icon-ChevronRight" size="15px" name='heroChevronRight'></ng-icon>
+
           </a>
         </li>
       </ul>

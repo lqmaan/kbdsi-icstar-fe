@@ -21,7 +21,6 @@ export class BudgetService {
 
   }
 
-
   public findAll(data: PageBudget):Observable<any>{
     console.log(data)
 

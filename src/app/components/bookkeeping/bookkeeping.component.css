@@ -7,17 +7,28 @@ th, td{
 }
 
 th{
-    @apply p-3 font-bold tracking-wide text-base m-10
+    @apply p-3 font-bold tracking-wide text-base m-10 
 }
 
 td > span{
-    @apply p-1.5 text-xs font-medium uppercase tracking-wider rounded-lg bg-opacity-50
+    @apply p-1.5  text-xs font-medium uppercase tracking-wider rounded-lg bg-opacity-50 
 }
 
 tr > td{
-    @apply p-2 text-lg text-gray-700 whitespace-nowrap
+    @apply p-2 text-sm font-medium text-gray-700 whitespace-nowrap 
 }
 
 td > button {
     @apply mx-0.5 px-2 py-1 my-1 rounded-md text-white transition-all font-bold
+}
+
+.icon-trash {
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-top: -4px;
+}
+.icon-print {
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-bottom: -2px;
 }

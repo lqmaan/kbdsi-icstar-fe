@@ -70,7 +70,7 @@ onItemChange(data: any){
       Swal.fire({
         title: 'Create Reminder Success',
       }).then((result) => {
-          // this.gotoReminderList();
+          this.gotoReminderList();
         })
       }, error => {
         Swal.fire({

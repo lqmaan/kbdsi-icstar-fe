@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { heroQuestionMarkCircle } from '@ng-icons/heroicons/outline';
+
+
 
 @Component({
   selector: 'app-header',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor(){
+
+  }
+
+  gotoManual(){
+    window.location.href="https://www.google.com/"
+  }
 }

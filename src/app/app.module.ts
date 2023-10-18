@@ -11,7 +11,7 @@ import {NgIconsModule} from '@ng-icons/core';
 import { CommonModule } from '@angular/common';
 
 
-import { heroEyeSlash, heroEye, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroChartBar, heroBanknotes, } from '@ng-icons/heroicons/outline';
+import { heroEyeSlash, heroEye, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroChartBar, heroBanknotes, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight } from '@ng-icons/heroicons/outline';
 
 
 
@@ -58,6 +58,7 @@ import { CategoryAddComponent } from './components/category-add/category-add.com
 
 import { registerLocaleData } from '@angular/common';
 import localeId from '@angular/common/locales/id';
+import { PrintComponent } from './components/ebudgeting/print/print.component';
 
 
 
@@ -87,7 +88,8 @@ registerLocaleData(localeId, 'id');
     HeaderComponent,
     BodyComponent,
     EbudgetingUpdateComponent,
-    CategoryAddComponent
+    CategoryAddComponent,
+    PrintComponent
     
     
 
@@ -106,7 +108,7 @@ registerLocaleData(localeId, 'id');
     MatDialogModule,
     HttpClientModule,
     CommonModule,
-    NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar}),
+    NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight}),
     SweetAlert2Module.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService, AuthguardService],

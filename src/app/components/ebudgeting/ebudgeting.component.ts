@@ -5,6 +5,7 @@ import { ElementRef} from '@angular/core';
 import {Modal} from 'bootstrap';
 
 import { CategoryAddComponent } from '../category-add/category-add.component';
+import {PrintComponent} from './print/print.component';
 
 import {formatDate} from '@angular/common';
 import {PageBudget} from '../../models/page-budget';
@@ -72,6 +73,25 @@ export class EbudgetingComponent implements OnInit {
     })
   }
 
+  nextPage(){
+    this.pageBudget.pageNum += 1;
+    this.budgetService.findAll(this.pageBudget).subscribe(data => {
+      this.budgets = data.content;
+  })
+}
+
+  previousPage(){
+    if(this.pageBudget.pageNum != 0){
+          this.pageBudget.pageNum -= 1
+          this.budgetService.findAll(this.pageBudget).subscribe(data => {
+            this.budgets = data.content;}
+          )
+      }
+    else{
+      this.pageBudget.pageNum = 0;
+    }
+  }
+
   confirmBox(budget: Budget){
     Swal.fire({
       title: 'Are you sure want to remove?',
@@ -131,8 +151,15 @@ export class EbudgetingComponent implements OnInit {
     }
   
   
-  downloadExcel(year: string){
-    console.log(this.chosenYear);
-    this.budgetService.downloadExcel(year);
-  }
+  openGenerateExcel(){
+    const mdConfig = new MatDialogConfig();
+    mdConfig.disableClose = false;
+    mdConfig.hasBackdrop = true;
+    mdConfig.width = "500px";
+    mdConfig.height = "auto";
+    // mdConfig.panelClass = 'rounded';
+
+    this.dialog.open(PrintComponent, mdConfig);
+    }
+
 }
