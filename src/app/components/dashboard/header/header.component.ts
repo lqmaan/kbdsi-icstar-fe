@@ -15,6 +15,6 @@ export class HeaderComponent {
   }
 
   gotoManual(){
-    window.location.href="https://www.google.com/"
+    window.location.href="https://docs.google.com/document/d/1XmbbUYaAvA3hwtVO9os2-6-wypeK5NxNWFM4BL7I3Mc/edit#heading=h.pmyqxlzi8v3z"
   }
 }
