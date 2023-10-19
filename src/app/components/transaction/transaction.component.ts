@@ -76,6 +76,7 @@ export class TransactionComponent implements OnInit {
 }
 
   previousPage(){
+    console.log()
     if(this.pageTransaction.pageNum != 0){
           this.pageTransaction.pageNum -= 1
           this.transactionService.findAllTransaction(this.pageTransaction).subscribe(data => {
