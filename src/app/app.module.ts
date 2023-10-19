@@ -47,7 +47,6 @@ import { BookkeepingComponent } from './components/bookkeeping/bookkeeping.compo
 import { EbudgetingCreateComponent } from './components/ebudgeting-create/ebudgeting-create.component';
 import { TransactionUpdateComponent } from './components/transaction-update/transaction-update.component';
 import { ReminderUpdateComponent } from './components/reminder-update/reminder-update.component';
-import { ComponentsComponent } from './components/components.component';
 import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
 import { HeaderComponent } from './components/dashboard/header/header.component';
 import { BodyComponent } from './body/body.component'; 
@@ -83,7 +82,6 @@ registerLocaleData(localeId, 'id');
     EbudgetingCreateComponent,
     TransactionUpdateComponent,
     ReminderUpdateComponent,
-    ComponentsComponent,
     SidebarComponent,
     HeaderComponent,
     BodyComponent,
