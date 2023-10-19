@@ -45,7 +45,6 @@ get formControl() {
 }
 
   onSignUp(){
-console.log(this.formControl)
 
       this.user.createdBy =  this.form.controls['email'].value;;
       this.user.name = this.form.controls['name'].value;
@@ -54,16 +53,16 @@ console.log(this.formControl)
       this.user.roles = "superadmin";
       this.user.password = this.form.controls['password'].value;
       this.userService.createUser(this.user).subscribe((result) => {
-        console.log(result);
         Swal.fire({
           title: 'Register Success',
+          icon:'success'
         }).then((result) => {
             this.gotoLogin();
           })
         }, error => {
           Swal.fire({
             title: 'Register Failed',
-            text: error
+            icon: 'error'
           })
         })
     

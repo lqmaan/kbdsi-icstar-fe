@@ -218,7 +218,7 @@
       <label class=" ">
         <!-- mr-[260px] -->
         <a class="font-semibold">To: </a>
-        <input #inputTo type="date" min=`${minDate}` [ngModel]="toDate" (ngModelChange)="changeTo($event)" [min]="fromDate != null ? fromDate : null | date: 'yyyy-MM-dd'"
+        <input #inputTo type="date" [ngModel]="toDate" (ngModelChange)="changeTo($event)" [min]="fromDate != null ? fromDate : null | date: 'yyyy-MM-dd'"
         style="cursor: pointer;"
           class="rounded-md shadow-md py-[6px] bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
       </label>

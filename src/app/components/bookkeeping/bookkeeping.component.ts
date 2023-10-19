@@ -29,9 +29,6 @@ export class BookkeepingComponent implements OnInit {
   pipe = new DatePipe("id-ID");
   fromDate: Date;
   toDate: Date;
-
-  minDate: string = "";
-  maxDate: string = "";
   chosenYear: string = "";
 
 
@@ -41,7 +38,6 @@ export class BookkeepingComponent implements OnInit {
 
   constructor(private transactionService: TransactionService, private categoryService: CategoryService, public router: Router) {
     this.pageBookkeeping = new PageBookkeeping();
-    this.income = [];
   }
 
   ngOnInit(){
@@ -103,7 +99,6 @@ export class BookkeepingComponent implements OnInit {
         })
       }
     }    
-    
   }
 
   clear(){

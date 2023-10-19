@@ -17,10 +17,7 @@ import {CurrencyPipe} from '@angular/common';
 export class TransactionUpdateComponent implements OnInit{
   category: Category[] = []
   transaction: Transaction;
-  predesc: string;
-  pretype: string;
-  preamount: string;
-  precategory: string;
+
   form: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -40,10 +37,7 @@ export class TransactionUpdateComponent implements OnInit{
     else
     {
     console.log(history.state)
-    this.predesc = history.state.description;
-    this.pretype =  history.state.type;
-    this.precategory = history.state.category;
-    this.preamount = history.state.amount;
+
 
     this.categoryService.findAll().subscribe(data => {
       this.category = data;

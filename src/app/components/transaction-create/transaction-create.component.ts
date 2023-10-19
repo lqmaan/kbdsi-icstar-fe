@@ -74,9 +74,6 @@ onItemChange(data: any){
   console.log(this.transaction)
 }
 
-changeAmount(data: any){
-  console.log(data)
-}
 
   onSubmit(){
     // console.log(this.login)
@@ -90,19 +87,19 @@ changeAmount(data: any){
     this.transaction.amount = Number(tmp);
     this.transaction.category = this.form.controls['category'].value;
     console.log(this.transaction)
-    // this.transactionService.createTransaction(this.transaction).subscribe((result) => {
-    //   Swal.fire({
-    //     title: 'Create Transaction Success',
-    //   }).then((result) => {
-    //       // this.gotoTransactionList();
-    //     })
-    //   }, error => {
-    //     Swal.fire({
-    //       title: 'Create Transaction Failed',
-    //       icon:'error'
-    //     })
-    //     console.log(error);
-    //   })
+    this.transactionService.createTransaction(this.transaction).subscribe((result) => {
+      Swal.fire({
+        title: 'Create Transaction Success',
+      }).then((result) => {
+          this.gotoTransactionList();
+        })
+      }, error => {
+        Swal.fire({
+          title: 'Create Transaction Failed',
+          icon:'error'
+        })
+        console.log(error);
+      })
   }
 
   gotoTransactionList(){

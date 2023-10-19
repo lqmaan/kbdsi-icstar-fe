@@ -28,7 +28,6 @@ import {ReminderService} from './services/reminder.service';
 import {BudgetService} from './services/budget.service';
 import {CategoryService} from './services/category.service';
 import {NavbarService} from './services/navbar.service';
-import {AuthguardService} from './services/authguard.service';
 
 //Components
 import { AppComponent } from './app.component';
@@ -110,7 +109,7 @@ registerLocaleData(localeId, 'id');
     NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight}),
     SweetAlert2Module.forRoot()
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService, AuthguardService, CurrencyPipe],
+  providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService, CurrencyPipe],
   bootstrap: [AppComponent],
   // entryComponents: [CategoryAddComponent]
 })
