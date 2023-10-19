@@ -5,11 +5,12 @@ import { DatePipe } from '@angular/common';
 
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';  
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';  
 import {Reminder} from '../../models/reminder';
 import {User} from '../../models/user';
 import {ReminderService} from '../../services/reminder.service';
 import {UserService} from '../../services/user.service';
+import {CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: 'app-reminder-update',
@@ -28,10 +29,18 @@ export class ReminderUpdateComponent {
   prepayment: string;
   preamount: number;
   prerepeated: boolean;
+  currDate : Date;
+  reminderForm: FormGroup
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private userService: UserService, private reminderService: ReminderService){
+    private router: Router, private userService: UserService, 
+    private reminderService: ReminderService,
+    private currencyPipe: CurrencyPipe,
+    private fb: FormBuilder
+    ){
       this.reminder = new Reminder();
+      this.currDate = new Date();
+
     }
 
   ngOnInit(){
@@ -50,18 +59,36 @@ export class ReminderUpdateComponent {
     this.prepayment = this.pipe.transform(history.state.paymentDate, 'yyyy-MM-dd') || "";
     this.preamount = history.state.amount;
     this.prerepeated = history.state.repeated;
+
+    this.reminderForm = this.fb.group({  
+      description : new FormControl(history.state.description, Validators.required),  
+      repeated: new FormControl(history.state.repeated, Validators.required),
+      email: new FormControl(history.state.email, Validators.required),
+      scheduleDate : new FormControl(history.state.scheduleDate, Validators.required),
+      paymentDate : new FormControl(history.state.paymentDate, Validators.required),
+      amount : new FormControl(history.state.amount, Validators.required),
+
+  });
+
+this.reminderForm.valueChanges.subscribe(form => {
+  if(form.amount){
+    this.reminderForm.patchValue({
+      amount: this.currencyPipe.transform(form.amount.replace(/\D/g, '').replace(/^0+/,''), 'IDR', 'symbol', '1.0-0')
+    }, {emitEvent : false})
+  }
+  })
   }
   }
 
-  reminderForm: FormGroup = new FormGroup({  
-    description : new FormControl(history.state.description, Validators.required),  
-    repeated: new FormControl(history.state.repeated, Validators.required),
-    email: new FormControl(history.state.email, Validators.required),
-    scheduleDate : new FormControl(history.state.scheduleDate, Validators.required),
-    paymentDate : new FormControl(history.state.paymentDate, Validators.required),
-    amount : new FormControl(history.state.amount, Validators.required),
+//   reminderForm: FormGroup = new FormGroup({  
+//     description : new FormControl(history.state.description, Validators.required),  
+//     repeated: new FormControl(history.state.repeated, Validators.required),
+//     email: new FormControl(history.state.email, Validators.required),
+//     scheduleDate : new FormControl(history.state.scheduleDate, Validators.required),
+//     paymentDate : new FormControl(history.state.paymentDate, Validators.required),
+//     amount : new FormControl(history.state.amount, Validators.required),
 
-});  
+// });  
 
 onItemChange(data: any){
   this.reminder.repeated = data.target.defaultValue;
@@ -72,7 +99,10 @@ onItemChange(data: any){
     this.reminder.reminderId = history.state.reminderId;
     this.reminder.updatedBy =  localStorage.getItem('email') || "null";
     this.reminder.description = this.reminderForm.controls['description'].value;
-    this.reminder.amount = this.reminderForm.controls['amount'].value;
+    // this.reminder.amount = this.reminderForm.controls['amount'].value;
+    let res = this.reminderForm.controls['amount'].value.replace(/[^0-9.-]+/g,"");
+    let tmp = res.split('.').join("");
+    this.reminder.amount = Number(tmp);
     this.reminder.scheduleDate = this.pipe.transform(this.reminderForm.controls['scheduleDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.paymentDate = this.pipe.transform(this.reminderForm.controls['paymentDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.status = history.state.status;

@@ -114,6 +114,7 @@ export class ReminderComponent implements OnInit {
   }
 
   gotoEditReminder(reminder: Reminder){
+    console.log(reminder);
     this.router.navigateByUrl('/reminder-update', {state: reminder});
   }
   

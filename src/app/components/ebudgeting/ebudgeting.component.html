@@ -164,7 +164,7 @@
             <span [ngClass]="budget.type == 'income' ? 'text-green-800 bg-green-200': 'text-red-800 bg-red-200'">
             {{budget.type}}</span>
           </td>
-          <td>{{budget.amount}}</td>
+          <td>{{budget.amount | currency: "IDR": "symbol"}}</td>
           <td>{{budget.description}}</td>
           <td>
             <button [hidden]="budget.year == currYear ? true : false"

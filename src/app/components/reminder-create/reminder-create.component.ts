@@ -5,11 +5,13 @@ import { DatePipe } from '@angular/common';
 
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';  
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';  
 import {Reminder} from '../../models/reminder';
 import {User} from '../../models/user';
 import {ReminderService} from '../../services/reminder.service';
 import {UserService} from '../../services/user.service';
+
+import {CurrencyPipe} from '@angular/common';
 
 
 
@@ -23,9 +25,14 @@ export class ReminderCreateComponent {
   users: User[] = [];
   pipe = new DatePipe("id-ID");
   currDate : Date;
+  reminderForm: FormGroup
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private userService: UserService, private reminderService: ReminderService){
+    private router: Router, private userService: UserService, 
+    private reminderService: ReminderService,
+    private currencyPipe: CurrencyPipe,
+    private fb: FormBuilder
+    ){
       this.reminder = new Reminder();
       this.currDate = new Date();
     }
@@ -39,20 +46,37 @@ export class ReminderCreateComponent {
     this.userService.findAll().subscribe((result) => {
       this.users = result;
     })
+    this.reminderForm = this.fb.group({  
+      description : new FormControl(''),  
+      repeated: new FormControl(''),
+      email: new FormControl(''),
+      scheduleDate : new FormControl(''),
+      paymentDate : new FormControl(''),
+      amount : new FormControl(''),
+  });
+
+this.reminderForm.valueChanges.subscribe(form => {
+  if(form.amount){
+    this.reminderForm.patchValue({
+      amount: this.currencyPipe.transform(form.amount.replace(/\D/g, '').replace(/^0+/,''), 'IDR', 'symbol', '1.0-0')
+    }, {emitEvent : false})
+  }
+  })
     }
   }
 
-  reminderForm: FormGroup = new FormGroup({  
-    description : new FormControl(''),  
-    repeated: new FormControl(''),
-    email: new FormControl(''),
-    scheduleDate : new FormControl(''),
-    paymentDate : new FormControl(''),
-    amount : new FormControl(''),
+//   reminderForm: FormGroup = new FormGroup({  
+//     description : new FormControl(''),  
+//     repeated: new FormControl(''),
+//     email: new FormControl(''),
+//     scheduleDate : new FormControl(''),
+//     paymentDate : new FormControl(''),
+//     amount : new FormControl(''),
 
-});  
+// });  
 
 onItemChange(data: any){
+  console.log(this.reminderForm.get('scheduleDate'));  
   this.reminder.repeated = data.target.defaultValue;
 }
 
@@ -61,7 +85,10 @@ onItemChange(data: any){
     this.reminder.createdBy =  localStorage.getItem('email') || "null";
     this.reminder.description = this.reminderForm.controls['description'].value;
     this.reminder.email = this.reminderForm.controls['email'].value;
-    this.reminder.amount = this.reminderForm.controls['amount'].value;
+    // this.reminder.amount = this.reminderForm.controls['amount'].value;
+    let res = this.reminderForm.controls['amount'].value.replace(/[^0-9.-]+/g,"");
+    let tmp = res.split('.').join("");
+    this.reminder.amount = Number(tmp);
     this.reminder.scheduleDate = this.pipe.transform(this.reminderForm.controls['scheduleDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.paymentDate = this.pipe.transform(this.reminderForm.controls['paymentDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.status = "ongoing";

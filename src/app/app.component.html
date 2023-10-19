@@ -6,13 +6,13 @@
     </div>
   </nav>
   <div class="p-8 mt-[60px] flex-1"> -->
+<div class="bg-gray-50">
 <app-header></app-header>
 <router-outlet></router-outlet>
 
 <!-- <app-dashboard></app-dashboard> -->
-
 <app-dashboard *ngIf="!isCheckoutRoute()"></app-dashboard>
-
+</div>
 <!-- Hide Sidebar on Login (Still error after login) -->
 <!-- <app-dashboard *ngIf="isLoggedIn$ | async as isLoggedIn"></app-dashboard> -->
 

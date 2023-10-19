@@ -1,6 +1,6 @@
 <!-- <router-outlet></router-outlet> -->
 
-<main class="flex items-center justify-center h-screen bg-gray-100">
+<main class="flex items-center justify-center h-screen">
   <form [formGroup]="form" (ngSubmit)="onSignIn()" 
   
   class="bg-white w-[500px] h-auto p-6 my-14 rounded-md shadow-md">
@@ -44,7 +44,7 @@
       <label class="text-gray-700 text-base" for="remember">Remember Me</label>
     </div> -->
     <button [disabled]="!form.valid"
-       type="submit" class="mt-8 bg-slate-800 w-full text-gray-100 py-3 font-semibold rounded-md shadow-md hover:bg-blue-600 transition-colors">
+       type="submit" class="mt-4 bg-slate-800 w-full text-gray-100 py-3 font-semibold rounded-md shadow-md hover:bg-blue-600 transition-colors">
       LOGIN
     </button>
     <p for="sign-up" class="text-gray-700 flex items-center justify-center my-1 ">

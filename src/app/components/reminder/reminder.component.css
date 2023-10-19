@@ -22,6 +22,10 @@ td > button {
     @apply mx-0.5 px-2 py-1 my-1 rounded-md text-white transition-all font-bold
 }
 
+table{
+    @apply max-w-full
+}
+
 .icon-print {
     vertical-align: middle;
     margin-right: 4px;

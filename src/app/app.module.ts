@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgIconsModule} from '@ng-icons/core';
 import { CommonModule } from '@angular/common';
 
+import {CurrencyPipe} from '@angular/common';
 
 import { heroEyeSlash, heroEye, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroChartBar, heroBanknotes, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight } from '@ng-icons/heroicons/outline';
 
@@ -109,7 +110,7 @@ registerLocaleData(localeId, 'id');
     NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight}),
     SweetAlert2Module.forRoot()
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService, AuthguardService],
+  providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService, AuthguardService, CurrencyPipe],
   bootstrap: [AppComponent],
   // entryComponents: [CategoryAddComponent]
 })

@@ -73,25 +73,25 @@
         </li> -->
       </ul>
       <div
-        class="relative flex flex-col min-w-0 break-words w-full mb-6 rounded px-2 flex-auto tab-content tab-space"
+        class=" flex flex-col min-w-0 break-words w-full mb-6 rounded px-2 flex-auto tab-content tab-space"
       >
         <div [ngClass]="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="overflow-auto rounded-lg shadow">
             <table class="w-full">
-              <thead class="bg-gray-50 border-b-2 border-gray-200">
+              <thead class="w-full bg-gray-50 border-b-2 border-gray-200">
                 <tr>
-                  <th class="w-40">Description</th>
-                  <th class="w-40">Schedule</th>
-                  <th class="w-40">Due Date</th>
-                  <th class="w-32">Amount</th>
-                  <th class="w-40">Email</th>
-                  <th class="w-32">Status</th>
-                  <th class="w-32">Repeated</th>
-                  <th class="w-32">Action</th>
+                  <th class="w-24">Description</th>
+                  <th class="w-24">Schedule</th>
+                  <th class="w-24">Due Date</th>
+                  <th class="w-24">Amount</th>
+                  <th class="w-16">Email</th>
+                  <th class="w-24">Status</th>
+                  <th class="w-24">Repeated</th>
+                  <th class="w-24">Action</th>
                 </tr>
               </thead>
 
-              <tbody class="divide-y divide-gray-100">
+              <tbody class="divide-y divide-gray-100 w-full">
                 <tr [ngClass]="i%2 == 0 ? 'bg-white' : 'bg-gray-50'" *ngFor="let reminder of reminders, let i = index">
                   <td>{{reminder.description}}</td>
                   <td>{{reminder.scheduleDate | date: 'dd/MM/yyyy HH:mm'}}</td>
