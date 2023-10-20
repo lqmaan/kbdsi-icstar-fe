@@ -23,7 +23,6 @@ export class TransactionService {
   }
 
   public findAllTransaction(data: PageTransaction):Observable<any>{
-    console.log(data)
 
     let transactionParam = new HttpParams()
     .set('description', data.description)

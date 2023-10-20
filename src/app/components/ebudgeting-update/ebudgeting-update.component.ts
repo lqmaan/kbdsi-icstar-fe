@@ -49,7 +49,6 @@ export class EbudgetingUpdateComponent {
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })
-    console.log(history.state);
     this.precategory = history.state.category;
 
      this.form = this.fb.group({  
@@ -74,7 +73,6 @@ this.form.valueChanges.subscribe(form => {
 
 onItemChange(data: any){
   this.budget.type = data.target.defaultValue;
-  console.log(this.budget)
 }
 
 
@@ -89,7 +87,6 @@ onItemChange(data: any){
     this.budget.category = this.form.controls['category'].value;
     this.budget.year = this.form.controls['year'].value;
     this.budget.type =  this.form.controls['type'].value;
-    console.log(this.budget)
     this.budgetService.editBudget(this.budget).subscribe((result) => {
       Swal.fire({
         title: 'Edit Budget Success',

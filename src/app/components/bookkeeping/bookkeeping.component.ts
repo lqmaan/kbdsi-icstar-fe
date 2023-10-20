@@ -81,7 +81,6 @@ export class BookkeepingComponent implements OnInit {
 
 
   changeFrom(data: any){
-    console.log(data)
     this.fromDate = data;
     this.pageBookkeeping.startDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
     if (this.toDate != null) {
@@ -94,14 +93,12 @@ export class BookkeepingComponent implements OnInit {
       else{
         this.pageBookkeeping.startDate = this.pipe.transform(this.fromDate, 'dd/MM/yyyy') || "";
         this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(result => {
-          console.log(this.pageBookkeeping)
           this.transactions = result.content;
         })
       }
     }    
   }
   changeTo(data: any){
-    console.log(data)
     this.toDate = data;
     this.pageBookkeeping.endDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
     if (this.fromDate != null) {
@@ -114,7 +111,6 @@ export class BookkeepingComponent implements OnInit {
       else{
         this.pageBookkeeping.endDate = this.pipe.transform(this.toDate, 'dd/MM/yyyy') || "";
         this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(result => {
-          console.log(this.pageBookkeeping)
           this.transactions = result.content;
         })
       }

@@ -52,7 +52,6 @@ export class ReminderUpdateComponent {
     this.userService.findAll().subscribe((result) => {
       this.users = result;
     })
-    console.log(history.state)
     this.predesc = history.state.description;
     this.preemail = history.state.email;
     this.preschedule = this.pipe.transform(history.state.scheduleDate, 'yyyy-MM-dd') || "";

@@ -20,14 +20,12 @@ export class UserService {
   }
 
   public paginationUser(data: PageUser):Observable<any>{
-    console.log(data)
 
     let userParam = new HttpParams()
     .set('name', data.name)
     .set('pageNum', data.pageNum)
     .set('pageSize',data.pageSize)
 
-    console.log(userParam)
     return this.http.get<PageUser>(`${this.usersUrl}/name`, {params:userParam})
   }
 

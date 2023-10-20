@@ -46,7 +46,6 @@ export class UserCreateComponent implements OnInit{
     if(this.form.controls['password'].value ==  this.form.controls['repeatpassword'].value){
     this.user.password = this.form.controls['password'].value;
     this.userService.createUser(this.user).subscribe((result) => {
-      console.log(result);
       Swal.fire({
         title: 'Create User Success',
       }).then((result) => {

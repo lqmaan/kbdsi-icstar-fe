@@ -92,7 +92,6 @@ export class TransactionComponent implements OnInit {
   }
 
   confirmBox(transaction :Transaction){
-    console.log("delete", transaction)
     Swal.fire({
       title: 'Are you sure want to remove?',
       text: 'You will not be able to recover this file!',

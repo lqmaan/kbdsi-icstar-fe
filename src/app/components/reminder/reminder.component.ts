@@ -83,9 +83,7 @@ export class ReminderComponent implements OnInit {
       if (result.value) {
         this.delete.id = reminder.reminderId;
         this.delete.updatedBy = localStorage.getItem("email") || "null";
-        console.log(this.delete)
         this.reminderService.deleteReminder(this.delete).subscribe(result => {
-          console.log(result)
           this.reminderService.findAll(this.pageReminder).subscribe(data => {
             this.reminders = data.content;
           })
@@ -113,7 +111,6 @@ export class ReminderComponent implements OnInit {
   }
 
   gotoEditReminder(reminder: Reminder){
-    console.log(reminder);
     this.router.navigateByUrl('/reminder-update', {state: reminder});
   }
   

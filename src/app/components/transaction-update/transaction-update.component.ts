@@ -36,9 +36,6 @@ export class TransactionUpdateComponent implements OnInit{
     }
     else
     {
-    console.log(history.state)
-
-
     this.categoryService.findAll().subscribe(data => {
       this.category = data;
     })

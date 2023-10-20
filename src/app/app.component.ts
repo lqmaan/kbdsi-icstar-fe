@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
 	checkoutUrls = ['/login'];
 
   constructor(private router: Router, private loginService: LoginService) {
-    console.log("test", router.events)
     }
 
 

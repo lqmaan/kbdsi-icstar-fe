@@ -64,7 +64,6 @@ export class UserComponent implements OnInit {
   handleSearch(input: string): void{
     this.pageUser.name = input;
     this.userService.paginationUser(this.pageUser).subscribe(data => {
-      console.log(data)
       this.users = data.content;
     })
   }

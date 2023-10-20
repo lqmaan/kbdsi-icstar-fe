@@ -22,7 +22,6 @@ export class BudgetService {
   }
 
   public findAll(data: PageBudget):Observable<any>{
-    console.log(data)
 
     let budgetParam = new HttpParams()
     .set('year', data.year)

@@ -29,7 +29,6 @@ export class UserUpdateComponent implements OnInit {
     }
     else
     {
-    console.log(history.state)
     this.preemail = history.state.email;
     this.prename =  history.state.name;
     this.prephone = history.state.phone;

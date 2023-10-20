@@ -18,7 +18,6 @@ export class ReminderService {
   }
 
   public findAll(data: PageReminder):Observable<any>{
-    console.log(data)
 
     let reminderParam = new HttpParams()
     .set('description', data.description)

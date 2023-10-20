@@ -63,13 +63,10 @@ export class TransactionCreateComponent implements OnInit{
 
 onItemChange(data: any){
   this.transaction.type = data.target.defaultValue;
-  console.log(this.transaction)
 }
 
 
   onSubmit(){
-    // console.log(this.login)
-    console.log(this.transaction)
     this.transaction.createdBy =  localStorage.getItem('email') || "null";
     this.transaction.name = this.form.controls['description'].value;
     this.transaction.description = this.form.controls['description'].value;
@@ -78,7 +75,6 @@ onItemChange(data: any){
     let tmp = res.split('.').join("");
     this.transaction.amount = Number(tmp);
     this.transaction.category = this.form.controls['category'].value;
-    console.log(this.transaction)
     this.transactionService.createTransaction(this.transaction).subscribe((result) => {
       Swal.fire({
         title: 'Create Transaction Success',

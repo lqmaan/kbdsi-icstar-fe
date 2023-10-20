@@ -62,7 +62,6 @@ this.reminderForm.valueChanges.subscribe(form => {
   }
 
 onItemChange(data: any){
-  console.log(this.reminderForm.get('scheduleDate'));  
   this.reminder.repeated = data.target.defaultValue;
 }
 
@@ -78,7 +77,6 @@ onItemChange(data: any){
     this.reminder.scheduleDate = this.pipe.transform(this.reminderForm.controls['scheduleDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.paymentDate = this.pipe.transform(this.reminderForm.controls['paymentDate'].value, 'dd/MM/yyyy') || "";
     this.reminder.status = "ongoing";
-    console.log(this.reminder)
     this.reminderService.createReminder(this.reminder).subscribe((result) => {
       Swal.fire({
         title: 'Create Reminder Success',
