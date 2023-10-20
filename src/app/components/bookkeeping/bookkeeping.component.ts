@@ -81,42 +81,22 @@ export class BookkeepingComponent implements OnInit {
 
 
   changeFrom(data: any){
-    this.fromDate = data;
-    this.pageBookkeeping.startDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
-    if (this.toDate != null) {
-      if(this.fromDate > this.toDate){
-        Swal.fire({
-          title: "Can't be later than the to date",
-          icon:'warning'
-        })
-      }
-      else{
+        this.fromDate = data;
         this.pageBookkeeping.startDate = this.pipe.transform(this.fromDate, 'dd/MM/yyyy') || "";
         this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(result => {
           this.transactions = result.content;
         })
-      }
-    }    
-  }
+    }
+  
   changeTo(data: any){
     this.toDate = data;
-    this.pageBookkeeping.endDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";
-    if (this.fromDate != null) {
-      if(this.toDate < this.fromDate){
-        Swal.fire({
-          title: "Can't be earlier than the from date",
-          icon:'warning'
-        })
-      }
-      else{
-        this.pageBookkeeping.endDate = this.pipe.transform(this.toDate, 'dd/MM/yyyy') || "";
+    this.pageBookkeeping.endDate = this.pipe.transform(data, 'dd/MM/yyyy') || "";    
         this.transactionService.findAllBookkeeping(this.pageBookkeeping).subscribe(result => {
           this.transactions = result.content;
-        })
-      }
+      })
     }
     
-  }  clear(){
+    clear(){
     this.pageBookkeeping.category = "";
     this.pageBookkeeping.year = "";
     this.pageBookkeeping.startDate = "";
