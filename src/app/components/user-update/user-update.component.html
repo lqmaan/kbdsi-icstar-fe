@@ -3,52 +3,86 @@
     <h1 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">
       Update Account
     </h1>
-<div class="mb-6">
-  <label>Email</label>
-    <input  type="email" required
-      formControlName="email" [(ngModel)]="preemail" />
-      <div class="text-red-500  font-xs italic" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-    Email is required.
-  </div>
-</div>
     <div class="mb-6">
-       <label>Name</label>
-    <input type="text" required formControlName="name" [(ngModel)]="prename" />
-    <div class="text-red-500 font-xs italic" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
-    Name is required.
-  </div>
+      <label>Email</label>
+      <input
+        type="email"
+        required
+        formControlName="email"
+        [(ngModel)]="preemail"
+      />
+      <div
+        class="text-red-500 font-xs italic"
+        *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+      >
+        Email is required.
+      </div>
     </div>
-   <div class="mb-6">
-    <label>Phone</label>
-    <input type="phone" placeholder="Ex: 8xxxxxxx" required formControlName="phone" [(ngModel)]="prephone" />
-        <div class="text-red-500  font-xs italic" *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
-    Phone is required.
-  </div>
-   </div>
-    
+    <div class="mb-6">
+      <label>Name</label>
+      <input
+        type="text"
+        required
+        formControlName="name"
+        [(ngModel)]="prename"
+      />
+      <div
+        class="text-red-500 font-xs italic"
+        *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+      >
+        Name is required.
+      </div>
+    </div>
+    <div class="mb-6">
+      <label>Phone</label>
+      <input
+        type="phone"
+        placeholder="Ex: 8xxxxxxx"
+        required
+        formControlName="phone"
+        [(ngModel)]="prephone"
+      />
+      <div
+        class="text-red-500 font-xs italic"
+        *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid"
+      >
+        Phone is required.
+      </div>
+    </div>
+
     <div class="relative mb-6">
       <label>Password</label>
-      <input name="password" [type]="showPassword ? 'text': 'password'" required
-        formControlName="password" />
-      <div (click)="toggleShowPassword()" class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8">
-        <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
+      <input
+        name="password"
+        [type]="showPassword ? 'text' : 'password'"
+        required
+        formControlName="password"
+      />
+      <div
+        (click)="toggleShowPassword()"
+        class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8"
+      >
+        <ng-icon [name]="showPassword ? 'heroEye' : 'heroEyeSlash'"></ng-icon>
       </div>
-       <div class="absolute text-red-500 font-xs italic" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-    Password is required.
-  </div>
-
+      <div
+        class="absolute text-red-500 font-xs italic"
+        *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+      >
+        Password is required.
+      </div>
     </div>
-    <!-- <p class="text-gray-600 -mt-1 text-sm">Password must be at least 6 characters</p> -->
-
     <div class="flex justify-end gap-2 mt-12">
- <button
+      <button
         routerLink="/user"
         class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2.5 px-4 rounded-md shadow-md"
       >
         Cancel
       </button>
-      <button [disabled]="!form.valid"
-        type="submit" class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-md shadow-md">
+      <button
+        [disabled]="!form.valid"
+        type="submit"
+        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-md shadow-md"
+      >
         Save
       </button>
     </div>

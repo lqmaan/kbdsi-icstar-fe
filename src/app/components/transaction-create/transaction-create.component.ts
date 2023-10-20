@@ -60,14 +60,6 @@ export class TransactionCreateComponent implements OnInit{
   }
   }
 
-//   form: FormGroup = new FormGroup({  
-//     description : new FormControl('', Validators.required),  
-//     type: new FormControl('', Validators.required),
-//     category : new FormControl('', Validators.required),
-//     amount : new FormControl('', Validators.required),
-
-// });  
-
 
 onItemChange(data: any){
   this.transaction.type = data.target.defaultValue;

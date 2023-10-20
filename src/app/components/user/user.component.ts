@@ -3,13 +3,12 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { MatDialog } from '@angular/material/dialog';
 import { UserCreateComponent } from '../user-create/user-create.component';
 
-// import Flowbite from 'flowbite';
 import { Router } from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {PageUser} from '../../models/page-user';
 import {User} from '../../models/user';
 import {Delete} from '../../models/delete';
-// import { UserCreateComponent } from './components/user-create/user-create.component';
+
 
 
 @Component({
@@ -108,27 +107,10 @@ export class UserComponent implements OnInit {
       }
     })
   }
-// openPopup(): void {
-//     Flowbite.show('#popupElementID'); // Gantikan dengan ID atau selektor yang benar
-//   }
-// constructor(public dialog: MatDialog) {}
-// openPopup(): void {
-//   const dialogRef = this.dialog.open(UserCreateComponent, {
-//     width: '250px'
-//   });
 
-//   dialogRef.afterClosed().subscribe(result => {
-//     console.log('Dialog ditutup', result);
-//     // Di sini Anda dapat menavigasi ke halaman lain jika diperlukan
-//   });
-//   }
-
-
-
-  openNewPage() {
-    this._dialog.open(UserCreateComponent); // Ganti dengan rute tujuan yang sesuai
-    // Flowbite.closePopup(); // Tutup pop-up setelah mengarahkan pengguna
-  }
+  // openNewPage() {
+  //   this._dialog.open(UserCreateComponent); 
+  // }
 
   downloadExcel(){
     window.location.href='https://kbdsi-icstar-d22f3974b870.herokuapp.com/api/users/export-to-excel';

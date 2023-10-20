@@ -100,15 +100,6 @@ export class BookkeepingComponent implements OnInit {
       }
     }    
   }
-
-  clear(){
-    this.pageBookkeeping.category = "";
-    this.pageBookkeeping.year = "";
-    this.pageBookkeeping.startDate = "";
-    this.fromDateInput.nativeElement.value = "";
-    this.toDateInput.nativeElement.value = "";
-  }
-
   changeTo(data: any){
     console.log(data)
     this.toDate = data;
@@ -129,6 +120,12 @@ export class BookkeepingComponent implements OnInit {
       }
     }
     
+  }  clear(){
+    this.pageBookkeeping.category = "";
+    this.pageBookkeeping.year = "";
+    this.pageBookkeeping.startDate = "";
+    this.fromDateInput.nativeElement.value = "";
+    this.toDateInput.nativeElement.value = "";
   }
 
   changeCategory(data: any){
@@ -168,6 +165,4 @@ export class BookkeepingComponent implements OnInit {
   downloadExcel(){
     this.transactionService.downloadExcel();
   }
-
-
 }

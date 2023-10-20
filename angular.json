@@ -97,7 +97,6 @@
               "node_modules/flowbite/dist/css/flowbite.min.css"
             ],
            "scripts": [
-            "node_modules/alpinejs/dist/cdn.min.js",
             "node_modules/flowbite/dist/js/flowbite.min.js"
           ]
           }

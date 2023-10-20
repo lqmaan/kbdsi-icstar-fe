@@ -1,82 +1,59 @@
 <div
-*ngIf="showSidebar"
+  *ngIf="showSidebar"
   [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
   id="logo-sidebar"
   class="sidenav top-0 left-0 z-40 w-60 h-screen transition-transform -translate-x-full bg-[rgb(3,15,39)] border-r border-gray-900 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
 >
-  <!-- top-0 left-0 z-40 w-60 h-screen pt-20 transition-transform -translate-x-full bg-[#030F27] border-r border-gray-900 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 -->
-  <div  class="logo-container">
-    
+  <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
-      
       <ng-icon class="myImg color='red'">[name]="heroBars"</ng-icon>
-      <!-- <img class="myImg" src="/assets/menu.jpg" /> -->
-        <svg
-            class="w-8 h-8 text-white text-md"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-            ></path>
-          </svg>
+      <svg
+        class="w-8 h-8 text-white text-md"
+        aria-hidden="true"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+        ></path>
+      </svg>
     </button>
-  
+
     <div
       class="logo-text h-full px-3 pb-4 overflow-y-auto bg-[#030F27] dark:bg-gray-800"
       @fadeInOut
       *ngIf="collapsed"
-    >
-  
-    </div>
-    <!-- <button
-      class="btn-close text-white w-3"
-      @rotate
-      *ngIf="collapsed"
-      (click)="closeSidenav()"
-    >
-      <i class="fa fa-times" aria-hidden="true"> </i>
-    </button> -->
+    ></div>
   </div>
 
-  <!-- h-full px-3 pb-4 overflow-y-auto bg-[#030F27] dark:bg-gray-800 -->
   <ul class="sidenav-nav space-y-2 font-semibold">
-    <!-- space-y-2 font-medium  -->
-    <li class="sidenav-nav-item hover:bg-gray-50 hover:bg-opacity-10 dark:hover:bg-gray-50 rounded-md " *ngFor="let data of navData">
+    <li
+      class="sidenav-nav-item hover:bg-gray-50 hover:bg-opacity-10 dark:hover:bg-gray-50 rounded-md"
+      *ngFor="let data of navData"
+    >
       <a
         [routerLink]="[data.routeLink]"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        (click)="data.label == 'Logout' ? Logout(): null"
-        class="sidenav-nav-link flex items-center text-base text-gray-300 rounded-lg group-hover:text-white dark:text-white  "
+        (click)="data.label == 'Logout' ? Logout() : null"
+        class="sidenav-nav-link flex items-center text-base text-gray-300 rounded-lg group-hover:text-white dark:text-white"
       >
-        <!-- flex items-center p-2 text-base text-gray-300 rounded-lg hover:text-white dark:text-white hover:bg-gray-50 hover:bg-opacity-10 dark:hover:bg-gray-50 group -->
-        <!-- <i
-          class="sidenav-link-icon w-5 h-5 text-gray-300 transition duration-75 dark:text-gray-400 group-hover:text-yellow-300 dark:group-hover:text-white"
-          [class]="data.icon"
-        >  -->
-        <ng-icon 
-        class="sidenav-link-icon w-1 h-1 pl-3 text-gray-300 transition duration-75 dark:text-gray-400 group-hover:text-yellow-300 dark:group-hover:text-white"
-        [name]="data.icon" 
-        size="30"></ng-icon>
-          <!-- w-5 h-5 text-gray-300 transition duration-75 dark:text-gray-400 group-hover:text-yellow-300 dark:group-hover:text-white -->
-        <!-- </i> -->
+        <ng-icon
+          class="sidenav-link-icon w-1 h-1 pl-3 text-gray-300 transition duration-75 dark:text-gray-400 group-hover:text-yellow-300 dark:group-hover:text-white"
+          [name]="data.icon"
+          size="30"
+        ></ng-icon>
         <span
-          class="sidenav-link-text flex items-center text-base text-3xl font-semibold rounded-lg group-hover:text-white group-dark:text-white "
+          class="sidenav-link-text flex items-center text-base font-semibold rounded-lg group-hover:text-white group-dark:text-white"
           @fadeInOut
           *ngIf="collapsed"
         >
-          <!-- flex items-center p-2 text-base text-gray-300 rounded-lg hover:text-white dark:text-white hover:bg-gray-50 hover:bg-opacity-10 dark:hover:bg-gray-50 group -->
           {{ data.label }}
-          
         </span>
       </a>
     </li>
   </ul>
 </div>
-
-<!-- //simpan semua icon di nav-data.ts -->

@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit, OnDestroy{
   });  
 
     onSignIn(){
-      // console.log(this.login)
       this.login.email =  this.form.controls['email'].value;
       this.login.password = this.form.controls['password'].value
       console.log(this.login)

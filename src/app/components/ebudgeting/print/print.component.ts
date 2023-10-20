@@ -16,16 +16,13 @@ import {BudgetService} from '../../../services/budget.service';
 })
 export class PrintComponent implements OnInit{
 
-  // print: Print;
+
 constructor
 (@Inject(MAT_DIALOG_DATA) public data:any,private dialogRef: MatDialogRef<PrintComponent>, private budgetService: BudgetService){
-  // this.print = new Print();
 }
 
 ngOnInit(): void{
 }
-
-
 
 printForm: FormGroup = new FormGroup({  
   year : new FormControl(''),  

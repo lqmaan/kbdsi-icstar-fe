@@ -12,7 +12,6 @@ import {Delete} from '../../models/delete';
   templateUrl: './reminder.component.html', 
   template: '<button (click)="showSweetAlert()">Show SweetAlert</button>',
   
-
   styleUrls: ['./reminder.component.css']
 })
 

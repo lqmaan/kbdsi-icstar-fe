@@ -60,18 +60,6 @@ export class EbudgetingCreateComponent implements OnInit {
         })
   }
   }
-  
-
-//   form: FormGroup = new FormGroup({  
-    // name : new FormControl(''),  
-    // description : new FormControl(''),  
-    // type: new FormControl(''),
-    // category : new FormControl(''),
-    // amount : new FormControl(''),
-    // year : new FormControl('')  
-
-// });  
-
 
 onItemChange(data: any){
   this.budget.type = data.target.defaultValue;
@@ -79,11 +67,9 @@ onItemChange(data: any){
 
 
   onSubmit(){
-    // console.log(this.login)
     this.budget.createdBy =  localStorage.getItem('email') || "null";
     this.budget.name = this.form.controls['name'].value;
     this.budget.description = this.form.controls['description'].value;
-    // this.budget.amount = this.form.controls['amount'].value;
     let res = this.form.controls['amount'].value.replace(/[^0-9.-]+/g,"");
     let tmp = res.split('.').join("");
     this.budget.amount = Number(tmp);

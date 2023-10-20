@@ -17,7 +17,8 @@
       <button
         routerLink="/user-create"
         class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold p-2.5 rounded-md shadow-md"
-      ><ng-icon class="icon-plus" size="20px" name='heroPlus'></ng-icon>
+      >
+        <ng-icon class="icon-plus" size="20px" name="heroPlus"></ng-icon>
         Add User
       </button>
     </div>
@@ -26,13 +27,13 @@
         (click)="downloadExcel()"
         class="bg-slate-800 hover:bg-blue-700 text-white text-sm font-bold px-4 mx-2 p-2.5 rounded-md shadow-md"
       >
-      <ng-icon class="icon-print" size="20px"  name='heroPrinter'></ng-icon>
+        <ng-icon class="icon-print" size="20px" name="heroPrinter"></ng-icon>
         Print
       </button>
     </div>
   </div>
 
-  <!-- table of user - use dummy data -->
+  <!-- table of user -->
   <div class="overflow-auto rounded-lg shadow-lg">
     <table class="w-full">
       <thead class="bg-gray-50 border-b-2 border-gray-200">
@@ -46,11 +47,14 @@
       </thead>
 
       <tbody class="divide-y divide-gray-100">
-        <tr [ngClass]=" i%2 == 0 ? 'bg-white' : 'bg-gray-50'" *ngFor="let user of users, let i = index">
-          <td>{{user.email}}</td>
-          <td>{{user.name}}</td>
-          <td>{{user.phone}}</td>
-          <td>{{user.roles}}</td>
+        <tr
+          [ngClass]="i % 2 == 0 ? 'bg-white' : 'bg-gray-50'"
+          *ngFor="let user of users; let i = index"
+        >
+          <td>{{ user.email }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.roles }}</td>
           <td>
             <button
               (click)="gotoEditUser(user)"
@@ -66,8 +70,6 @@
             </button>
           </td>
         </tr>
-
-     
       </tbody>
     </table>
   </div>
@@ -78,10 +80,14 @@
       <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
         <li>
           <a
-          (click)="previousPage()"
+            (click)="previousPage()"
             class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
-            <ng-icon class="icon-ChevronLeft" size="15px" name='heroChevronLeft'></ng-icon>
+            <ng-icon
+              class="icon-ChevronLeft"
+              size="15px"
+              name="heroChevronLeft"
+            ></ng-icon>
           </a>
         </li>
         <li>
@@ -89,7 +95,7 @@
             href="#"
             aria-current="page"
             class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white font-semibold"
-            >{{pageUser.pageNum + 1}}</a
+            >{{ pageUser.pageNum + 1 }}</a
           >
         </li>
 
@@ -99,8 +105,11 @@
             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span class="sr-only">Next</span>
-            <ng-icon class="icon-ChevronRight" size="15px" name='heroChevronRight'></ng-icon>
-
+            <ng-icon
+              class="icon-ChevronRight"
+              size="15px"
+              name="heroChevronRight"
+            ></ng-icon>
           </a>
         </li>
       </ul>

@@ -72,19 +72,6 @@ this.form.valueChanges.subscribe(form => {
   }
   }
 
-
-
-//   form: FormGroup = new FormGroup({  
-//     name : new FormControl(history.state.name),  
-//     description : new FormControl(history.state.description),  
-//     type: new FormControl(history.state.type),
-//     category : new FormControl(history.state.category),
-//     amount : new FormControl(history.state.amount),
-//     year : new FormControl(history.state.year)  
-
-// });  
-
-
 onItemChange(data: any){
   this.budget.type = data.target.defaultValue;
   console.log(this.budget)
@@ -92,12 +79,10 @@ onItemChange(data: any){
 
 
   onSubmit(){
-    // console.log(this.login)
     this.budget.budgetId = history.state.budgetId;
     this.budget.updatedBy =  localStorage.getItem('email') || "null";
     this.budget.name = this.form.controls['name'].value;
     this.budget.description = this.form.controls['description'].value;
-    // this.budget.amount = this.form.controls['amount'].value;
     let res = this.form.controls['amount'].value.replace(/[^0-9.-]+/g,"");
     let tmp = res.split('.').join("");
     this.budget.amount = Number(tmp);

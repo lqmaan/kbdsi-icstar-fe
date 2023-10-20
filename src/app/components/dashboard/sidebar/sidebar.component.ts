@@ -1,8 +1,6 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, Output, EventEmitter, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { navbarData } from './nav-data';
-// import { faCoffee } from '@fontawesome/free-solid-svg-icons';
-// import { CommonModule } from '@angular/common';
 
 import {LoginService} from '../../../services/login.service';
 import {NavbarService} from '../../../services/navbar.service';
@@ -66,9 +64,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
 
     constructor(private loginService: LoginService, private navbarService: NavbarService) {
-      // this.subscription =  this.navbarService.showSidebar.subscribe((value) => {
-      //   this.showSidebar = value;
-      // })
     }
 
     ngAfterViewInit() {

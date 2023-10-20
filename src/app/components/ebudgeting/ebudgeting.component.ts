@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { MatDialog, MatDialogConfig } from  '@angular/material/dialog';
 import { ElementRef} from '@angular/core';
-import {Modal} from 'bootstrap';
 
 import { CategoryAddComponent } from '../category-add/category-add.component';
 import {PrintComponent} from './print/print.component';
@@ -130,16 +129,7 @@ export class EbudgetingComponent implements OnInit {
   gotoEditBudget(budget: Budget){
     this.router.navigateByUrl('/ebudgeting-update', {state: budget});
   }
-  //   child: any;
-  // show(modalRef:ElementRef){
-  //   const modal=new Modal(modalRef.nativeElement);
-  //   modal.show();
-  // }
-    child: any;
-  show(modalRef:ElementRef){
-    const modal=new Modal(modalRef.nativeElement);
-    modal.show();
-  }
+
   openModal(){
     const mdConfig = new MatDialogConfig();
     mdConfig.disableClose = false;
@@ -157,7 +147,6 @@ export class EbudgetingComponent implements OnInit {
     mdConfig.hasBackdrop = true;
     mdConfig.width = "500px";
     mdConfig.height = "auto";
-    // mdConfig.panelClass = 'rounded';
 
     this.dialog.open(PrintComponent, mdConfig);
     }

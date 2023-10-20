@@ -3,90 +3,109 @@
     <h2 class="flex items-center justify-center font-bold py-2 mb-12 text-3xl">
       Create Account
     </h2>
-<div class="mb-6">
-  <label class="text-gray-700">Email</label>
-    <input
-      type="email"
-      name="email"
-      id="email"
-      required formControlName="email"
-    /><div class="text-red-500  font-xs italic" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-    Email is required.
-  </div>
-</div>
-    
     <div class="mb-6">
-       <label class="text-gray-700">Name</label>
-    <input
-      type="name"
-      required formControlName="name"
-    /><div class="text-red-500  font-xs italic" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
-    Name is required.
-  </div>
+      <label class="text-gray-700">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        formControlName="email"
+      />
+      <div
+        class="text-red-500 font-xs italic"
+        *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+      >
+        Email is required.
+      </div>
     </div>
-   
+
+    <div class="mb-6">
+      <label class="text-gray-700">Name</label>
+      <input type="name" required formControlName="name" />
+      <div
+        class="text-red-500 font-xs italic"
+        *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+      >
+        Name is required.
+      </div>
+    </div>
+
     <div class="mb-12">
       <label class="text-gray-700">Phone</label>
-    <input
-      type="phone"
-      placeholder="Ex: 8xxxxxxx"
-      required formControlName="phone"
-    />
-    <div class="text-red-500  font-xs italic" *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
-    Phone is required.
-  </div>
+      <input
+        type="phone"
+        placeholder="Ex: 8xxxxxxx"
+        required
+        formControlName="phone"
+      />
+      <div
+        class="text-red-500 font-xs italic"
+        *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid"
+      >
+        Phone is required.
+      </div>
     </div>
-    
-      <!-- <div *ngIf="form.get('phone').hasError('required')">
-    Field is required.
-  </div>   -->
 
     <div class="relative mb-6">
       <label class="text-gray-700">Password</label>
       <input
-      placeholder="Enter password" 
-        name="password" 
-        [type]="showPassword ? 'text': 'password'"
-        required formControlName="password"
+        placeholder="Enter password"
+        name="password"
+        [type]="showPassword ? 'text' : 'password'"
+        required
+        formControlName="password"
       />
-      <div
-        (click)="toggleShowPassword()"
-        class="absolute inset-y-0 right-0 flex items-center  pr-2 pt-8"
-      >
-        <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
-        </div>
-        <div class="absolute text-red-500 font-xs italic" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-    Password is required.
-  </div>
-      </div>
-
-    <div class="relative mb-6">
-      <label class="text-gray-700">Repeat Password</label>
-      <input
-      placeholder="Enter password" 
-      [type]="showPassword ? 'text': 'password'"
-      required formControlName="repeatpassword"
-      /> <div class="absolute text-red-500 font-xs italic" *ngIf="form.get('repeatpassword')?.touched && form.get('repeatpassword')?.invalid">
-    Repeat is required.</div> 
       <div
         (click)="toggleShowPassword()"
         class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8"
       >
-          <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
-        </div>
-      </div> 
-   
+        <ng-icon [name]="showPassword ? 'heroEye' : 'heroEyeSlash'"></ng-icon>
+      </div>
+      <div
+        class="absolute text-red-500 font-xs italic"
+        *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+      >
+        Password is required.
+      </div>
+    </div>
+
+    <div class="relative mb-6">
+      <label class="text-gray-700">Repeat Password</label>
+      <input
+        placeholder="Enter password"
+        [type]="showPassword ? 'text' : 'password'"
+        required
+        formControlName="repeatpassword"
+      />
+      <div
+        class="absolute text-red-500 font-xs italic"
+        *ngIf="
+          form.get('repeatpassword')?.touched &&
+          form.get('repeatpassword')?.invalid
+        "
+      >
+        Repeat is required.
+      </div>
+      <div
+        (click)="toggleShowPassword()"
+        class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8"
+      >
+        <ng-icon [name]="showPassword ? 'heroEye' : 'heroEyeSlash'"></ng-icon>
+      </div>
+    </div>
+
     <div class="flex justify-end gap-2 mt-12">
       <button
         routerLink="/user"
-        class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2.5 px-4  rounded-md shadow-md"
+        class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2.5 px-4 rounded-md shadow-md"
       >
         Cancel
       </button>
       <button
-      [disabled]="!form.valid"
+        [disabled]="!form.valid"
         type="submit"
-        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4  rounded-md shadow-md"
+        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-md shadow-md"
       >
         Save
       </button>

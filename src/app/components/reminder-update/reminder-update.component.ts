@@ -80,16 +80,6 @@ this.reminderForm.valueChanges.subscribe(form => {
   }
   }
 
-//   reminderForm: FormGroup = new FormGroup({  
-//     description : new FormControl(history.state.description, Validators.required),  
-//     repeated: new FormControl(history.state.repeated, Validators.required),
-//     email: new FormControl(history.state.email, Validators.required),
-//     scheduleDate : new FormControl(history.state.scheduleDate, Validators.required),
-//     paymentDate : new FormControl(history.state.paymentDate, Validators.required),
-//     amount : new FormControl(history.state.amount, Validators.required),
-
-// });  
-
 onItemChange(data: any){
   this.reminder.repeated = data.target.defaultValue;
 }

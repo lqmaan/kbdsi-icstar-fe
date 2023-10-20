@@ -1,23 +1,5 @@
-<!-- <div class="w-screen h-screen flex-col">
-  <nav class="w-screen h-[60px] bg-slate-800 text-white">
-    <div class="flex h-full container items-center mx-auto gap-8">
-      <a routerLink="/help">Help</a>
-      <a routerLink="/users">Users</a>
-    </div>
-  </nav>
-  <div class="p-8 mt-[60px] flex-1"> -->
 <div class="bg-gray-50">
-<app-header></app-header>
-<router-outlet></router-outlet>
-
-<!-- <app-dashboard></app-dashboard> -->
-<app-dashboard *ngIf="!isCheckoutRoute()"></app-dashboard>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-dashboard *ngIf="!isCheckoutRoute()"></app-dashboard>
 </div>
-<!-- Hide Sidebar on Login (Still error after login) -->
-<!-- <app-dashboard *ngIf="isLoggedIn$ | async as isLoggedIn"></app-dashboard> -->
-
-<!-- </div>
-</div> -->
-
-
-<!-- <link href="../dist/output.css" rel="stylesheet" /> -->

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
 
-
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';  
 import {Reminder} from '../../models/reminder';
@@ -12,8 +10,6 @@ import {ReminderService} from '../../services/reminder.service';
 import {UserService} from '../../services/user.service';
 
 import {CurrencyPipe} from '@angular/common';
-
-
 
 @Component({
   selector: 'app-reminder-create',
@@ -64,16 +60,6 @@ this.reminderForm.valueChanges.subscribe(form => {
   })
     }
   }
-
-//   reminderForm: FormGroup = new FormGroup({  
-//     description : new FormControl(''),  
-//     repeated: new FormControl(''),
-//     email: new FormControl(''),
-//     scheduleDate : new FormControl(''),
-//     paymentDate : new FormControl(''),
-//     amount : new FormControl(''),
-
-// });  
 
 onItemChange(data: any){
   console.log(this.reminderForm.get('scheduleDate'));  

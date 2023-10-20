@@ -60,23 +60,15 @@ this.form.valueChanges.subscribe(form => {
     }
   }
 
-//   form: FormGroup = new FormGroup({  
-//     description : new FormControl(history.state.description,Validators.required),
-//     type : new FormControl(history.state.type, Validators.required),  
-//     category: new FormControl(history.state.category, Validators.required),
-//     amount : new FormControl(history.state.amount, Validators.required),
-// });  
 
   onItemChange(data: any){
     this.transaction.type = data.target.defaultValue;
   }
 
  onEdit(){
-
       this.transaction.transactionId = history.state.transactionId;
       this.transaction.name = this.form.controls['description'].value;
       this.transaction.description = this.form.controls['description'].value;
-      // this.transaction.amount =  this.form.controls['amount'].value;
       let res = this.form.controls['amount'].value.replace(/[^0-9.-]+/g,"");
       let tmp = res.split('.').join("");
       this.transaction.amount = Number(tmp);
