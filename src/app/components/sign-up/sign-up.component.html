@@ -1,93 +1,110 @@
 <main>
   <form [formGroup]="form" (ngSubmit)="onSignUp()">
     <div>
-      <!-- <div class="bg-red-500 px-3 py-2 ronded text-gray-100 mb-3">
-          <p>wrong email entered</p>
-        </div> -->
-      <h1
+      <h2
         class="flex items-center justify-center font-bold py-2 mb-12 text-3xl"
       >
-        Create a Your Account
-      </h1>
-    <div class="mb-6">
-     <label class="text-gray-700 text-lg">Email</label>
-      <input
-        placeholder="Enter email address"
-        type="email"
-        [required]="true"
-        formControlName="email"
-      />
-      <span class="text-danger text-red-500 font-xs italic"
-      *ngIf="formControl['email'].hasError('required') && formControl['email'].touched">
-      Email is required
-      </span>
-    </div>
-      
+        Create Your Account
+      </h2>
       <div class="mb-6">
-      <label class="text-gray-700">Name</label>
-      <input
-        placeholder="Enter full name"
-        type="name"
-        [required]="true"
-        formControlName="name"
-      />
-      <span class="text-danger text-red-500 font-xs italic"
-      *ngIf="formControl['name'].hasError('required') && formControl['name'].touched">
-      Name is required
-      </span>
+        <label class="text-gray-700 text-lg">Email</label>
+        <input
+          placeholder="Enter email address"
+          type="email"
+          [required]="true"
+          formControlName="email"
+        />
+        <span
+          class="text-danger text-red-500 font-xs italic"
+          *ngIf="
+            formControl['email'].hasError('required') &&
+            formControl['email'].touched
+          "
+        >
+          Email is required
+        </span>
       </div>
-     
-      <div class="mb-6">
-   <label class="text-gray-700">Phone</label>
-      <input
-        placeholder="Ex: 8xxxxxxx"
-        type="phone"
-        [required]="true"
-        formControlName="phone"
-      />
-      <span class="text-danger text-red-500 font-xs italic"
-      *ngIf="formControl['phone'].hasError('required') && formControl['phone'].touched">
-      Phone is required
-      </span>
-      </div>
-   
-    <div class="relative mb-6">
-      <label class="text-gray-700">Password</label>
-      <input
-        placeholder=""
-         [(ngModel)]="password"
-        name="password" 
-        [required]="true"
-        [type]="showPassword ? 'text': 'password'"
-        formControlName="password"
-      />
-      <div
-        (click)="toggleShowPassword()"
-        class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8"
-      >
-          <ng-icon [name]="showPassword ? 'heroEye': 'heroEyeSlash' "></ng-icon>
-        </div>
-        <span class="text-danger absolute text-red-500 font-xs italic"
-      *ngIf="formControl['password'].hasError('required') && formControl['password'].touched">
-      Password is required
-      </span>
-      </div>
-   </div>
 
-      <div class="flex justify-end mt-12">
-        <button
-          routerLink="/login"
-          class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2.5 px-4 my-4 mx-1 rounded-md shadow-md"
+      <div class="mb-6">
+        <label class="text-gray-700">Name</label>
+        <input
+          placeholder="Enter full name"
+          type="name"
+          [required]="true"
+          formControlName="name"
+        />
+        <span
+          class="text-danger text-red-500 font-xs italic"
+          *ngIf="
+            formControl['name'].hasError('required') &&
+            formControl['name'].touched
+          "
         >
-          Cancel
-        </button>
-        <button [disabled]="!form.valid" type="submit"
-          class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4 my-4 mx-1 rounded-md shadow-md"
-        >
-          Sign-up
-        </button>
+          Name is required
+        </span>
       </div>
-    <!-- </div> -->
- 
+
+      <div class="mb-6">
+        <label class="text-gray-700">Phone</label>
+        <input
+          placeholder="Ex: 8xxxxxxx"
+          type="phone"
+          [required]="true"
+          formControlName="phone"
+        />
+        <span
+          class="text-danger text-red-500 font-xs italic"
+          *ngIf="
+            formControl['phone'].hasError('required') &&
+            formControl['phone'].touched
+          "
+        >
+          Phone is required
+        </span>
+      </div>
+
+      <div class="relative mb-6">
+        <label class="text-gray-700">Password</label>
+        <input
+          placeholder=""
+          [(ngModel)]="password"
+          name="password"
+          [required]="true"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+        />
+        <div
+          (click)="toggleShowPassword()"
+          class="absolute inset-y-0 right-0 flex items-center pr-2 pt-8"
+        >
+          <ng-icon [name]="showPassword ? 'heroEye' : 'heroEyeSlash'"></ng-icon>
+        </div>
+        <span
+          class="text-danger absolute text-red-500 font-xs italic"
+          *ngIf="
+            formControl['password'].hasError('required') &&
+            formControl['password'].touched
+          "
+        >
+          Password is required
+        </span>
+      </div>
+    </div>
+
+    <div class="flex justify-end mt-12">
+      <button
+        routerLink="/login"
+        class="bg-gray-400 hover:bg-gray-500 text-gray-800 font-bold py-2.5 px-4 my-4 mx-1 rounded-md shadow-md"
+      >
+        Cancel
+      </button>
+      <button
+        [disabled]="!form.valid"
+        type="submit"
+        class="bg-slate-800 hover:bg-blue-700 text-white font-bold py-2.5 px-4 my-4 mx-1 rounded-md shadow-md"
+      >
+        Sign-up
+      </button>
+    </div>
   </form>
 </main>

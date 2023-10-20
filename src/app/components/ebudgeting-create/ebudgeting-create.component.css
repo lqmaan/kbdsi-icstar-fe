@@ -3,7 +3,7 @@ main{
  }
  
  form{
-     @apply bg-white w-[500px] p-6 my-14 rounded shadow-md
+     @apply bg-white w-[500px] p-6 my-14 border-2 rounded-lg shadow-lg
  }
 
  input::-webkit-outer-spin-button,

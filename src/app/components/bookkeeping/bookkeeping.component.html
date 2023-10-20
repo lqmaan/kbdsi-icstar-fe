@@ -2,187 +2,221 @@
   <h1>BOOKKEEPING</h1>
 
   <!-- Cards -->
-  <section class="grid grid-cols-6 gap-3 h-3/4 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+  <section
+    class="grid grid-cols-6 gap-3 h-3/4 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+  >
     <!-- column 1 -->
-    <div class="col-span-2 bg-white rounded-md shadow-lg flex-auto p-4 relative border-solid border-l-orange-500 border-l-2">
+    <div
+      class="col-span-2 bg-white rounded-md shadow-lg flex-auto p-4 relative border-solid border-l-orange-500 border-l-2"
+    >
       <!-- content -->
-      <div class="flex flex-wrap ">
+      <div class="flex flex-wrap">
         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-          <h5 class="text-blueGray-400 uppercase font-bold lg:text-lg xl:text-xl">
+          <h5
+            class="text-blueGray-400 uppercase font-bold lg:text-lg xl:text-xl"
+          >
             Total Balance
           </h5>
-          <span 
-          *ngIf="totalYear && totalYear.length > 0"
-          class="font-semibold lg:text-md xl:text-lg ">{{totalYear[0] - totalYear[1] | currency:"IDR":"symbol"}} </span>
-          <!-- in line -->
+          <span
+            *ngIf="totalYear && totalYear.length > 0"
+            class="font-semibold lg:text-md xl:text-lg"
+            >{{ totalYear[0] - totalYear[1] | currency : "IDR" : "symbol" }}
+          </span>
           <div class="w-full h-0.5 bg-gray-300 drop-shadow-md my-5"></div>
-          <span 
-          *ngIf="totalYear && totalYear.length > 0"
-          class="lg:text-md xl:text-lg font-medium">Total Profit {{totalYear[0] | currency:"IDR":"symbol"}}
-            ({{currDate.getFullYear()}})</span><br />
-          <span 
-          *ngIf="totalYear && totalYear.length > 0"
-          class="lg:text-md xl:text-lg font-medium">Total Outcome {{totalYear[1] | currency:"IDR":"symbol"}}
-            ({{currDate.getFullYear()}})</span>
+          <span
+            *ngIf="totalYear && totalYear.length > 0"
+            class="lg:text-md xl:text-lg font-medium"
+            >Total Profit {{ totalYear[0] | currency : "IDR" : "symbol" }} ({{
+              currDate.getFullYear()
+            }})</span
+          ><br />
+          <span
+            *ngIf="totalYear && totalYear.length > 0"
+            class="lg:text-md xl:text-lg font-medium"
+            >Total Outcome {{ totalYear[1] | currency : "IDR" : "symbol" }} ({{
+              currDate.getFullYear()
+            }})</span
+          >
         </div>
         <div class="relative w-auto pl-4 flex-initial">
           <div
-            class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-orange-500">
+            class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-orange-500"
+          >
             <i class="text-sm font-medium">Yearly</i>
           </div>
         </div>
       </div>
-      <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-        <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span
-          class="whitespace-nowrap">This year</span> -->
-      </p>
+      <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4"></p>
     </div>
 
     <!-- column 2 -->
-
     <div class="col-span-2">
-      <div class="mb-4 bg-white rounded-md shadow-lg h-[140px] flex-auto p-4 relative border-solid border-l-orange-500 border-l-2">
+      <div
+        class="mb-4 bg-white rounded-md shadow-lg h-[140px] flex-auto p-4 relative border-solid border-l-orange-500 border-l-2"
+      >
         <!-- content -->
         <div class="flex flex-wrap">
-          <div class="relative w-full h-full pr-4 max-w-full max-h-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold lg:text-md xl:text-lg">
+          <div
+            class="relative w-full h-full pr-4 max-w-full max-h-full flex-grow flex-1"
+          >
+            <h5
+              class="text-blueGray-400 uppercase font-bold lg:text-md xl:text-lg"
+            >
               Total Income
             </h5>
-            <span class="font-semibold lg:text-md xl:text-lg">{{totalMonth[0] | currency:"IDR":"symbol"}} </span>
+            <span class="font-semibold lg:text-md xl:text-lg"
+              >{{ totalMonth[0] | currency : "IDR" : "symbol" }}
+            </span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-orange-500">
+              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-orange-500"
+            >
               <i class="text-sm font-medium">Monthly</i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span> -->
-          <span class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
+          <span class="whitespace-nowrap">{{
+            currDate | date : "MMMM yyyy"
+          }}</span>
         </p>
       </div>
 
-      <div class="bg-white mb-0 rounded-md shadow-lg h-[140px] max-h-fit flex-auto p-4 relative border-solid border-l-orange-500 border-l-2">
+      <div
+        class="bg-white mb-0 rounded-md shadow-lg h-[140px] max-h-fit flex-auto p-4 relative border-solid border-l-orange-500 border-l-2"
+      >
         <!-- content -->
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold lg:text-md xl:text-lg">
+            <h5
+              class="text-blueGray-400 uppercase font-bold lg:text-md xl:text-lg"
+            >
               Total Outcome
             </h5>
-            <span class="font-semibold lg:text-md xl:text-lg">{{totalMonth[1] | currency:"IDR":"symbol"}} </span>
+            <span class="font-semibold lg:text-md xl:text-lg"
+              >{{ totalMonth[1] | currency : "IDR" : "symbol" }}
+            </span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-centerw-auto h-4 shadow-lg rounded-full bg-orange-500">
+              class="text-white p-3 text-center inline-flex items-center justify-centerw-auto h-4 shadow-lg rounded-full bg-orange-500"
+            >
               <i class="text-sm font-medium">Monthly</i>
             </div>
           </div>
         </div>
         <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span> -->
-          <span class="whitespace-nowrap">{{currDate | date : 'MMMM yyyy'}}</span>
+          <span class="whitespace-nowrap">{{
+            currDate | date : "MMMM yyyy"
+          }}</span>
         </p>
       </div>
     </div>
     <!-- {{date}} -->
     <!-- column 3 -->
-    <!-- <div class="col-span-2"> -->
     <div class="col-span-1 gap-3">
       <!-- content 3_1 -->
-      <div class="bg-white rounded-md shadow-lg p-4 h-[140px] mb-4 relative border-solid border-l-green-500 border-l-2">
+      <div
+        class="bg-white rounded-md shadow-lg p-4 h-[140px] mb-4 relative border-solid border-l-green-500 border-l-2"
+      >
         <div class="flex flex-wrap">
           <div class="relative pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Income
             </h5>
-            <span 
-            *ngIf="income && income.length > 0"
-            class="font-bold text-base">{{income[0].amount | currency:"IDR":"symbol"}}</span>
+            <span
+              *ngIf="income && income.length > 0"
+              class="font-bold text-base"
+              >{{ income[0].amount | currency : "IDR" : "symbol" }}</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-centerw-auto h-4 px-2 shadow-lg rounded-full bg-green-500">
+              class="text-white p-3 text-center inline-flex items-center justify-centerw-auto h-4 px-2 shadow-lg rounded-full bg-green-500"
+            >
               <i class="text-sm font-medium">Monthly</i>
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span -->
-          <!-- class="whitespace-nowrap">This month</span> -->
-        </p>
+        <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4"></p>
       </div>
       <!-- content 3_2-->
-      <div class="bg-white rounded-md shadow-lg p-4 h-[140px] relative border-solid border-l-red-500 border-l-2">
+      <div
+        class="bg-white rounded-md shadow-lg p-4 h-[140px] relative border-solid border-l-red-500 border-l-2"
+      >
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Lowest Income
             </h5>
-            <span 
-            *ngIf="income && income.length > 0"
-            class="font-bold text-base">{{income[1].amount | currency:"IDR":"symbol"}}</span>
+            <span
+              *ngIf="income && income.length > 0"
+              class="font-bold text-base"
+              >{{ income[1].amount | currency : "IDR" : "symbol" }}</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-red-500">
+              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-red-500"
+            >
               <i class="text-sm font-medium">Monthly</i>
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span
-            class="whitespace-nowrap">This month</span> -->
-        </p>
+        <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4"></p>
       </div>
     </div>
 
     <div class="col-span-1 gap-3">
       <!-- content 3_3 -->
-      <div class="bg-white rounded-md shadow-lg p-4 h-[140px] mb-4 relative border-solid border-l-green-500 border-l-2">
+      <div
+        class="bg-white rounded-md shadow-lg p-4 h-[140px] mb-4 relative border-solid border-l-green-500 border-l-2"
+      >
         <div class="flex flex-wrap">
           <div class="relative pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Biggest Outcome
             </h5>
-            <span 
-            *ngIf="outcome && outcome.length > 0"
-            class="font-bold text-base">{{outcome[0].amount | currency:"IDR":"symbol"}}</span>
+            <span
+              *ngIf="outcome && outcome.length > 0"
+              class="font-bold text-base"
+              >{{ outcome[0].amount | currency : "IDR" : "symbol" }}</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2  shadow-lg rounded-full bg-green-500">
+              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-green-500"
+            >
               <i class="text-sm font-medium">Monthly</i>
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-          <!-- <span class="text-emerald-500 mr-2"><i class="fas fa-arrow-up"></i> 3.48%</span><span
-            class="whitespace-nowrap">This month</span> -->
-        </p>
+        <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4"></p>
       </div>
       <!-- content 3_4-->
-      <div class="bg-white rounded-md shadow-lg p-4 h-[140px] relative border-solid border-l-red-500 border-l-2">
+      <div
+        class="bg-white rounded-md shadow-lg p-4 h-[140px] relative border-solid border-l-red-500 border-l-2"
+      >
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-sm">
               Lowest Outcome
             </h5>
-            <span 
-            *ngIf="outcome && outcome.length > 0"
-            class="font-bold text-base">{{outcome[1].amount | currency:"IDR":"symbol"}}</span>
+            <span
+              *ngIf="outcome && outcome.length > 0"
+              class="font-bold text-base"
+              >{{ outcome[1].amount | currency : "IDR" : "symbol" }}</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-red-500">
+              class="text-white p-3 text-center inline-flex items-center justify-center w-auto h-4 px-2 shadow-lg rounded-full bg-red-500"
+            >
               <i class="text-sm font-medium">Monthly</i>
             </div>
           </div>
-          <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4">
-            <!-- <span class="text-emerald-500 mr-2">
-              <i class="fas fa-arrow-up"></i> 3.48%</span>
-            <span class="whitespace-nowrap">This month</span> -->
-          </p>
+          <p class="text-sm text-blueGray-500 absolute bottom-0 left-0 p-4"></p>
         </div>
       </div>
     </div>
@@ -193,53 +227,84 @@
   <h4 class="text-2xl font-bold mt-32 mb-6">Recent Transactions</h4>
   <div class="max-w-full my-2 flex relative gap-3">
     <div class="flex -left-0">
-      <button (click)="downloadExcel()" id="dropdownRadioBgHoverButton"
-        class=" bg-slate-800 hover:bg-blue-700 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm font-bold p-2.5  mx-2 rounded-md shadow-md text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        <ng-icon class="icon-print" size="20px" name='heroPrinter'></ng-icon>Print to Excel
+      <button
+        (click)="downloadExcel()"
+        id="dropdownRadioBgHoverButton"
+        class="bg-slate-800 hover:bg-blue-700 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm font-bold p-2.5 mx-2 rounded-md shadow-md text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        <ng-icon class="icon-print" size="20px" name="heroPrinter"></ng-icon
+        >Print to Excel
       </button>
     </div>
     <div class="absolute top-0 flex flex-nowrap left-3/2 ml-[137px]">
-      <div 
-      (click)="clear()"
-      class=" bg-slate-800 hover:bg-blue-700 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm font-bold py-2.5 px-4 mx-2 rounded-md shadow-md text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
-        <p><ng-icon class="icon-trash" size="20px" name='heroTrash'></ng-icon>Clear</p>
+      <div
+        (click)="clear()"
+        class="bg-slate-800 hover:bg-blue-700 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm font-bold py-2.5 px-4 mx-2 rounded-md shadow-md text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        <p>
+          <ng-icon class="icon-trash" size="20px" name="heroTrash"></ng-icon
+          >Clear
+        </p>
       </div>
     </div>
-    <div class=" absolute flex flex-nowrap left-1/2 -ml-[180px] ">
+    <div class="absolute flex flex-nowrap left-1/2 -ml-[180px]">
       <label class=" ">
-        <!-- ml-[190px] -->
         <a class="font-semibold">From: </a>
-        <input #inputFrom type="date" [ngModel]="fromDate" (ngModelChange)="changeFrom($event)" [max]="toDate != null ? toDate : null  | date: 'yyyy-MM-dd'"
-        style="cursor: pointer;"
-          class=" rounded-md shadow-md py-[6px]  bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
+        <input
+          #inputFrom
+          type="date"
+          [ngModel]="fromDate"
+          (ngModelChange)="changeFrom($event)"
+          [max]="toDate != null ? toDate : (null | date : 'yyyy-MM-dd')"
+          style="cursor: pointer"
+          class="rounded-md shadow-md py-[6px] bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input"
+        />
       </label>
     </div>
-    <div class="absolute left-1/2 ml-[20px] ">
+    <div class="absolute left-1/2 ml-[20px]">
       <label class=" ">
-        <!-- mr-[260px] -->
         <a class="font-semibold">To: </a>
-        <input #inputTo type="date" [ngModel]="toDate" (ngModelChange)="changeTo($event)" [min]="fromDate != null ? fromDate : null | date: 'yyyy-MM-dd'"
-        style="cursor: pointer;"
-          class="rounded-md shadow-md py-[6px] bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input" />
+        <input
+          #inputTo
+          type="date"
+          [ngModel]="toDate"
+          (ngModelChange)="changeTo($event)"
+          [min]="fromDate != null ? fromDate : (null | date : 'yyyy-MM-dd')"
+          style="cursor: pointer"
+          class="rounded-md shadow-md py-[6px] bg-gray-300 text-slate-900 px-1 outline-none mb-4 form-input"
+        />
       </label>
     </div>
     <div class="absolute top-0 right-20 mx-4">
       <label class="">
-        <select [(ngModel)]="pageBookkeeping.category" (ngModelChange)="changeCategory($event)"
-        style="cursor: pointer;"
-          class="bg-slate-800 text-white text-sm font-bold py-[9px] px-4 rounded-md shadow-md outline-none mb-4 form-select">
+        <select
+          [(ngModel)]="pageBookkeeping.category"
+          (ngModelChange)="changeCategory($event)"
+          style="cursor: pointer"
+          class="bg-slate-800 text-white text-sm font-bold py-[9px] px-4 rounded-md shadow-md outline-none mb-4 form-select"
+        >
           <option disabled selected="true" value>Category</option>
-          <option *ngFor="let item of category" [value]="item.categoryName"
-            [attr.selected]="pageBookkeeping.category == item.categoryName? true : null">{{item.categoryName}}</option>
+          <option
+            *ngFor="let item of category"
+            [value]="item.categoryName"
+            [attr.selected]="
+              pageBookkeeping.category == item.categoryName ? true : null
+            "
+          >
+            {{ item.categoryName }}
+          </option>
         </select>
       </label>
     </div>
     <div class="absolute top-0 right-0">
       <label class="">
-        <select [(ngModel)]="pageBookkeeping.year" (ngModelChange)="changeYear($event)" 
-        [ariaPlaceholder]="'Year'"
-        style="cursor: pointer;"
-          class="bg-slate-800 text-white text-sm font-bold py-[9px] px-4 rounded-md shadow-md outline-none mb-4 form-select">
+        <select
+          [(ngModel)]="pageBookkeeping.year"
+          (ngModelChange)="changeYear($event)"
+          [ariaPlaceholder]="'Year'"
+          style="cursor: pointer"
+          class="bg-slate-800 text-white text-sm font-bold py-[9px] px-4 rounded-md shadow-md outline-none mb-4 form-select"
+        >
           <option disabled value selected="true">Year</option>
           <option>2023</option>
           <option>2024</option>
@@ -257,20 +322,30 @@
           <th>Category</th>
           <th>Type</th>
           <th>Amount</th>
-          <th class="w-16">Description</th>
+          <th class="w-32">Description</th>
         </tr>
       </thead>
 
-      <tbody class="divide-y ">
-        <tr class="my-8" *ngFor="let transaction of transactions, let i = index" [ngClass]=" i%2 == 0 ? 'bg-white' : 'bg-gray-50'">
-          <td >{{transaction.createdAt | date: 'dd/MM/yyyy HH:mm '}}</td>
-          <td>{{transaction.category}}</td>
+      <tbody class="divide-y divide-gray-100 py-[20px]">
+        <tr
+          *ngFor="let transaction of transactions; let i = index"
+          [ngClass]="i % 2 == 0 ? 'bg-white' : 'bg-gray-50'"
+        >
+          <td>{{ transaction.createdAt | date : "dd/MM/yyyy HH:mm " }}</td>
+          <td>{{ transaction.category }}</td>
           <td>
-            <span [ngClass]="transaction.type == 'income' ? 'text-green-800 bg-green-200': 'text-red-800 bg-red-200'">
-              {{transaction.type}}</span>
+            <span
+              [ngClass]="
+                transaction.type == 'income'
+                  ? 'text-green-800 bg-green-200'
+                  : 'text-red-800 bg-red-200'
+              "
+            >
+              {{ transaction.type }}</span
+            >
           </td>
-          <td>{{transaction.amount | currency : "IDR": "symbol"}}</td>
-          <td>{{transaction.description}}</td>
+          <td>{{ transaction.amount | currency : "IDR" : "symbol" }}</td>
+          <td>{{ transaction.description }}</td>
         </tr>
       </tbody>
     </table>
@@ -282,11 +357,15 @@
       <ul class="flex items-center justify-center -space-x-px my-8 h-4 text-xs">
         <li>
           <a
-          (click)="previousPage()"
+            (click)="previousPage()"
             class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span class="sr-only">Previous</span>
-            <ng-icon class="icon-ChevronLeft" size="15px" name='heroChevronLeft'></ng-icon>
+            <ng-icon
+              class="icon-ChevronLeft"
+              size="15px"
+              name="heroChevronLeft"
+            ></ng-icon>
           </a>
         </li>
         <li>
@@ -294,7 +373,7 @@
             href="#"
             aria-current="page"
             class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white font-semibold"
-            >{{pageBookkeeping.pageNum + 1}}</a
+            >{{ pageBookkeeping.pageNum + 1 }}</a
           >
         </li>
         <li>
@@ -303,7 +382,11 @@
             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span class="sr-only">Next</span>
-           <ng-icon class="icon-ChevronRight" size="15px" name='heroChevronRight'></ng-icon>
+            <ng-icon
+              class="icon-ChevronRight"
+              size="15px"
+              name="heroChevronRight"
+            ></ng-icon>
           </a>
         </li>
       </ul>

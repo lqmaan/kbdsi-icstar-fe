@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 
 import {CurrencyPipe} from '@angular/common';
 
-import { heroEyeSlash, heroEye, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroChartBar, heroBanknotes, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight } from '@ng-icons/heroicons/outline';
+import { heroEyeSlash, heroEye, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroChartBar, heroBanknotes, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight, heroUser, heroUserCircle } from '@ng-icons/heroicons/outline';
 
 
 
@@ -106,7 +106,7 @@ registerLocaleData(localeId, 'id');
     MatDialogModule,
     HttpClientModule,
     CommonModule,
-    NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight}),
+    NgIconsModule.withIcons({heroEye, heroEyeSlash, heroChartPie, heroUsers, heroCalendarDays, heroArrowRightOnRectangle, heroBanknotes, heroChartBar, heroQuestionMarkCircle, heroPrinter, heroPlus, heroTrash, heroChevronLeft, heroChevronRight, heroUser, heroUserCircle}),
     SweetAlert2Module.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: "id-ID" }, LoginService, UserService, TransactionService, ReminderService, BudgetService, CategoryService, CurrencyPipe],
