@@ -54,7 +54,7 @@ export class ReminderCreateComponent {
 this.reminderForm.valueChanges.subscribe(form => {
   if(form.amount){
     this.reminderForm.patchValue({
-      amount: this.currencyPipe.transform(form.amount.replace(/\D/g, '').replace(/^0+/,''), 'IDR', 'symbol', '1.0-0')
+      amount: this.currencyPipe.transform(form.amount.toString().replace(/\D/g, '').replace(/^0+/,''), 'IDR', 'symbol', '1.0-0')
     }, {emitEvent : false})
   }
   })

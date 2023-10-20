@@ -53,7 +53,7 @@ export class TransactionUpdateComponent implements OnInit{
 this.form.valueChanges.subscribe(form => {
   if(form.amount){
     this.form.patchValue({
-      amount: this.currencyPipe.transform(form.amount.replace(/\D/g, '').replace(/^0+/,''), 'IDR', 'symbol', '1.0-0')
+      amount: this.currencyPipe.transform(form.amount.toString().replace(/\D/g, '').replace(/^0+/,''), 'IDR', 'symbol', '1.0-0')
     }, {emitEvent : false})
   }
   })
@@ -74,7 +74,6 @@ this.form.valueChanges.subscribe(form => {
       this.transaction.amount = Number(tmp);
       this.transaction.category = this.form.controls['category'].value;
       this.transaction.updatedBy = localStorage.getItem('email') || 'null'
-    
     this.transactionService.editTransaction(this.transaction)
         .subscribe((result) => {
         Swal.fire({
