@@ -80,6 +80,7 @@ onItemChange(data: any){
     this.reminderService.createReminder(this.reminder).subscribe((result) => {
       Swal.fire({
         title: 'Create Reminder Success',
+        icon:'success'
       }).then((result) => {
           this.gotoReminderList();
         })
