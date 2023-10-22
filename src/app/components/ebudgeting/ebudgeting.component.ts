@@ -112,7 +112,10 @@ export class EbudgetingComponent implements OnInit {
               'Deleted!',
               'Budget has been deleted.',
               'success'
-            ) 
+            )
+              this.budgetService.getTotalYear(this.currDate.getFullYear()).subscribe(data => {
+      this.totalYear = data;
+    })
           }
         }
         , error => {
