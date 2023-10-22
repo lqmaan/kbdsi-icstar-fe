@@ -113,6 +113,9 @@ export class TransactionComponent implements OnInit {
               'Transaction has been deleted.',
               'success'
             ) 
+             this.transactionService.getTotalMonth(this.currDate.getMonth()).subscribe(data => {
+      this.totalMonth = data;
+    })
           }
         }, error => {
           Swal.fire({
