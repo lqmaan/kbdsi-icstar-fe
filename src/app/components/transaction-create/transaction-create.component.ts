@@ -78,6 +78,7 @@ onItemChange(data: any){
     this.transactionService.createTransaction(this.transaction).subscribe((result) => {
       Swal.fire({
         title: 'Create Transaction Success',
+        icon:'success'
       }).then((result) => {
           this.gotoTransactionList();
         })
