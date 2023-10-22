@@ -90,6 +90,7 @@ onItemChange(data: any){
     this.budgetService.editBudget(this.budget).subscribe((result) => {
       Swal.fire({
         title: 'Edit Budget Success',
+        icon:'success'
       }).then((result) => {
           this.gotoBudgetList();
         })
