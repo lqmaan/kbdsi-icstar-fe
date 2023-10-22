@@ -48,6 +48,7 @@ export class UserCreateComponent implements OnInit{
     this.userService.createUser(this.user).subscribe((result) => {
       Swal.fire({
         title: 'Create User Success',
+        icon:'success'
       }).then((result) => {
           this.gotoUserList();
         })
