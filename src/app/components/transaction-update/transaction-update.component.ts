@@ -75,6 +75,7 @@ this.form.valueChanges.subscribe(form => {
         .subscribe((result) => {
         Swal.fire({
           title: 'Edit Transaction Success',
+          icon:'success'
         }).then((result) => {
             this.gotoTransactionList();
           })
