@@ -99,6 +99,7 @@ onItemChange(data: any){
     this.reminderService.editReminder(this.reminder).subscribe((result) => {
       Swal.fire({
         title: 'Edit Reminder Success',
+        icon:'success'
       }).then((result) => {
           this.gotoReminderList();
         })
