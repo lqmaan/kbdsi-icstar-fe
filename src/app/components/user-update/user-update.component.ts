@@ -57,6 +57,7 @@ export class UserUpdateComponent implements OnInit {
         {
           Swal.fire({
             title: 'Edit User Success',
+            icon:'success'
           }).then((result) => {
               this.gotoUserList();
             })
